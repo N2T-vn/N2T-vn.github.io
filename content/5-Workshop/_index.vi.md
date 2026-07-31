@@ -48,4 +48,3 @@ làm theo đúng thứ tự trong lần đầu tiên thực hiện.
 9. [Kiểm thử](5.9-Testing/)
 10. [Quản lý chi phí và tài nguyên](5.10-Cost/)
 11. [Dọn dẹp tài nguyên](5.11-Cleanup/)
-12. [Repository, trang web, và video demo](5.12-Links-and-Demo/)

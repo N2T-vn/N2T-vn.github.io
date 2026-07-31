@@ -31,10 +31,7 @@ chúng.
 
 #### Nội dung
 
-- [Thực hành khởi tạo và huỷ instance](5.7.1-launch-practice/)
-- [Hạ tầng mạng Private và Instance Đầu Tiên](5.7.2-deploy-api/)
-- [Siết chặt Security Group](5.7.3-security-groups/)
-- [Build frontend và xử lý CORS](5.7.4-frontend-and-cors/)
-- [Load Balancer và Instance Thứ Hai](5.7.5-load-balancer/)
-- [CloudFront: Một Domain HTTPS Duy Nhất cho Tất Cả](5.7.6-cloudfront/)
-- [Chạy Migration, Seed, và Kiểm Chứng Toàn Bộ Triển Khai](5.7.7-run-and-verify/)
+- [Hạ tầng mạng Private và Instance Đầu Tiên](5.7.1-deploy-api/)
+- [Siết chặt Security Group](5.7.2-security-groups/)
+- [Load Balancer và Instance Thứ Hai](5.7.3-load-balancer/)
+- [CloudFront: Một Domain HTTPS Duy Nhất cho Tất Cả](5.7.4-cloudfront/)

@@ -30,11 +30,8 @@ see their first real query and their first real object.
 
 #### Content
 
-- [Launch and Terminate Practice](5.7.1-launch-practice/)
-- [Private Networking and the First Instance](5.7.2-deploy-api/)
-- [Lock Down Security Groups](5.7.3-security-groups/)
-- [Frontend Build and CORS](5.7.4-frontend-and-cors/)
-- [Load Balancer and a Second Instance](5.7.5-load-balancer/)
-- [CloudFront: One HTTPS Domain for Everything](5.7.6-cloudfront/)
-- [Run the Migration, Seed, and Verify the Deployment](5.7.7-run-and-verify/)
+- [Private Networking and the First Instance](5.7.1-deploy-api/)
+- [Lock Down Security Groups](5.7.2-security-groups/)
+- [Load Balancer and a Second Instance](5.7.3-load-balancer/)
+- [CloudFront: One HTTPS Domain for Everything](5.7.4-cloudfront/)
 

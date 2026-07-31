@@ -47,4 +47,3 @@ in order the first time through.
 9. [Testing](5.9-Testing/)
 10. [Cost and Resource Management](5.10-Cost/)
 11. [Cleaning Up Resources](5.11-Cleanup/)
-12. [Repository, Live Site, and Demo](5.12-Links-and-Demo/)

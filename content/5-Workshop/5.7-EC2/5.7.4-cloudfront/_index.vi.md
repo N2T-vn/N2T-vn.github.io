@@ -3,7 +3,7 @@ title : "CloudFront: Thêm API vào Cùng Một Domain"
 date : 2026-06-01
 weight : 6
 chapter : false
-pre : " <b> 5.7.6 </b> "
+pre : " <b> 5.7.4 </b> "
 ---
 
 Frontend đã được phục vụ qua CloudFront distribution tạo ở mục 5.6.2 từ
