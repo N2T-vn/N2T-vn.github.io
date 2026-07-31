@@ -1,57 +1,33 @@
 ---
 title: "Week 6 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-06-01
+weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+### Week 6 Objectives: Caerus - AWS-Dependent Features, CDN, Network Hardening, and Monitoring
 
-### Week 6 Objectives:
-
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Implement the two endpoints that needed real AWS infrastructure to exist: poster upload and ticket generation.
+* Put a single HTTPS domain and edge protection in front of the whole application.
+* Take the compute tier off the public internet entirely, and put dashboards and alarms in place.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 2 | - **[Backend lane]** Implemented admin poster upload: the image is written to the private images bucket, and every read is served through a freshly signed, short-lived pre-signed URL rather than a public bucket <br> - **[Frontend lane]** Built the admin upload form and wired the poster onto event cards | 20/07/2026 | 20/07/2026 | <https://docs.aws.amazon.com/AmazonS3/latest/userguide/> |
+| 3 | - Studied Lambda and API Gateway together <br> - **[Backend lane]** Built ticket generation as a Lambda function invoked directly from the API: it renders the PDF, writes it to the tickets bucket, and returns a pre-signed download URL; also tried moving booking cancellation to a second Lambda <br> - **[Frontend lane]** Wired the ticket download button to the new response shape | 21/07/2026 | 21/07/2026 | <https://docs.aws.amazon.com/lambda/latest/dg/> |
+| 4 | - Reconsidered both serverless moves on evidence rather than leaving them as first implemented: <br> &emsp; + Moved cancellation back to the API server - it shares the booking transaction's locking logic and gained nothing from being split out <br> &emsp; + Decided to remove the ticket-generation Lambda too, once it became clear the workload was too small and infrequent to justify a second deployable with its own IAM role and deploy step; moved PDF rendering in-process into the Express API <br> - Updated the API specification's change log to record both reversals with reasoning, rather than editing history away <br> - Started Amazon CloudFront: one distribution, path-based routing between the S3 site bucket and the load balancer | 22/07/2026 | 22/07/2026 | |
+| 5 | - Finished the CloudFront setup: Origin Access Control locking the site bucket private again, custom error responses for SPA routing, and the single HTTPS domain live for both the site and the API <br> - Found that CloudFront's bundled WAF was silently blocking poster uploads over its default request-body size limit, disguised as a fake success by the same custom error response meant for SPA fallback; fixed by overriding the specific WAF rule's action instead of disabling WAF entirely <br> - **Published Blog 2** (the SeatGeek case study read in Week 1) to the AWS Study Group community | 23/07/2026 | 23/07/2026 | <https://www.facebook.com/groups/awsstudygroupfcj/permalink/2222000205231606/> |
+| 6 | - Took the compute tier off the public internet: created a private subnet pair for the EC2 instances (separate from the database's, so their route tables stay independent), a NAT gateway for outbound-only package installs and patching, and granted Systems Manager permission on the instance role <br> - Replaced both running instances with AMI-based clones launched into the new private subnets, verified over Session Manager rather than SSH, then removed the SSH rule from the security group entirely | 24/07/2026 | 24/07/2026 | |
+| 7 | - Built the CloudWatch dashboard (EC2, RDS, load balancer) and shipped application logs to a log group <br> - Configured alarms on target-group health and database resource pressure, wired to an SNS topic delivering email <br> - Deliberately triggered an alarm to confirm it actually fires and notifies, rather than trusting it unverified in the OK state | 25/07/2026 | 25/07/2026 | <https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/> |
 
 ### Week 6 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Implemented both AWS-dependent endpoints deferred since Week 4, each reading and writing through presigned URLs rather than a public bucket.
+* Built a Lambda function correctly, proved it worked, and still removed it once the evidence showed a persistent server was the better fit - a reversed decision with its reasoning kept, not a mistake hidden.
+* Diagnosed a CloudFront-plus-WAF interaction that disguised a real block as a fake success, and fixed it with a targeted rule override rather than disabling protection wholesale.
+* Took the entire compute tier off the public internet - no public IP, no inbound SSH - while keeping deployment and debugging access through Systems Manager Session Manager.
+* Published the second blog post of the internship, turning background reading from Week 1 into a written case study for the community.
+* Built a dashboard and alarms covering every remaining service, with at least one alarm proven to fire and notify rather than left untested.

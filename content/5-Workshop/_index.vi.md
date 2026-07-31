@@ -1,33 +1,51 @@
 ---
 title: "Workshop"
-date: 2024-01-01
+date: 2026-06-01
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-
-# Đảm bảo truy cập Hybrid an toàn đến S3 bằng cách sử dụng VPC endpoint
+# Caerus: Hệ thống đặt ghế xem phim trên AWS
 
 #### Tổng quan
 
-**AWS PrivateLink** cung cấp kết nối riêng tư đến các dịch vụ aws từ VPCs hoặc trung tâm dữ liệu (on-premise) mà không làm lộ lưu lượng truy cập ra ngoài public internet.
+Caerus là một nền tảng đặt ghế xem phim: khách hàng duyệt các suất chiếu, chọn
+ghế trên sơ đồ ghế 6x10 theo thời gian thực, đặt tối đa sáu ghế trong một
+transaction, hủy vé trước giờ chiếu, và tải vé PDF; quản trị viên tạo suất
+chiếu và tải lên hình ảnh poster. Yêu cầu duy nhất chi phối mọi quyết định
+khác trong workshop này là **một ghế không bao giờ được bán hai lần**, ngay
+cả khi hai khách hàng cùng click vào một ghế trong cùng một thời điểm - đây
+là lý do vì sao booking transaction, chiến lược locking, và bài kiểm thử
+concurrency đều được dành riêng một mục chứ không chỉ nhắc qua loa.
 
-Trong bài lab này, chúng ta sẽ học cách tạo, cấu hình, và kiểm tra VPC endpoints để cho phép workload của bạn tiếp cận các dịch vụ AWS mà không cần đi qua Internet công cộng.
+Việc triển khai chạy hoàn toàn trong **ap-southeast-1** và phát triển theo
+từng giai đoạn xuyên suốt workshop này thay vì xuất hiện hoàn chỉnh ngay từ
+đầu: một trang web React tĩnh trên Amazon S3, một API Express trên Amazon
+EC2 phía sau một Application Load Balancer với hai instance trải trên hai
+Availability Zone, PostgreSQL trên Amazon RDS chạy Multi-AZ bên trong một
+private subnet, Amazon CloudFront (kèm AWS WAF) đứng trước cả trang web lẫn
+API để phục vụ HTTPS trên một domain duy nhất, và Amazon CloudWatch cùng SNS
+theo dõi toàn bộ hệ thống. Bản thân lớp compute cuối cùng hoàn toàn private:
+cả hai EC2 instance đều nằm sau một NAT gateway, không có public IP và
+không mở bất kỳ cổng SSH nào, thay vào đó được quản trị thông qua AWS Systems
+Manager Session Manager - cùng tư thế vận hành mà database đã có ở mục
+5.5.1, đạt được vì cùng một lý do.
 
-Chúng ta sẽ tạo hai loại endpoints để truy cập đến Amazon S3: gateway vpc endpoint và interface vpc endpoint. Hai loại vpc endpoints này mang đến nhiều lợi ích tùy thuộc vào việc bạn truy cập đến S3 từ môi trường cloud hay từ trung tâm dữ liệu (on-premise).
-+ **Gateway** - Tạo gateway endpoint để gửi lưu lượng đến Amazon S3 hoặc DynamoDB using private IP addresses. Bạn điều hướng lưu lượng từ VPC của bạn đến gateway endpoint bằng các bảng định tuyến (route tables)
-+ **Interface** - Tạo interface endpoint để gửi lưu lượng đến các dịch vụ điểm cuối (endpoints) sử dụng Network Load Balancer để phân phối lưu lượng. Lưu lượng dành cho dịch vụ điểm cuối được resolved bằng DNS.
+Mỗi mục bên dưới xây dựng dựa trên trạng thái để lại từ mục trước đó. Hãy
+làm theo đúng thứ tự trong lần đầu tiên thực hiện.
 
 #### Nội dung
 
-1. [Tổng quan về workshop](5.1-Workshop-overview/)
-2. [Chuẩn bị](5.2-Prerequiste/)
-3. [Truy cập đến S3 từ VPC](5.3-S3-vpc/)
-4. [Truy cập đến S3 từ TTDL On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (làm thêm)](5.5-Policy/)
-6. [Dọn dẹp tài nguyên](5.6-Cleanup/)
+1. [Giới thiệu](5.1-Overview/)
+2. [Các bước chuẩn bị](5.2-Prerequisites/)
+3. [Thiết kế hệ thống](5.3-Design/)
+4. [Xây dựng cục bộ](5.4-Local-Build/)
+5. [Amazon RDS cho PostgreSQL](5.5-RDS/)
+6. [Amazon S3](5.6-S3/)
+7. [Amazon EC2 và triển khai](5.7-EC2/)
+8. [CloudWatch và SNS](5.8-CloudWatch/)
+9. [Kiểm thử](5.9-Testing/)
+10. [Quản lý chi phí và tài nguyên](5.10-Cost/)
+11. [Dọn dẹp tài nguyên](5.11-Cleanup/)
+12. [Repository, trang web, và video demo](5.12-Links-and-Demo/)

@@ -1,57 +1,31 @@
 ---
 title: "Week 5 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-06-01
+weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+### Week 5 Objectives: Caerus - Deploying to AWS
 
-### Week 5 Objectives:
-
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Move the database to Amazon RDS and the static site to Amazon S3, and deploy the API to Amazon EC2.
+* Reach a publicly reachable application, then remove the single point of failure in both the compute and the database tier.
+* End the week with two EC2 instances behind a load balancer and a Multi-AZ database in a private subnet.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 2 | - **[Backend lane]** Launched a Single-AZ RDS PostgreSQL instance and ran the migration and seed files against it, changing only the connection string <br> - **[Frontend lane]** Created all four S3 buckets (frontend site, event posters, generated tickets, backend deployment package) | 13/07/2026 | 13/07/2026 | <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/> |
+| 3 | - **[Backend lane]** Created the EC2 instance role scoped to the S3 buckets it needs, following the account's naming convention <br> - **[Frontend lane]** Enabled static website hosting on the site bucket <br> - Together: reviewed and tightened the security groups so the database accepts traffic only from the application instance's security group, not from arbitrary addresses | 14/07/2026 | 14/07/2026 | <https://docs.aws.amazon.com/AmazonS3/latest/userguide/> |
+| 4 | - **[Backend lane]** Launched the EC2 instance, installed Node.js, and deployed the API under `pm2` <br> - **[Frontend lane]** Built the production React bundle, published it to the site bucket, and pointed it at the EC2 API's public address <br> - Resolved the expected cross-origin failure by configuring permitted origins on the API rather than working around it in the browser <br> - **Milestone reached:** the application live on AWS, on a single EC2 instance | 15/07/2026 | 15/07/2026 | <https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS> |
+| 5 | - A single EC2 instance is a single point of failure: launched a second instance in a different Availability Zone, identical AMI and configuration <br> - Created a target group and an Application Load Balancer in front of both instances, tested traffic alternating between them before touching anything else <br> - Only once the load balancer was confirmed working, tightened the EC2 security group to accept traffic from the load balancer's security group alone, and pointed the frontend at the load balancer's DNS name | 16/07/2026 | 16/07/2026 | |
+| 6 | - Moved RDS to Multi-AZ inside a private subnet with no route to the internet: created two private subnets and a route table with no `0.0.0.0/0` route, and a new DB subnet group <br> - Hit a known RDS console/CLI validation error moving an existing instance's subnet group across VPC-adjacent subnet groups; resolved by deleting the (seed-data-only) instance and recreating it directly with Multi-AZ and the private subnet group selected at creation <br> - Caught and corrected the Production template's default storage type (Provisioned IOPS SSD, 100 GiB) back to General Purpose SSD at 20 GiB before creating - left unchanged, it would have been the largest line on the entire bill | 17/07/2026 | 17/07/2026 | |
+| 7 | - Buffer: verified the endpoint hostname was unchanged after the RDS recreation, so `DATABASE_URL` needed no change, and confirmed the database was still reachable from EC2 despite having no route to the internet at all <br> - Re-ran the booking flow end to end against the rebuilt environment to confirm nothing regressed | 18/07/2026 | 18/07/2026 | |
 
 ### Week 5 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Migrated from a local Docker database to managed RDS, and from a local filesystem to S3, by changing configuration rather than code.
+* Reached a publicly reachable deployment, then deliberately removed its two single points of failure: a second EC2 instance behind a load balancer, and a Multi-AZ database.
+* Diagnosed and worked around a genuine RDS console limitation rather than being stopped by it, choosing the faster, equally valid path given the database held only disposable seed data.
+* Caught a console default (Provisioned IOPS storage) that would have dominated the entire month's bill, before it was ever created.

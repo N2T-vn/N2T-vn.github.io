@@ -1,57 +1,30 @@
 ---
 title: "Week 7 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-06-01
+weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+### Week 7 Objectives: Caerus - Testing, Report, and Submission
 
-### Week 7 Objectives:
-
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Prove the no-double-booking guarantee against the deployed system, not just assert it.
+* Verify the documented edge cases against the real environment.
+* Assemble and submit the final report.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 2 | - The concurrency test: two browser sessions, logged in as two different users, selecting the same seat on the same screening and submitting as close together as possible <br> - Confirmed one request received `201 Created` and the other a `409 SEAT_ALREADY_BOOKED` naming the contested seat, and that the seat map afterward showed the seat booked exactly once | 27/07/2026 | 27/07/2026 | |
+| 3 | - Edge-case testing against the deployed system: cancelling after showtime, cancelling an already-cancelled booking, booking more than six seats, an expired or malformed token, a non-admin calling an admin route, and downloading a ticket for a cancelled booking <br> - Recorded the actual observed status code and error code for each row against the specification, rather than leaving the table as a checklist | 28/07/2026 | 28/07/2026 | |
+| 4 | - Assembled the report structure and began writing, working from the frozen specification, the worklog, and the actual architecture as built <br> - Went back through every AWS console used across the project and captured the screenshots the report references | 29/07/2026 | 29/07/2026 | |
+| 5 | - **Published Blog 1** (AWS Budgets and Cost Anomaly Detection, from Week 2's self-study) and **Blog 3** (AWS Config and Conformance Packs, from Week 3's self-study) to the AWS Study Group community <br> - Finished writing the report content, including the cost section reflecting the architecture's real monthly run-rate rather than a Free Tier estimate that no longer applied | 30/07/2026 | 30/07/2026 | <https://www.facebook.com/groups/awsstudygroupfcj/permalink/2229088634522763/> |
+| 6 | - Final review of the report and the deployed system together, correcting the few places where the two had drifted apart during the week's changes <br> - Recorded a demonstration video as a backup in case of a live failure during presentation <br> - **Milestone reached:** report submitted | 31/07/2026 | 31/07/2026 | |
 
 ### Week 7 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Proved the project's central claim - a seat can never be sold twice - against the real deployed system, with both the successful and the rejected request captured as evidence.
+* Verified every documented edge case against the deployed environment rather than trusting the specification alone.
+* Published the remaining two blog posts of the internship, closing out the reading that began as self-study in Weeks 2 and 3.
+* Submitted a report whose architecture, cost, and testing sections all describe the system exactly as it was actually built and run, not as it was originally planned seven weeks earlier.

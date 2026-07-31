@@ -1,31 +1,50 @@
 ---
 title: "Workshop"
-date: 2024-01-01
+date: 2026-06-01
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Secure Hybrid Access to S3 using VPC Endpoints
+# Caerus: A Cinema Seat Booking Platform on AWS
 
 #### Overview
 
-**AWS PrivateLink** provides private connectivity to AWS services from VPCs and your on-premises networks, without exposing your traffic to the Public Internet.
+Caerus is a cinema seat booking platform: customers browse screenings, pick
+seats from a live 6x10 seat map, book up to six seats in one transaction,
+cancel before showtime, and download a PDF ticket; administrators create
+screenings and upload poster art. The one requirement that shapes every other
+decision in this workshop is that **a seat can never be sold twice**, even
+when two customers click the same seat in the same instant - which is why the
+booking transaction, the locking strategy, and the concurrency test all get a
+dedicated section rather than a passing mention.
 
-In this lab, you will learn how to create, configure, and test VPC endpoints that enable your workloads to reach AWS services without traversing the Public Internet.
+The deployment runs entirely in **ap-southeast-1** and evolves in stages
+across this workshop rather than appearing fully formed: a static React site
+on Amazon S3, an Express API on Amazon EC2 behind an Application Load
+Balancer with two instances across two Availability Zones, PostgreSQL on
+Amazon RDS running Multi-AZ inside a private subnet, Amazon CloudFront (with
+AWS WAF) in front of both the site and the API for HTTPS on a single domain,
+and Amazon CloudWatch with SNS watching all of it. The compute layer itself
+ends up fully private: both EC2 instances sit behind a NAT gateway with no
+public IP and no SSH port open at all, administered instead through AWS
+Systems Manager Session Manager - the same operational posture the database
+already has in section 5.5.1, arrived at for the same reason.
 
-You will create two types of endpoints to access Amazon S3: a Gateway VPC endpoint, and an Interface VPC endpoint. These two types of VPC endpoints offer different benefits depending on if you are accessing Amazon S3 from the cloud or your on-premises location
-+ **Gateway** - Create a gateway endpoint to send traffic to Amazon S3 or DynamoDB using private IP addresses.You route traffic from your VPC to the gateway endpoint using route tables.
-+ **Interface** - Create an interface endpoint to send traffic to endpoint services that use a Network Load Balancer to distribute traffic. Traffic destined for the endpoint service is resolved using DNS.
+Each section below builds on the state left by the one before it. Follow them
+in order the first time through.
 
 #### Content
 
-1. [Workshop overview](5.1-Workshop-overview)
-2. [Prerequiste](5.2-Prerequiste/)
-3. [Access S3 from VPC](5.3-S3-vpc/)
-4. [Access S3 from On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (Bonus)](5.5-Policy/)
-6. [Clean up](5.6-Cleanup/)
+1. [Introduction](5.1-Overview/)
+2. [Prerequisites](5.2-Prerequisites/)
+3. [System Design](5.3-Design/)
+4. [Local Development](5.4-Local-Build/)
+5. [Amazon RDS for PostgreSQL](5.5-RDS/)
+6. [Amazon S3](5.6-S3/)
+7. [Amazon EC2 and Deployment](5.7-EC2/)
+8. [CloudWatch and SNS](5.8-CloudWatch/)
+9. [Testing](5.9-Testing/)
+10. [Cost and Resource Management](5.10-Cost/)
+11. [Cleaning Up Resources](5.11-Cleanup/)
+12. [Repository, Live Site, and Demo](5.12-Links-and-Demo/)

@@ -1,125 +1,234 @@
 ---
-title: "Event 2"
-date: 2024-01-01
-weight: 1
+title: "Sự kiện 2"
+date: 2026-06-01
+weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Báo cáo tóm tắt: FCAJ Agentic AI Build Week — Community Day
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+### Mục tiêu sự kiện
 
-### Mục Đích Của Sự Kiện
+- Trình bày các hệ thống được các đội xây dựng trong hackathon Agentic AI
+  Build Week
+- Cho thấy các pattern agentic AI được lắp ráp từ các dịch vụ AWS trong thực
+  tế như thế nào
+- Chia sẻ trải nghiệm xây dựng một prototype end-to-end trong thời hạn 24
+  giờ, bao gồm cả những gì đã diễn ra sai
+- Cho những người tham gia lần đầu một cái nhìn thực tế về việc tham gia một
+  hackathon là như thế nào
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+### Các đội trình bày
 
-### Danh Sách Diễn Giả
+- **Plan V** — *Solution Architect Professional Native App*
+  (Pham Tien Thuan Phat, Huynh Hoang Long, Le Minh Nghia, Tran Dai Vi, Nguyen An)
+- **Signal Scout** — *Nền tảng phát hiện tín hiệu doanh nghiệp*
+  (Le Tan Luc, Do Hoang Hieu, Trieu Quoc Hao, Nguyen Duy Khiem, Nguyen Cong Minh, Nguyen Tran Minh Quan)
+- **One Team** — *KFC Bot Agent*, đội vô địch AABW Hackathon
+  (Anh Duy, Tran Dong, Doan Trung, Minh Viet, Anshul Roy)
+- **3KA** — *S.H.E.P.H.E.R.D* và hành trình hackathon
+  (Huynh An Khuong, Nguyen Quoc Huy, Ngo Quang Khoi, Hoang Le Thanh Duc, Dang Nguyen Phuoc Loc, Dang Truong Hung)
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+---
 
-### Nội Dung Nổi Bật
+### Điểm nổi bật chính
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+#### Plan V — Solution Architect Professional Native App
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+Vấn đề được đặt ra như một cuộc trò chuyện mà bất kỳ ai làm consulting cũng sẽ
+nhận ra: một khách hàng yêu cầu thiết kế một hệ thống AI cho các tài liệu quy
+trình vận hành chuẩn (standard operating procedure) của họ, muốn có nó vào thứ
+Năm, rồi lại muốn có nó ngay lập tức. Trong khi đó, solution architect phải
+trích xuất yêu cầu, phác thảo kiến trúc ban đầu, tạo ra sơ đồ, và ước tính chi
+phí cloud.
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+Công cụ của họ giải quyết từng bước đó. Nó phân tích yêu cầu từ ngôn ngữ tự
+nhiên và các tài liệu có cấu trúc, phác thảo các phương án kiến trúc nhận biết
+được hybrid-cloud và phù hợp với chuẩn mực công ty, tạo ra các sơ đồ có thể
+chỉnh sửa bằng các icon kiến trúc chính thức của AWS, tạo ra các ước tính chi
+phí mang tính định hướng cho region `ap-southeast-1`, và tự nêu ra các giả
+định của chính nó cũng như những khoảng trống nó tìm thấy trong yêu cầu. Việc
+tinh chỉnh diễn ra qua một thanh chat bên cạnh (chat sidebar) với các chỉ dẫn
+tùy chỉnh (custom instructions) theo từng dự án.
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+So sánh trước và sau là phần rõ ràng nhất của bài trình bày:
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+| Trước | Sau |
+|---|---|
+| Đọc tài liệu yêu cầu từng dòng, thủ công | Upload và chat tự nhiên — một catalogue yêu cầu trong vài phút |
+| Bắt đầu từ trang giấy trắng mỗi lần | Một bản nháp đầu tiên có căn cứ để phản hồi lại |
+| Viết infrastructure as code thủ công | Infrastructure as code được sinh tự động |
+| Ước tính chi phí bằng cách đoán mò dựa vào kinh nghiệm | Một ước tính mang tính định hướng được tạo ra song song với kiến trúc |
 
-#### Domain-Driven Design (DDD)
+Điều tôi thấy đáng chú ý là cách họ định vị đầu ra là *một bản nháp đầu tiên để
+phản hồi lại* thay vì một sản phẩm hoàn chỉnh. Công cụ này được định vị là loại
+bỏ trang giấy trắng, chứ không phải loại bỏ vai trò của kiến trúc sư.
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+#### Signal Scout — phát hiện sớm thay đổi chiến lược của doanh nghiệp
 
-#### Event-Driven Architecture
+Đội này xây dựng một nền tảng phát hiện sớm các tín hiệu tái cấu trúc và thay
+đổi chiến lược ở các công ty, hướng đến các đội chiến lược doanh nghiệp, quản
+lý rủi ro doanh nghiệp (enterprise risk management), tình báo cạnh tranh
+(competitive intelligence), và quản lý tài khoản B2B.
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+Hệ thống này thực sự là multi-agent. Một hàm Lambda đứng trước một AgentCore
+runtime điều phối hai subagent: một **crawler subagent** thu thập bằng chứng
+từ các nguồn bên ngoài, và một **analysis subagent** diễn giải chúng, có áp
+dụng Bedrock Guardrails. Bộ nhớ ngắn hạn được lưu trong AgentCore Memory,
+session trong S3, và kết quả trong DynamoDB. Phía người dùng chạy qua Route
+53, Amplify, API Gateway, WAF, và Cognito, với CloudWatch và CloudTrail cho
+observability và Secrets Manager cùng IAM cho credential và access.
 
-#### Compute Evolution
+Các tuyên bố giá trị (value propositions) của họ khá kỷ luật: phân tích minh
+bạch và có thể kiểm chứng, mọi kết luận đều được bằng chứng hỗ trợ, và hỗ trợ
+ra quyết định một cách rõ ràng là *do con người kiểm soát*. Hệ thống được thiết
+kế để hỗ trợ thông tin cho một quyết định Maintain, Adapt, hoặc Accelerate,
+chứ không phải để tự đưa ra quyết định đó.
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+Phần tôi đánh giá cao nhất là **slide chi phí** — một bảng phân tách chi tiết
+từng dòng (line-item breakdown) trên ba mức sử dụng tối thiểu, trung bình, và
+tối đa, bao quát mọi dịch vụ bao gồm cả các phụ thuộc ngoài AWS:
 
-#### Amazon Q Developer
+| | Min | Mid | Max |
+|---|---|---|---|
+| Tổng dịch vụ AWS | ~ $17 | ~ $35 | ~ $130 |
+| Crawling bên thứ ba | ~$35 | ~$30 | ~$200 |
+| Công cụ observability | $0–29 | $29 | $29 |
+| **Tổng** | **~ $81** | **~ $94** | **~ $359** |
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+Sau đó họ trình bày một kiến trúc đã được sửa lại, hiệu quả chi phí hơn — cho
+thấy phân tích chi phí thực sự đã phản hồi ngược lại vào thiết kế, chứ không
+phải được tạo ra sau đó chỉ để đáp ứng yêu cầu của một slide.
 
-### Những Gì Học Được
+#### One Team — KFC Bot Agent (đội vô địch hackathon)
 
-#### Tư Duy Thiết Kế
+Đội vô địch mở đầu bằng một thất bại thực tế trong ngành thay vì ý tưởng của
+riêng họ: McDonald's đã kết thúc một thử nghiệm AI drive-thru sau khi thử
+nghiệm đặt hàng tự động tại hơn một trăm địa điểm tại Mỹ. Cách họ đọc hiểu sự
+việc này rất chính xác — bài học không phải là AI đặt hàng là một ý tưởng tồi,
+mà là **việc đặt hàng là một bài toán hệ thống**. Một agent đặt hàng phải xử
+lý món ăn, số lượng, biến thể (variant), quy tắc voucher, trạng thái giỏ hàng,
+và lỗi, trong khi ngôn ngữ tự nhiên thì lộn xộn, quy tắc kinh doanh thì chặt
+chẽ, đơn hàng phải được xác minh, và sai sót thì biến thành tiền bạc ngay lập
+tức.
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+Vấn đề họ nhắm đến là khoảnh khắc một thương hiệu mất một đơn hàng: khách hàng
+đang đói và ý định xuất hiện giữa cuộc trò chuyện, nhưng việc đặt hàng lại buộc
+họ phải chuyển sang app khác, tạo tài khoản, và điều hướng qua một menu — và
+động lực đó biến mất. Hỗ trợ chat chỉ bằng con người thì không thể mở rộng
+được trên nhiều kênh, nhiều ca làm việc, và các đợt tăng traffic đột biến.
 
-#### Kiến Trúc Kỹ Thuật
+Sản phẩm của họ là một agent đặt hàng qua hội thoại đa kênh, chạy bên trong
+Zalo và Messenger, không cần chuyển app, không cần tạo tài khoản mới, không
+cần giải thích lặp lại.
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
+Điểm về kiến trúc mà họ nêu ra là điều tôi nghĩ về nhiều nhất:
 
-#### Chiến Lược Hiện Đại Hóa
+> **Một chatbot trả lời. Một agent hành động.**
 
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+Họ mô tả một vòng lặp năm bước — hiểu ý định đặt hàng, lên kế hoạch các bước
+cần thiết, gọi tool để tra cứu dữ liệu kinh doanh đáng tin cậy, hành động bằng
+cách cập nhật giỏ hàng và áp dụng khuyến mãi, sau đó xác minh dựa trên trạng
+thái giỏ hàng thực tế. Tóm tắt của họ về điều này: *model hiểu, tool quyết
+định điều gì là thật.* Language model không được tin tưởng để nắm giữ trạng
+thái của đơn hàng; nó chỉ được tin tưởng để diễn giải yêu cầu.
 
-### Ứng Dụng Vào Công Việc
+#### 3KA — S.H.E.P.H.E.R.D và hành trình hackathon
 
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+Bài trình bày này được xây dựng như một câu chuyện thay vì một buổi demo sản
+phẩm, gồm bốn giai đoạn: đăng ký và chọn track, xây dựng dưới áp lực, demo day
+và chấm điểm, và những suy ngẫm cuối cùng.
 
-### Trải nghiệm trong event
+Hệ thống, S.H.E.P.H.E.R.D — Smart Human-flow Evaluation, Prediction, Hazard
+Detection, Response, and Dispatch — phân tích video camera trực tiếp tại các
+địa điểm để phát hiện và theo dõi con người, đo mật độ đám đông, ước tính tình
+trạng hàng đợi, nhận diện dấu hiệu sớm của tắc nghẽn, dự đoán tình trạng quá
+tải, đưa ra cảnh báo chủ động, và đề xuất hành động cho nhân viên. Hệ thống
+được xây dựng với YOLO và ByteTrack cho việc phát hiện và theo dõi, Amazon
+SageMaker, Amazon Bedrock AgentCore với Strands Agent cho lớp agentic, và một
+dashboard React.
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+Lớp agentic có hai vai trò riêng biệt: một **autonomous monitor** theo dõi các
+chỉ số trực tiếp và đưa ra cảnh báo mà không cần được yêu cầu, và một
+**operator copilot** cho phép nhân viên đặt câu hỏi bằng ngôn ngữ tự nhiên và
+nhận câu trả lời được hỗ trợ bởi các chỉ số trực tiếp và các công cụ dự đoán.
+Cách đặt vấn đề rất cụ thể — nhân viên tại địa điểm phải theo dõi lối vào,
+hàng đợi, gian hàng, và chuyển động cùng lúc, và việc giám sát thủ công thì
+chậm, bị động, khó mở rộng, và dễ bỏ sót sự cố.
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+Họ khá thẳng thắn về trải nghiệm của mình. Những nỗi sợ trước ngày đầu tiên
+được liệt kê rõ ràng: không đủ kỹ năng, sợ thất bại, mù mờ không biết gì, quá
+ít thời gian. Những thách thức lớn nhất của họ là không có nền tảng AI, lần
+đầu làm việc với AWS, thời gian hạn hẹp, code không chạy, và thiếu ngủ. Diễn
+biến cảm xúc họ mô tả đi từ choáng ngợp, qua việc tìm thấy trạng thái flow khi
+ý tưởng khớp lại, đến niềm tự hào vì đã thực sự xây dựng được một thứ gì đó.
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
+Lời khuyên của họ dành cho những người tham gia lần đầu:
 
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
+- **Cứ đăng ký đi** — đừng đợi đến khi cảm thấy sẵn sàng
+- **Tìm đội sớm** — các kỹ năng khác nhau tốt hơn là các kỹ năng giống nhau
+- **Thu hẹp phạm vi thật nhỏ** — một tính năng, làm cho tốt
+- **Nói chuyện với mọi người** — mentor và các đội khác chính là lý do bạn có
+  mặt ở đó
 
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
+---
 
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
+### Những điều rút ra chính
 
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+**Agent được định nghĩa bởi tool của nó, không phải bởi model.** Mọi đội đều
+vẽ ra cùng một ranh giới: language model diễn giải ý định, còn tool thực hiện
+và xác minh hành động dựa trên trạng thái thực tế. Cách diễn đạt của One Team
+— model hiểu, tool quyết định điều gì là thật — là phát biểu rõ ràng nhất về
+điều này mà tôi từng nghe, và về bản chất đây là một luận điểm về tính đúng
+đắn (correctness) hơn là một luận điểm về AI.
+
+**Chi phí thuộc về thiết kế, không phải là thứ đến sau thiết kế.** Signal
+Scout tạo ra một ước tính chi tiết từng dòng trên ba mức sử dụng *rồi sau đó
+thiết kế lại* để tối ưu hiệu quả. Đó là một kỷ luật mà tôi từng nghĩ là mối
+quan tâm về vận hành hơn là một đầu vào cho thiết kế.
+
+**Một bản nháp có căn cứ tốt hơn một trang giấy trắng.** Cách Plan V định vị
+công cụ của họ là tạo ra thứ gì đó để phản hồi lại thay vì thứ gì đó để chấp
+nhận là một mô tả trung thực hơn về việc các hệ thống này thực sự tốt cho điều
+gì, so với hầu hết các tuyên bố sản phẩm khác.
+
+**Ràng buộc tạo ra phạm vi tốt hơn là tham vọng.** "Thu hẹp phạm vi thật nhỏ —
+một tính năng, làm cho tốt" đến từ một đội chỉ có 24 giờ; nó cũng áp dụng tốt
+không kém cho một dự án có bảy tuần.
+
+---
+
+### Áp dụng vào công việc
+
+Ý tưởng dễ chuyển giao nhất là ranh giới xác minh bằng tool (tool-verification
+boundary). Trong dự án của riêng tôi, điều tương đương là lớp application đề
+xuất một booking, nhưng transaction của database mới quyết định nó có thật
+hay không — các hàng ghế được khóa (locked) và kiểm tra lại trước khi bất cứ
+điều gì được commit, và không có bất kỳ mức độ tự tin nào ở lớp application có
+thể ghi đè lên trạng thái trong database. Việc nghe bốn đội cùng đi đến cùng
+một nguyên tắc trong bốn lĩnh vực khác nhau khiến tôi tự tin hơn rằng việc đặt
+sự đảm bảo ở lớp dữ liệu là lựa chọn đúng đắn, chứ không phải là một lựa chọn
+gượng ép.
+
+Bảng chi phí của Signal Scout đã thay đổi cách tôi tiếp cận phần chi phí trong
+báo cáo của riêng mình. Thay vì khẳng định dự án nằm gọn trong Free Tier, tôi
+đã cấu trúc lại nó thành các dòng chi tiết với các thành phần sẽ chiếm phần
+lớn hóa đơn được xác định rõ ràng — đây cũng là điều khiến ước tính trở nên
+hữu ích với bất kỳ ai đọc nó.
+
+Region `ap-southeast-1` xuất hiện trong ước tính chi phí của Plan V là một chi
+tiết nhỏ nhưng đáng yên tâm: cùng một lựa chọn region mà tôi đã đưa ra vì lý do
+độ trễ, được một đội khác đưa ra một cách độc lập vì lý do tối ưu chi phí.
+
+Cuối cùng, danh sách nỗi sợ của 3KA — không đủ kỹ năng, mù mờ không biết gì,
+quá ít thời gian — gần như chính xác là những gì tôi cảm thấy vào lúc bắt đầu
+chương trình. Việc thấy một đội nói ra điều đó trên sân khấu, rồi sau đó đã
+xây dựng và trình diễn một hệ thống hoạt động được, có lẽ là điều hữu ích nhất
+tôi rút ra được từ ngày hôm đó.
+
+<!-- Thêm ảnh vào static/images/4-EventParticipated/4.2-Event2/ và tham chiếu chúng ở đây, ví dụ:
+
+-->
+#### Ảnh sự kiện
+![Tôi tại Agentic AI Build Week Community Day](/images/4-EventParticipated/4.2-Event2/selfie.jpg)
