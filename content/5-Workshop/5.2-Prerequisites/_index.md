@@ -27,36 +27,225 @@ permissions.
 
 ```json
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "ServiceConsoles",
-      "Effect": "Allow",
-      "Action": [
-        "ec2:*", "rds:*", "s3:*", "cloudfront:*", "wafv2:*",
-        "ssm:*", "cloudwatch:*", "sns:*", "logs:*"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Sid": "ReadOnlyIamAndBilling",
-      "Effect": "Allow",
-      "Action": ["iam:ListUsers", "iam:GetUser", "ce:*", "aws-portal:View*"],
-      "Resource": "*"
-    },
-    {
-      "Sid": "DenyUserEscalation",
-      "Effect": "Deny",
-      "Action": ["iam:CreateUser", "iam:DeleteUser", "iam:AttachUserPolicy"],
-      "Resource": "*"
-    }
-  ]
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "CoreProjectServices",
+			"Effect": "Allow",
+			"Action": [
+				"elasticloadbalancing:CreateLoadBalancer",
+				"elasticloadbalancing:CreateTargetGroup",
+				"elasticloadbalancing:CreateListener",
+				"elasticloadbalancing:RegisterTargets",
+				"elasticloadbalancing:DescribeLoadBalancers",
+				"elasticloadbalancing:DescribeTargetGroups",
+				"elasticloadbalancing:DescribeListeners",
+				"elasticloadbalancing:DescribeTargetHealth",
+				"elasticloadbalancing:ModifyLoadBalancerAttributes",
+				"elasticloadbalancing:DeleteLoadBalancer",
+				"elasticloadbalancing:DeleteTargetGroup",
+				"elasticloadbalancing:AddTags",
+				"ec2:*",
+				"rds:*",
+				"s3:*",
+				"cloudwatch:*",
+				"logs:*",
+				"sns:*",
+				"cloudfront:*"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "StartSession",
+			"Effect": "Allow",
+			"Action": "ssm:StartSession",
+			"Resource": [
+				"arn:aws:ec2:*:*:instance/*",
+				"arn:aws:ssm:*:*:document/SSM-SessionManagerRunShell"
+			]
+		},
+		{
+			"Sid": "SessionVisibility",
+			"Effect": "Allow",
+			"Action": [
+				"ssm:DescribeSessions",
+				"ssm:GetConnectionStatus",
+				"ssm:DescribeInstanceProperties",
+				"ec2:DescribeInstances"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "EndOwnSession",
+			"Effect": "Allow",
+			"Action": [
+				"ssm:TerminateSession",
+				"ssm:ResumeSession"
+			],
+			"Resource": "arn:aws:ssm:*:*:session/${aws:username}-*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": "wafv2:*",
+			"Resource": "*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": "iam:CreateServiceLinkedRole",
+			"Resource": "arn:aws:iam::857481978603:role/aws-service-role/elasticloadbalancing.amazonaws.com/AWSServiceRoleForElasticLoadBalancing",
+			"Condition": {
+				"StringEquals": {
+					"iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
+				}
+			}
+		},
+		{
+			"Sid": "CloudFrontManagedWAFManagedRuleSet",
+			"Effect": "Allow",
+			"Action": [
+				"wafv2:CreateWebACL",
+				"wafv2:UpdateWebACL",
+				"wafv2:GetWebACL"
+			],
+			"Resource": "arn:aws:wafv2:us-east-1:857481978603:global/managedruleset/*/*"
+		},
+		{
+			"Sid": "CloudFrontManagedWAF",
+			"Effect": "Allow",
+			"Action": [
+				"wafv2:CreateWebACL",
+				"wafv2:UpdateWebACL",
+				"wafv2:DeleteWebACL",
+				"wafv2:GetWebACL",
+				"wafv2:ListWebACLs",
+				"wafv2:TagResource",
+				"wafv2:UntagResource",
+				"wafv2:ListTagsForResource"
+			],
+			"Resource": "arn:aws:wafv2:us-east-1:857481978603:global/webacl/*"
+		},
+		{
+			"Sid": "ManageCaerusRolesOnly",
+			"Effect": "Allow",
+			"Action": [
+				"iam:CreateRole",
+				"iam:DeleteRole",
+				"iam:AttachRolePolicy",
+				"iam:DetachRolePolicy",
+				"iam:PutRolePolicy",
+				"iam:DeleteRolePolicy",
+				"iam:TagRole",
+				"iam:UntagRole",
+				"iam:UpdateAssumeRolePolicy",
+				"iam:CreateInstanceProfile",
+				"iam:DeleteInstanceProfile",
+				"iam:AddRoleToInstanceProfile",
+				"iam:RemoveRoleFromInstanceProfile"
+			],
+			"Resource": [
+				"arn:aws:iam::857481978603:role/caerus-*",
+				"arn:aws:iam::857481978603:instance-profile/caerus-*"
+			]
+		},
+		{
+			"Sid": "PassCaerusRolesToComputeOnly",
+			"Effect": "Allow",
+			"Action": "iam:PassRole",
+			"Resource": "arn:aws:iam::857481978603:role/caerus-*",
+			"Condition": {
+				"StringEquals": {
+					"iam:PassedToService": "ec2.amazonaws.com"
+				}
+			}
+		},
+		{
+			"Sid": "ServiceLinkedRolesForAwsServices",
+			"Effect": "Allow",
+			"Action": "iam:CreateServiceLinkedRole",
+			"Resource": "*",
+			"Condition": {
+				"StringEquals": {
+					"iam:AWSServiceName": [
+						"rds.amazonaws.com",
+						"monitoring.rds.amazonaws.com"
+					]
+				}
+			}
+		},
+		{
+			"Sid": "IamReadOnly",
+			"Effect": "Allow",
+			"Action": [
+				"iam:GetRole",
+				"iam:ListRoles",
+				"iam:GetRolePolicy",
+				"iam:ListRolePolicies",
+				"iam:ListAttachedRolePolicies",
+				"iam:GetInstanceProfile",
+				"iam:ListInstanceProfiles",
+				"iam:ListInstanceProfilesForRole",
+				"iam:GetPolicy",
+				"iam:GetPolicyVersion",
+				"iam:ListPolicies"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "SelfManageOwnCredentials",
+			"Effect": "Allow",
+			"Action": [
+				"iam:ChangePassword",
+				"iam:GetUser",
+				"iam:CreateVirtualMFADevice",
+				"iam:EnableMFADevice",
+				"iam:ResyncMFADevice",
+				"iam:DeactivateMFADevice",
+				"iam:ListMFADevices",
+				"iam:CreateAccessKey",
+				"iam:DeleteAccessKey",
+				"iam:ListAccessKeys",
+				"iam:UpdateAccessKey"
+			],
+			"Resource": [
+				"arn:aws:iam::857481978603:user/${aws:username}",
+				"arn:aws:iam::857481978603:mfa/${aws:username}"
+			]
+		},
+		{
+			"Sid": "ListVirtualMfaForConsole",
+			"Effect": "Allow",
+			"Action": [
+				"iam:ListVirtualMFADevices",
+				"iam:ListUsers",
+				"iam:GetAccountSummary"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "ViewBillingReadOnly",
+			"Effect": "Allow",
+			"Action": [
+				"billing:Get*",
+				"billing:List*",
+				"ce:Get*",
+				"ce:Describe*",
+				"ce:List*",
+				"budgets:ViewBudget",
+				"budgets:DescribeBudget*",
+				"freetier:Get*",
+				"cur:DescribeReportDefinitions"
+			],
+			"Resource": "*"
+		}
+	]
 }
 ```
 
 
-**Naming and tagging conventions**, enforced by a permission boundary rather
-than left as a suggestion:
+**Naming and tagging conventions**, enforced by the resource-scoped `caerus-*`
+ARN patterns in `ManageCaerusRolesOnly` and `PassCaerusRolesToComputeOnly`
+above - not a separate IAM permission boundary, just the group's own policy
+refusing to match any other name - rather than left as a suggestion:
 
 - Every IAM role name must start with `caerus-` (`caerus-ec2-s3-role`) -
   creating a role under any other name fails with an unhelpful `AccessDenied`
