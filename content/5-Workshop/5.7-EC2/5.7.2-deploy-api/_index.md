@@ -6,17 +6,6 @@ chapter : false
 pre : " <b> 5.7.2 </b> "
 ---
 
-#### Why a separate subnet pair, not the database's
-
-RDS's private subnets (section 5.5.1) sit behind a route table with **no**
-`0.0.0.0/0` route at all - correct for RDS, which never initiates outbound
-traffic, but wrong for EC2, which needs outbound access for `npm ci` and OS
-patching. Reusing the database's subnets would mean adding an internet route
-to a route table that was deliberately built without one, muddying a design
-decision that is correct as written. A second, dedicated private subnet
-pair - one per Availability Zone - keeps the two tiers' network policies
-independent even though both end up "private" in the everyday sense of the
-word.
 
 1. **Create two private subnets for the application tier**,
    `caerus-app-private-1a` (`ap-southeast-1a`) and `caerus-app-private-1b`
@@ -62,18 +51,7 @@ word.
    IP by design - the load balancer in section 5.7.5 will be the only thing
    that ever calls it directly.
 
-6. **Package the backend locally** and stage it through the deploy bucket
-   rather than `git clone`-ing directly onto the instance, so the instance
-   never needs GitHub credentials of its own:
-
-   ```powershell
-   robocopy backend "$env:TEMP\deploy" /E /XD node_modules .git /XF .env
-   Compress-Archive -Path "$env:TEMP\deploy\*" -DestinationPath "$env:TEMP\backend.zip" -Force
-   ```
-
-   Upload `backend.zip` to `caerus-backend`.
-
-7. **Connect via Session Manager**, not EC2 Instance Connect - the instance
+6. **Connect via Session Manager**, not EC2 Instance Connect - the instance
    has no public IP for Instance Connect to reach in the first place. EC2
    Console → select `caerus-server-1` → **Connect → Session Manager →
    Connect**, or `aws ssm start-session --target <instance-id>` from a

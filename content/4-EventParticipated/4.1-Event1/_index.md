@@ -6,243 +6,160 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-# Summary Report: FCAJ Saturday Meetup
+# Summary Report: Cloud Architect Quiz Night
 
 ### Event Objectives
 
-- Show what technical roles actually involve day to day, as opposed to what job
-  descriptions claim
-- Present a production-grade AWS architecture in enough depth to be reasoned
-  about rather than admired
-- Map the paths available after the programme ends, from student groups to
-  partner companies
-- Give students a realistic picture of hiring and working culture inside
-  multinational corporations
+- Turn certification-style knowledge — Cloud Practitioner, Solutions Architect
+  Associate, and Solutions Architect Professional — into a live, competitive
+  format instead of a solo mock exam
+- Test both breadth (service purpose, pricing basics) and depth (multi-account
+  design trade-offs) within the same match
+- Give interns outside the immediate cohort a reason to team up and revise
+  together under mild time pressure
+- Keep the tone closer to a game show than a written test, without lowering the
+  bar on the underlying content
 
-### Speakers
+### Format
 
-- **Mr. Dat Pham** — Data Analytics Engineer, and **Mr. Cuong Nguyen** — Process
-  Engineer: *From real practice to culture at multinational corporations*
-- **Dinh Trung Kien** — Lead developer at a startup, and **Nguyen Minh Tho** —
-  Student: *A scalable URL shortening service on AWS*
-- **Danh Hoang Hieu Nghi** — AI Engineer, AWS Community Builder, AWS Student
-  Builder Group Leader: *From First Cloud AI Journey to AWS Partner*
-- **Trong H. Truong** — DevOps Engineer at Endava Vietnam: *What does a DevOps
-  Engineer really do?*
+- **Teams:** 8 teams of exactly 5 interns each, formed freely across cohorts —
+  a team did not have to come from the same internship group, and no one could
+  be registered on more than one team. Seasoned working professionals were
+  explicitly excluded from recruitment, to keep the contest between learners.
+- **Structure:** two teams face off per match, answering question sets that
+  escalate in difficulty. The higher-scoring team advances; a tie at the end of
+  the set is broken by a single sudden-death question — question 11 — answered
+  under a strict buzzer, where speed decides the match.
+- **Subject matter:** all questions are drawn from the same territory as AWS
+  certification exams, ordered roughly Practitioner → Solutions Architect
+  Associate → Solutions Architect Professional, so a match gets harder as it
+  goes rather than staying flat.
+- **Two one-time skills per team:**
+  - **Safety Net** (*Rủi ro tối thiểu*) — played on a question the team is
+    unsure of. A wrong answer costs nothing; a correct answer is only worth
+    half points.
+  - **Hope Star** (*Ngôi sao hi vọng*) — played on the question the team is
+    most confident about. A correct answer scores double; a wrong answer is
+    penalised double.
+- **Selection:** because slots were limited, teams were admitted by random
+  draw from the sign-ups rather than first-come-first-served, with results
+  announced on 19 June 2026. Admission came with a firm commitment to show up
+  — no partial attendance once a team was drawn in.
 
 ---
 
 ### Key Highlights
 
-#### Talk 1 — What a Data Analytics Engineer really does, and how MNCs work
+#### Round 1 — Practitioner warm-up
 
-The first half made a point that applies well beyond analytics: the same job
-title means different work depending on the industry, the business model, and
-which department the role supports. Two contrasting examples were given. At a
-food supply company, the work was daily through quarterly operational reporting,
-dashboards for spotting trends and anomalies, root-cause analysis of business
-metrics, and coordination across departments. At a consumer goods manufacturer,
-it was factory machinery and IoT data, production cost optimisation, and digital
-transformation initiatives.
+The opening set stayed close to Cloud Practitioner territory: what a service is
+for, how AWS bills for it, and which piece of the shared responsibility model
+belongs to whom. Typical questions in this band:
 
-Four skills were identified as the ones that actually differentiate: critical
-thinking, communication, storytelling with data, and problem solving. The
-emphasis was that a report which only presents numbers is incomplete — the
-value comes from explaining *why* a metric moved and proposing what to do about
-it.
+- *Which AWS service lets an organisation centrally manage billing and apply
+  policies across many accounts without giving up account-level autonomy?*
+- *Which purchasing option gives the largest discount on compute capacity that
+  the workload can afford to lose on short notice?*
+- *Under the shared responsibility model, who patches the guest operating
+  system on an EC2 instance?*
 
-A career progression model was presented that avoids fixating on job titles:
+This round was fast and mostly about recall rather than reasoning, and the gap
+between teams was small — everyone had clearly done the reading. Our team
+opened cautiously, using **Safety Net** on a question about the exact free-tier
+limits for a service none of us used day to day, which turned out to be the
+right call: the answer was wrong, and the skill meant it cost us nothing.
 
-| Stage | What it means |
-|---|---|
-| **Follower** | Newly started. Guided step by step, learning the environment and accumulating fundamentals |
-| **Learner** | Understands the available approaches but still needs mentor direction. Asks deep questions and learns fast |
-| **Problem Solver** | Stops working to a checklist. Analyses hard business problems independently, proposes solutions, and commits to the quality of the output |
-| **System Thinker** | Sees the whole picture. Understands cross-department dependencies, anticipates operational risk, weighs financial impact, and optimises the system rather than patching faults |
-| **Super Star** | Builds vision and strategy, and develops the next generation of System Thinkers |
+#### Round 2 — Solutions Architect Associate
 
-The second half covered hiring and culture at multinational corporations. The
-standard recruitment pipeline was described as four stages: applicant tracking
-system screening followed by a short English conversation with a recruiter; an
-aptitude test — logic and algorithms for technical roles, situational judgement
-for supply chain; a technical interview with a tech lead or manager working
-through real problems using the STAR structure; and finally a culture-fit
-interview with leadership assessing alignment with core values.
+The difficulty stepped up from "what does this do" to "which combination of
+services satisfies this constraint." This is where the match actually started
+to separate the teams:
 
-On culture itself, the talk quoted Dr. Gian Tu Trung's definition — that
-corporate culture is how a business thinks, lives, and works, or more concretely
-how each individual within it does so. Two contrasting cultures were given as
-examples: **no-blame post-mortem** in technology firms, where a serious incident
-triggers a search for the root cause and a system fix rather than an individual
-to blame; and **caring and inclusive** in consumer goods firms, centred on
-people and diversity.
+- *A workload must keep serving traffic through the loss of an entire
+  Availability Zone, with the least operational effort. Which combination of
+  services satisfies this most directly?*
+- *An application reads the same handful of records far more often than it
+  writes them, and read latency is the primary complaint. Where does a cache
+  belong in this design, and which failure mode does it introduce?*
+- *A company needs object storage that automatically moves infrequently
+  accessed data to a cheaper tier without anyone having to decide when.*
 
-The session closed with a historical arc — Japan's *Wakon Yōsai* principle of
-retaining national identity while mastering Western technique, culminating in
-the Toyota Production System; Korea's Han River miracle and its export-driven
-conglomerates forced to meet strict international standards; and Vietnam's own
-path from isolation through Doi Moi to connecting to the global internet on 19
-November 1997, and from there to FDI, manufacturing, and cloud.
+This was the round where the format's design showed its purpose: it rewards
+understanding a trade-off, not memorising a service name. We played **Hope
+Star** on the Multi-AZ question, confident because it maps almost exactly onto
+a decision I had already made and wrote up for my own project — and it paid
+off, doubling our score for that question.
 
-#### Talk 2 — A scalable URL shortening service on AWS
+#### Round 3 — Solutions Architect Professional, and the tie-break
 
-This was the most directly technical session, and the most useful one for my own
-project. It began with the naive design — user, frontend, backend, database —
-and was honest about its trade-offs: easy to deploy and cheap, but vulnerable,
-slow on reads, a single point of failure, and hard to scale.
+The final set moved into genuinely professional-level territory: multi-account
+governance, migration sequencing, and hybrid connectivity, where there is
+rarely one clean answer and the question is which trade-off the organisation
+can live with.
 
-The presented architecture then addressed each of those weaknesses:
+- *An organisation runs 20 AWS accounts under AWS Organizations and wants
+  centrally enforced, non-negotiable guardrails while still letting account
+  owners manage their own non-critical resources. What is the most appropriate
+  mechanism?*
+- *A company is migrating a large on-premises database to AWS with a
+  cutover window measured in minutes, not hours. Which service pattern
+  minimises that window?*
+- *Two VPCs in different accounts need private connectivity without
+  overlapping CIDR ranges becoming a long-term constraint on growth.*
 
-- **Edge and frontend**: Route 53 for DNS, CloudFront for distribution, AWS WAF
-  for filtering, and Amplify for hosting the static frontend
-- **Compute**: containerised services on Amazon ECS with Fargate, spread across
-  two Availability Zones behind an Application Load Balancer
-- **Data**: Amazon DynamoDB as the durable store, reached through a gateway
-  endpoint, with Amazon ElastiCache for Redis in front of it
-- **Security**: AWS Secrets Manager, KMS, Certificate Manager, and IAM
-
-The interesting part was the **Key Generation Service**. Rather than generating
-a short code at request time and hoping it does not collide, a separate service
-pre-generates codes and pushes them onto a Redis queue. Creating a link then
-becomes: pop a code from the queue, write the mapping to DynamoDB, return. No
-collision checking under load, no retry loop, no guessing under pressure.
-
-Reads use the cache-aside pattern: look up Redis first, return on a hit, and
-only query DynamoDB on a miss.
-
-The summary distilled four principles: **separation of concerns** — read and
-write paths are optimised independently rather than sharing a bottleneck;
-**defense at the edge** — security and caching are pushed as close to the user
-as possible so load never reaches the core; **pre-computation over on-demand**;
-and the **cache-aside pattern** for keeping read latency low and database
-pressure minimal.
-
-#### Talk 3 — From First Cloud AI Journey to AWS Partner
-
-A talk about what comes after the programme. The speaker traced his own path
-from the First Cloud Journey programme through the AWS Student Builder Group
-programme (formerly AWS Cloud Clubs) and the AWS Community Builder programme, to
-working at an AWS partner company.
-
-The line that stuck was *getting the job is just a beginning* — followed by the
-roles the programme's alumni have moved into: Solutions Architect, Head of
-Solutions Architect, DevOps Engineer, Platform Engineer, Software Engineer. The
-point was not that any single path is correct, but that the programme is an
-entry point rather than a destination, and that community involvement is what
-tends to keep the momentum going afterwards.
-
-#### Talk 4 — What does a DevOps Engineer really do?
-
-The most candid session of the day, and the funniest. Asked why he chose DevOps,
-the speaker's answer was: he didn't — it happened.
-
-He contrasted what job descriptions ask for with what people actually assume the
-role is:
-
-| The job description asks for | People assume it means |
-|---|---|
-| CI/CD pipelines | the person who writes CI/CD pipelines |
-| IaC and configuration management | the Docker and Kubernetes person |
-| Containers and orchestration | the cloud or platform engineer |
-| Cloud providers | the person who deploys code |
-| Logging and monitoring | the person who fixes production at midnight |
-
-His advice on where to start was deliberately unglamorous: Linux, networking
-basics, a programming language such as Python or Go, Git and CI/CD, and
-containers. Then understand how applications actually run — build, test, deploy,
-logs, configuration, environment variables. Then build small projects: deploy a
-simple application, automate something, monitor it, break it, and fix it.
-
-The closing section, *things I learned the hard way*, was the most valuable part
-of the whole event:
-
-- Copying commands is not the same as understanding
-- Learn to identify the real owner of the problem
-- Ask "why" before "how"
-- Communication is part of the job
-- DevOps is not about being a hero
+Neither team had a clean lead going into the last question of the set, which
+meant the match came down to question 11 — sudden death, first correct buzzer
+wins. The question concerned Service Control Policies versus Identity and
+Access Management policies, and the trade-off between blast radius and
+flexibility. We buzzed first and got it right, which settled the match; the
+margin the whole night came down to seconds rather than points.
 
 ---
 
 ### Key Takeaways
 
-**On architecture.** Every weakness in a simple design has a specific,
-named remedy, and the remedies compose. A single point of failure is answered by
-multiple Availability Zones; read latency by a cache; write contention by
-pre-computation. Recognising which weakness you actually have is the harder
-skill.
+**Certification knowledge and design judgement are not the same skill, and the
+format made that visible.** Round 1 rewarded recall; round 3 rewarded weighing
+trade-offs with no perfect option. Teams that were fast in round 1 were not
+automatically the ones ahead by round 3.
 
-**On roles.** A job title describes a category, not a set of tasks. Both the
-analytics talk and the DevOps talk made the same point from opposite directions:
-the work is defined by the domain and the organisation, not by the title on the
-offer letter.
+**A wager mechanic surfaces what a team actually believes, not just what it
+knows.** Deciding when to play Safety Net versus Hope Star forced an honest
+conversation, out loud and under a clock, about which answers we were guessing
+at and which ones we would defend. That conversation was more useful than
+either individual answer.
 
-**On learning.** Two speakers independently warned against surface knowledge —
-"copying commands is not the same as understanding" and the Learner stage's
-requirement to ask questions with depth. Both framed genuine understanding as
-the thing that separates someone who follows instructions from someone who can
-be trusted with a problem.
-
-**On culture.** The no-blame post-mortem is a technical practice as much as a
-cultural one. Fixing the system rather than the person is the same instinct as
-fixing the architecture rather than retrying the request.
+**Under time pressure, the team that agrees on an answer fastest wins, not
+necessarily the team that is most correct in isolation.** The sudden-death
+round rewarded consensus speed as much as knowledge, which is a different skill
+from either.
 
 ---
 
 ### Applying to Work
 
-The URL shortener talk mapped almost directly onto my own project, and changed
-how I described it:
+The Multi-AZ question in round 2 mapped directly onto a decision already made
+for Caerus: accepting a single EC2 instance in a single Availability Zone as a
+documented trade-off, rather than pretending high availability was out of
+scope. Hearing the same design question asked cold, without my own project's
+context attached, was a useful check that the reasoning behind that decision
+holds up on its own.
 
-- **Single point of failure.** Caerus runs on one EC2 instance in one
-  Availability Zone. Hearing the same weakness named and answered gave me the
-  vocabulary to state it explicitly in my report as an accepted trade-off, along
-  with what a production deployment would add — a load balancer, an auto scaling
-  group, and a multi-AZ database.
-- **Separation of read and write paths.** In Caerus the seat map is read far
-  more often than bookings are written. Recognising that as a read/write
-  asymmetry, rather than as one undifferentiated workload, is the first step
-  toward caching the seat map without weakening the booking transaction.
-- **Pre-computation over on-demand.** The Key Generation Service is the same
-  instinct as generating a screening's sixty seats when the event is created
-  rather than on first request — do the predictable work early so the
-  latency-sensitive path stays short.
+The SCP-versus-IAM-policy question in the tie-break is directly relevant to
+how Caerus separates the booking application's permissions from anything an
+operator could touch manually — a guardrail enforced at the account level
+should not depend on the application behaving correctly, the same principle
+the question was testing.
 
-From the DevOps talk, "break it, then fix it" is essentially what the
-double-booking test does: deliberately create the failure condition and confirm
-the system handles it, rather than assuming it does.
-
-From the analytics talk, the progression from Follower to Problem Solver gave me
-a more honest frame for my own self-assessment: I can execute a plan reliably,
-but proposing the plan is where I still need to grow.
-
----
-
-### Event Experience
-
-What made the day useful was that none of the four talks was a product pitch.
-Each speaker described work they had actually done, including the parts that had
-gone badly — a lead developer explaining why the simple version of his system
-did not survive contact with traffic, a DevOps engineer admitting he had never
-chosen the specialisation at all.
-
-The URL shortener session was the one I took the most notes in, because it was
-pitched at exactly the level I could follow while still learning something: every
-component was one I had studied in isolation, and seeing them assembled to solve
-specific named weaknesses was the first time the pieces connected into a system
-rather than a list of services.
-
-The session on multinational corporate culture was the one I expected least from
-and got the most unexpected value out of. The recruitment pipeline in particular
-was concrete in a way careers advice usually is not — four defined stages, each
-testing something different, with the final one testing values rather than skill.
+The habit of stating a confidence level before answering — which the Safety
+Net and Hope Star mechanics forced onto the surface — is one I now apply when
+reviewing my own architecture decisions: naming the two or three points I am
+least sure about, rather than presenting the whole design with uniform
+confidence.
 
 <!-- Add photos to static/images/4-EventParticipated/4.1-Event1/ and reference them here, e.g.
 
 -->
-#### Attendance record
+#### Event photo
 
-No photographs were taken during the session, so I put my attendance as evidenced by the check-in record on the FCAJ portal.
-
-![Check-in record for the FCAJ Saturday Meetup on the First Cloud AI Journey portal](/images/4-EventParticipated/4.1-Event1/checkin.png)
-
+![](/images/4-EventParticipated/event1.jpg)

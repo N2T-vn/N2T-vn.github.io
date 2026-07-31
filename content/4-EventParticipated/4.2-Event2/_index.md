@@ -10,18 +10,21 @@ pre: " <b> 4.2. </b> "
 
 ### Event Objectives
 
-- Present the systems built by teams during the Agentic AI Build Week hackathon
-- Show how agentic AI patterns are assembled from AWS services in practice
-- Share the experience of building an end-to-end prototype under a 24-hour
-  deadline, including what went wrong
-- Give first-time participants a realistic account of what a hackathon involves
+- Give the four hackathon teams a stage to walk through what they actually
+  shipped during Agentic AI Build Week, architecture diagrams included
+- Show, with real slide decks rather than a summary, how an agentic system is
+  assembled from ordinary AWS building blocks
+- Be honest about a 24-hour build cycle: the sleep deprivation and the
+  pushed-a-secret-file-to-GitHub moments alongside the working demo
+- Give someone who has never sat a hackathon a concrete sense of what the
+  format actually demands
 
 ### Presenting Teams
 
 - **Plan V** — *Solution Architect Professional Native App*
   (Pham Tien Thuan Phat, Huynh Hoang Long, Le Minh Nghia, Tran Dai Vi, Nguyen An)
-- **Signal Scout** — *Corporate signal detection platform*
-  (Le Tan Luc, Do Hoang Hieu, Trieu Quoc Hao, Nguyen Duy Khiem, Nguyen Cong Minh, Nguyen Tran Minh Quan)
+- **Signal Scout** — *Corporate restructuring-signal detection platform*
+  (Le Tan Luc, Do Hoang Hieu, Trieu Quoc Hao, Nguyen Van Duy Khiem, Nguyen Cong Minh, Nguyen Tran Minh Quan)
 - **One Team** — *KFC Bot Agent*, winner of the AABW Hackathon
   (Anh Duy, Tran Dong, Doan Trung, Minh Viet, Anshul Roy)
 - **3KA** — *S.H.E.P.H.E.R.D* and the hackathon journey
@@ -33,186 +36,227 @@ pre: " <b> 4.2. </b> "
 
 #### Plan V — Solution Architect Professional Native App
 
-The problem was framed as a conversation anyone in consulting would recognise: a
-customer asks for an AI system design for their standard operating procedure
-documents, wants it by Thursday, and then wants it immediately. Meanwhile the
-solution architect has to extract requirements, draft an initial architecture,
-produce diagrams, and estimate cloud cost.
+The team opened with a scene every consultant recognises: a customer asks for
+an AI system design for their SOP documents, wants it by Thursday, then wants
+it *immediately*. Behind that one-liner sits the actual workload a solution
+architect has to carry — pulling requirements out of a conversation, sketching
+a first architecture, drawing the diagram, and pricing the cloud spend, all
+before the ink on the request is dry.
 
-Their tool addresses each of those steps. It analyses requirements from natural
-language and structured documents, drafts hybrid-cloud-aware architecture
-options aligned to company standards, generates editable diagrams using the
-official AWS architecture icons, produces directional cost estimates for the
-`ap-southeast-1` region, and surfaces its own assumptions and the gaps it found
-in the requirements. Refinement happens through a chat sidebar with per-project
-custom instructions.
+Their app takes each of those four jobs off the human's plate. It reads
+natural-language input and structured project documents, drafts hybrid-cloud
+architecture options that already respect the company's own standards, and
+generates an editable diagram in Draw.io using the official AWS icon set. A
+directional cost estimate for `ap-southeast-1` comes out alongside the
+architecture rather than as an afterthought, and the tool is upfront about its
+own assumptions and where the requirements still have gaps. None of this is a
+one-shot generation — a chat sidebar with per-project custom instructions lets
+the architect keep steering it.
 
-The before-and-after comparison was the clearest part of the presentation:
+Under the hood, an app server sits between the user and four backing services:
+a knowledge base built from ingested internal documents and architecture
+references, an Amazon Bedrock model for the reasoning itself, a Draw.io MCP
+server for diagram generation, and an AWS Pricing MCP server for the cost
+numbers — each one invoked as a tool rather than baked into a single prompt.
+
+Their before/after framing was the slide I noted most carefully:
 
 | Before | After |
 |---|---|
-| Read the requirements document line by line, manually | Upload and chat naturally — a requirements catalogue in minutes |
-| Start from a blank page every time | A grounded first draft to react to |
-| Write infrastructure as code manually | Infrastructure as code generated |
+| Read the BRD/PRD line by line, manually | Upload and chat naturally — a requirements catalogue in minutes |
+| Start from a blank page every time | A grounded first draft to react to, not build from scratch |
+| Write infrastructure as code by hand | Infrastructure as code generated automatically |
 | Cost estimation by experience-dependent guesswork | A directional estimate produced alongside the architecture |
 
-What I found notable was the framing of the output as *a first draft to react
-to* rather than a finished artefact. The tool is positioned as removing the
-blank page, not removing the architect.
+The choice of words mattered here: the output is a *draft to react to*, not a
+finished deliverable. The tool is positioned as removing the blank page, not
+the architect who still has to sign off on the design.
 
-#### Signal Scout — early detection of corporate strategic change
+#### Signal Scout — catching corporate restructuring before it's announced
 
-This team built a platform that detects restructuring and strategic-change
-signals in companies early, aimed at corporate strategy teams, enterprise risk
-management, competitive intelligence, and B2B account management.
+Signal Scout's target user is not a developer but a corporate strategy, risk,
+competitive-intelligence, or B2B account team that needs early warning of a
+counterparty's restructuring — before it becomes a press release.
 
-The system is genuinely multi-agent. A Lambda function fronts an AgentCore
-runtime that orchestrates two subagents: a **crawler subagent** that gathers
-evidence from external sources, and an **analysis subagent** that interprets it,
-with Bedrock Guardrails applied. Short-term memory is held in AgentCore Memory,
-sessions in S3, and results in DynamoDB. The user-facing side runs through Route
-53, Amplify, API Gateway, WAF, and Cognito, with CloudWatch and CloudTrail for
-observability and Secrets Manager and IAM for credentials and access.
+The system is a genuine multi-agent pipeline rather than one model with a big
+prompt. A **Crawler Subagent**, built on AgentCore Runtime with a Strands
+Agent, gathers evidence from external sources through TinyFish and Apify. Its
+output is handed via an agent-to-agent (A2A) call to an **Analysis Subagent** —
+the same AgentCore Runtime and Strands Agent pattern, but with Bedrock
+Guardrails applied on top — which turns raw evidence into scored signals and
+scenarios. Short-term memory lives in AgentCore Memory, session state in
+DynamoDB, and evidence artefacts in S3. The user-facing edge runs through
+Route 53, Amplify, and API Gateway behind WAF and Cognito, with CloudWatch and
+CloudTrail for observability and Secrets Manager plus IAM for everything that
+needs a credential.
 
-Their stated value propositions were disciplined: transparent and verifiable
-analysis, every conclusion supported by evidence, and explicitly
-*human-controlled* decision support. The system is designed to inform a
-Maintain, Adapt, or Accelerate decision, not to make it.
+Their value proposition was stated with unusual discipline: transparent,
+citable analysis, every conclusion backed by evidence, and — said explicitly,
+twice — **human-controlled decision support**. The product surfaces a Maintain,
+Adapt, or Accelerate read on a situation; it does not make that call itself.
 
-The part I appreciated most was the **cost slide** — a full line-item breakdown
-across minimum, mid, and maximum usage, covering every service including the
-non-AWS dependencies:
+The slide I went back to twice was the cost breakdown, because it didn't stop
+at the AWS bill:
 
 | | Min | Mid | Max |
 |---|---|---|---|
-| AWS services total | ~ $17 | ~ $35 | ~ $130 |
-| Third-party crawling | ~$35 | ~$30 | ~$200 |
-| Observability tooling | $0–29 | $29 | $29 |
-| **Total** | **~ $81** | **~ $94** | **~ $359** |
+| AWS services (Bedrock, AgentCore, WAF, Amplify, CloudWatch, etc.) | ≈ $17 | ≈ $35 | ≈ $130 |
+| Apify / TinyFish (external crawling) | ~$35 | ~$30 | ~$200 |
+| Langfuse (observability) | $0–29 | $29 | $29 |
+| **Total** | **≈ $81** | **≈ $94** | **≈ $359** |
 
-They then presented a revised, more cost-efficient architecture — showing the
-cost analysis had actually fed back into the design rather than being produced
-afterwards to satisfy a slide requirement.
+External crawling providers, not AWS, were the largest line item at every
+usage level — which is exactly what pushed the team to design a second,
+leaner architecture. In that revision, TinyFish and Apify are replaced by an
+AgentCore Gateway invoking a WebSearch tool and a Browser tool directly, and
+CloudFront/DynamoDB/Route 53 stay in place underneath. The cost slide didn't
+just report a number; it changed the architecture on the next slide.
 
 #### One Team — KFC Bot Agent (hackathon winner)
 
-The winning team opened with a real industry failure rather than their own idea:
-McDonald's ended an AI drive-thru trial after testing automated ordering in more
-than a hundred US locations. Their reading of it was precise — the lesson was
-not that AI ordering is a bad idea, but that **ordering is a systems problem**.
-An ordering agent has to handle items, quantities, variants, voucher rules, cart
-state, and errors, where natural language is messy, business rules are strict,
-orders must be verified, and mistakes turn directly into money.
+The winning team didn't open with their own idea — they opened with someone
+else's failure. McDonald's shut down an AI drive-thru pilot after testing
+automated ordering across more than a hundred US locations. Their read on why
+was sharp: the takeaway wasn't "AI ordering doesn't work," it was that
+**ordering is a systems problem** — an ordering agent has to track items,
+quantities, variants, voucher rules, and cart state while natural language
+stays messy, business rules stay strict, orders still need verification, and
+a mistake turns into a real refund.
 
-The problem they targeted was the moment a brand loses an order: the customer is
-hungry and the intent appears mid-conversation, but ordering forces them to
-switch app, create an account, and navigate a menu — and the momentum
-disappears. Human-only chat support does not scale across channels, shifts, and
-traffic spikes.
+The moment they chose to attack was more specific than "ordering is hard": a
+customer is mid-conversation, hunger creates intent right then, and the
+existing flow forces them out of the chat entirely — switch app, create an
+account, navigate a menu — by which point the momentum that started the order
+is gone. Human agents alone don't scale evenly across channels, shifts, and
+sudden traffic spikes.
 
-Their product is a multi-channel conversational ordering agent running inside
-Zalo and Messenger, with no app switching, no new account flow, and no repeated
-explanation.
+KFC Bot Agent answers that by staying inside the conversation the customer is
+already having, on Zalo today with Messenger and future channels by design: no
+app switch, no new account, no re-explaining yourself, and less load pushed
+onto human staff.
 
-The architectural point they made is the one I think about most:
+Their central claim is the one I keep returning to:
 
 > **A chatbot replies. An agent acts.**
 
-They described a five-step loop — understand the ordering intent, plan the
-required steps, call tools to search trusted business data, act by updating the
-cart and applying promotions, then verify against the real cart state. Their
-summary of it: *the model understands, the tools decide what is real.* The
-language model is not trusted with the state of the order; it is trusted only to
-interpret the request.
+They broke the loop into five steps — Goal (understand the ordering intent),
+Plan (work out what steps are required), Tools (query trusted business data),
+Act (update the cart, apply the right promotion), Verify (check the result
+against the real cart state) — and summed it up as *the model understands, the
+tools decide what is real*. The language model is never trusted to hold the
+order state itself; only the tool layer is.
+
+The architecture behind the demo runs messages through WAF, API Gateway, and a
+Lambda webhook handler into SQS, then into AgentCore Runtime for the reasoning
+and tool-use loop, with session state in DynamoDB, a vector store in
+OpenSearch, and product/order data split across S3, DynamoDB, ElastiCache, and
+KMS-encrypted storage — with payment, loyalty, delivery, and SMS/email systems
+sitting behind it as external integrations.
+
+Four numbers from their closing slide are worth keeping:
+
+| Metric | Value |
+|---|---|
+| Cost per order | $0.006 (500 orders/day) |
+| Infra cost per month | $88 — Bedrock is ~75% of that |
+| End-to-end latency | 3–5s, message sent to reply received |
+| Infra code reduction | −60%, from letting AgentCore own the infra layer |
 
 #### 3KA — S.H.E.P.H.E.R.D and the hackathon journey
 
-This presentation was structured as a story rather than a product demonstration,
-covering four stages: signing up and choosing a track, building under pressure,
-demo day and judging, and reflections.
+Where the other three teams presented a product, 3KA presented an experience,
+structured around four honest stages: signing up and picking a track, building
+under pressure, demo day and judging, and what they'd tell their past selves.
 
-The system, S.H.E.P.H.E.R.D — Smart Human-flow Evaluation, Prediction, Hazard
-Detection, Response, and Dispatch — analyses live camera footage at venues to
-detect and track people, measure crowd density, estimate queue conditions,
-identify early signs of congestion, predict overcrowding, raise proactive
-alerts, and recommend staff actions. It was built with YOLO and ByteTrack for
-detection and tracking, Amazon SageMaker, Amazon Bedrock AgentCore with Strands
-Agent for the agentic layer, and a React dashboard.
+The system itself, S.H.E.P.H.E.R.D — *Smart Human-flow Evaluation, Prediction,
+Hazard Detection, Response, and Dispatch* — was originally scoped as their
+Capstone project; they chose to prototype it during the 24-hour build week
+instead, specifically to validate the idea against something closer to reality
+before committing a full Capstone to it. It watches live camera footage to
+detect and track people, measure crowd density, read queue conditions, catch
+early signs of congestion, forecast overcrowding, and hand an operator a
+proactive alert with a recommended action, built on YOLO and ByteTrack for
+detection, an Amazon SageMaker endpoint for inference, Amazon Bedrock
+AgentCore with a Strands Agent for the reasoning layer, and a React dashboard
+for the humans watching it.
 
-The agentic layer had two distinct roles: an **autonomous monitor** watching
-live metrics and raising alerts without being asked, and an **operator copilot**
-letting staff ask natural-language questions and receive answers backed by live
-metrics and prediction tools. The problem framing was concrete — venue staff
-must watch entrances, queues, booths, and movement simultaneously, and manual
-monitoring is slow, reactive, hard to scale, and prone to missed incidents.
+Two agent roles split the work: an **Autonomous Monitor** that watches metrics
+continuously and raises alerts unprompted, and an **Operator Copilot** that
+lets staff ask a plain-language question and get an answer grounded in live
+metrics and prediction tools rather than a canned response.
 
-They were unusually honest about the experience. Their fears before day one were
-listed plainly: not skilled enough, fear of failing, clueless, too little time.
-Their biggest challenges were no AI background, first time working with AWS,
-limited time, code that did not work, and sleep deprivation. The emotional arc
-they described ran from overwhelmed, through finding flow once the idea clicked,
-to pride at having actually built something.
+What made this talk stand out was how little they polished the hard parts.
+Their fears going in, read out loud, were exactly the ones anyone would
+recognise: not skilled enough, too little time, fear of failing, clueless
+where to even start. Their actual biggest obstacles by the end: no AI
+background going in, first contact with AWS at all, a hard 24-hour ceiling,
+code that flatly refused to run, and a level of sleep deprivation that became
+its own running joke. The emotional shape of the day, in their own words, went
+Doubt → Flow → Pride — overwhelmed, then the idea clicking into place, then
+the surprise of having actually built the thing.
 
-Their advice to first-time participants:
+Their advice to a first-timer, stripped to four lines:
 
-- **Just sign up** — don't wait until you feel ready
-- **Find a team early** — different skills beat identical ones
-- **Scope it tiny** — one feature, done well
-- **Talk to everyone** — mentors and other teams are why you're there
+- **Just sign up** — don't wait to feel ready
+- **Find a team early** — different skills beat matching ones
+- **Scope it tiny** — one feature, done well, beats five done badly
+- **Talk to everyone** — the mentors and other teams are half the reason to be there
 
 ---
 
 ### Key Takeaways
 
-**Agents are defined by their tools, not their model.** Every team drew the same
-boundary: the language model interprets intent, and tools perform and verify
-actions against real state. One Team's formulation — the model understands, the
-tools decide what is real — is the clearest statement of it I have heard, and it
-is fundamentally a correctness argument rather than an AI one.
+**An agent is defined by what its tools are allowed to touch, not by which
+model sits behind it.** All four teams arrived at the same boundary from
+different directions: the model interprets, the tools act and verify. One
+Team's version — *the model understands, the tools decide what is real* — is
+the cleanest statement of it, and it's a correctness argument dressed up as an
+AI one.
 
-**Cost belongs in the design, not after it.** Signal Scout produced a
-line-item estimate across three usage levels *and then redesigned* for
-efficiency. That is a discipline I had thought of as an operations concern
-rather than a design input.
+**Cost estimation is a design input, not a report you write afterward.**
+Signal Scout didn't just cost their architecture — the number sent them back
+to redesign it, replacing the most expensive dependency before the hackathon
+even ended.
 
-**A grounded draft beats a blank page.** Plan V's positioning of their tool as
-producing something to react to rather than something to accept is a more honest
-account of what these systems are good for than most product claims.
+**A draft you can push back on beats a blank page, every time.** Plan V's
+whole pitch rests on that distinction, and it's a more honest description of
+what these tools are for than most product marketing manages.
 
-**Constraints produce better scope than ambition does.** "Scope it tiny — one
-feature, done well" came from a team that had 24 hours; it applies just as well
-to a project with seven weeks.
+**Tight constraints produce better scope decisions than open-ended ambition
+does.** "One feature, done well" is 3KA's line from a 24-hour build, but it
+reads exactly the same at week three of a seven-week project.
 
 ---
 
 ### Applying to Work
 
-The most transferable idea was the tool-verification boundary. In my own project
-the equivalent is that the application layer proposes a booking, but the database
-transaction decides whether it is real — the seat rows are locked and re-checked
-before anything is committed, and no amount of confidence at the application
-layer can override the state in the database. Hearing four teams arrive at the
-same principle in a different domain made me more confident that placing the
-guarantee in the data layer was the right choice rather than an awkward one.
+The idea that transferred most directly was the tool-verification boundary.
+In Caerus, the equivalent split is that the application layer *proposes* a
+booking, but the database transaction — row locks, re-checked availability,
+then commit — decides whether it actually happened. No amount of confidence in
+the application code overrides what the transaction confirms. Watching four
+unrelated teams land on the same separation independently made that choice
+feel less like an idiosyncrasy of my own design and more like a pattern worth
+trusting.
 
-Signal Scout's cost table changed how I approached the cost section of my own
-report. Rather than asserting the project sits inside the Free Tier, I have
-structured it as line items with the components that would dominate the bill
-identified explicitly — which is also what makes the estimate useful to anyone
-reading it.
+Signal Scout's cost table changed how I wrote the cost section of my own
+report. Instead of a single claim that the project fits inside the Free Tier,
+I broke it into line items and named which components would actually move the
+bill if usage grew — which is also what makes an estimate useful to whoever
+reads it next, rather than reassuring on its face and useless in practice.
 
-The `ap-southeast-1` region appearing in Plan V's cost estimation was a small
-but reassuring detail: the same region choice I had made for latency reasons,
-made independently by a team optimising for cost.
+Seeing `ap-southeast-1` in Plan V's cost estimate was a small, oddly
+reassuring confirmation: the same region I picked for latency reasons turned
+up independently in a team optimising for cost, for their own separate
+reasons.
 
-Finally, 3KA's list of fears — not skilled enough, clueless, too little time —
-was almost exactly what I felt at the start of the programme. Seeing a team say
-it out loud on stage, having then built and demonstrated a working system, was
-probably the most useful thing I took from the day.
+And 3KA's list of fears — not skilled enough, clueless, too little time — was
+close enough to what I felt at the start of this internship that hearing a
+team say it on stage, after having shipped something that worked, was
+probably the single most useful thing to take from the whole day.
 
 <!-- Add photos to static/images/4-EventParticipated/4.2-Event2/ and reference them here, e.g.
 
 -->
 #### Event photo
-![Me at the Agentic AI Build Week Community Day](/images/4-EventParticipated/4.2-Event2/selfie.jpg)
-
+![](/images/4-EventParticipated/event2.jpg)

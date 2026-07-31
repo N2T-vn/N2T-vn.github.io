@@ -7,22 +7,21 @@ pre: " <b> 4. </b> "
 ---
 
 Trong quá trình thực tập, tôi đã tham gia hai sự kiện cộng đồng được tổ chức
-trong khuôn khổ chương trình First Cloud AI Journey. Cả hai đều là các buổi
-chia sẻ hơn là những buổi giảng dạy: những người làm nghề thực tế và các đội
-sinh viên trình bày những gì họ thực sự đã xây dựng, với cả những vấn đề và
-thất bại được giữ nguyên chứ không lược bỏ. Cùng nhau, hai sự kiện đề cập đến
-thực tế nghề nghiệp trong ngành, một kiến trúc AWS ở cấp độ production, và bốn
-hệ thống agentic AI được xây dựng trong điều kiện hackathon.
+trong khuôn khổ chương trình First Cloud AI Journey. Một sự kiện là đêm thi
+đấu kiến thức theo hình thức đối kháng, kiểm tra kiến thức ở cấp độ chứng chỉ
+AWS giữa các đội; sự kiện còn lại là buổi trình bày nơi bốn đội hackathon lần
+lượt giới thiệu các hệ thống agentic AI mà họ đã xây dựng trong thời hạn 24
+giờ của Agentic AI Build Week.
 
 ### [Sự kiện 1](4.1-Event1/)
 
-&emsp;**Tên sự kiện:** FCAJ Saturday Meetup — Career Paths, Architecture, and Industry Practice
+&emsp;**Tên sự kiện:** Đêm thi đấu Cloud Architect
 
-&emsp;**Thời gian:** 09:00, ngày 13 tháng 6 năm 2026
+&emsp;**Thời gian:** 09:00, ngày 27 tháng 6 năm 2026
 
 &emsp;**Địa điểm:** Tầng 26, Bitexco Tower, 02 Hải Triều, Phường Sài Gòn, Thành phố Hồ Chí Minh
 
-&emsp;**Vai trò:** Người tham dự
+&emsp;**Vai trò:** Người chơi
 
 ---
 

@@ -6,255 +6,164 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-# Báo cáo tóm tắt: FCAJ Saturday Meetup
+# Báo cáo tóm tắt: Đêm thi đấu Cloud Architect
 
 ### Mục tiêu sự kiện
 
-- Cho thấy các vai trò kỹ thuật thực sự bao gồm những gì trong công việc hàng
-  ngày, khác với những gì bản mô tả công việc (job description) tuyên bố
-- Trình bày một kiến trúc AWS ở cấp độ production đủ sâu để có thể phân tích
-  chứ không chỉ để chiêm ngưỡng
-- Vẽ ra các con đường có thể đi sau khi chương trình kết thúc, từ các nhóm sinh
-  viên đến các công ty đối tác
-- Cho sinh viên một bức tranh thực tế về việc tuyển dụng và văn hóa làm việc
-  bên trong các tập đoàn đa quốc gia
+- Biến kiến thức kiểu chứng chỉ — Cloud Practitioner, Solutions Architect
+  Associate, và Solutions Architect Professional — thành một hình thức thi
+  đấu trực tiếp, thay vì chỉ làm đề thi thử một mình
+- Kiểm tra cả bề rộng (công dụng của dịch vụ, kiến thức cơ bản về pricing) lẫn
+  chiều sâu (các đánh đổi khi thiết kế kiến trúc multi-account) trong cùng một
+  trận đấu
+- Cho các bạn thực tập sinh ngoài nhóm của mình một lý do để lập đội và cùng
+  nhau ôn tập dưới áp lực thời gian nhẹ nhàng
+- Giữ không khí gần với một gameshow hơn là một bài kiểm tra viết, nhưng không
+  hạ thấp yêu cầu về nội dung kiến thức bên dưới
 
-### Diễn giả
+### Thể lệ
 
-- **Anh Đạt Phạm** — Data Analytics Engineer, và **anh Cường Nguyễn** — Process
-  Engineer: *Từ thực tế công việc đến văn hóa tại các tập đoàn đa quốc gia*
-- **Đinh Trung Kiên** — Lead developer tại một startup, và **Nguyễn Minh Thọ**
-  — Sinh viên: *Một dịch vụ rút gọn URL có khả năng mở rộng trên AWS*
-- **Danh Hoàng Hiếu Nghị** — AI Engineer, AWS Community Builder, Trưởng nhóm
-  AWS Student Builder Group: *Từ First Cloud AI Journey đến AWS Partner*
-- **Trọng H. Trương** — DevOps Engineer tại Endava Vietnam: *DevOps Engineer
-  thực sự làm gì?*
+- **Số đội:** 8 đội, mỗi đội đúng 5 thực tập sinh, được lập tự do giữa các
+  nhóm — một đội không nhất thiết phải đến từ cùng một nhóm thực tập, và không
+  ai được đăng ký ở hai đội trở lên. Các chuyên gia dày dặn kinh nghiệm bị loại
+  khỏi diện tuyển thành viên, để giữ cuộc thi ở đúng đối tượng người học.
+- **Cấu trúc:** hai đội đối đầu trong một trận, lần lượt trả lời các bộ câu
+  hỏi tăng dần độ khó. Đội đạt điểm cao hơn sẽ tiến vào vòng sau; nếu hòa điểm
+  đến cuối bộ đề, trận đấu sẽ được phân định bằng một câu hỏi sudden-death duy
+  nhất — câu hỏi số 11 — trả lời dưới hình thức bấm chuông nghiêm ngặt, đội nào
+  nhanh hơn sẽ thắng.
+- **Nội dung câu hỏi:** tất cả câu hỏi được lấy cảm hứng từ cùng phạm vi kiến
+  thức với các kỳ thi chứng chỉ AWS, sắp xếp gần đúng theo thứ tự Practitioner
+  → Solutions Architect Associate → Solutions Architect Professional, để trận
+  đấu khó dần lên theo thời gian thay vì giữ nguyên một mức độ.
+- **Hai kỹ năng dùng một lần cho mỗi đội:**
+  - **Rủi ro tối thiểu** — dùng cho câu hỏi đội không chắc chắn. Nếu trả lời
+    sai sẽ không bị trừ điểm; nếu đúng thì chỉ được cộng một nửa số điểm của
+    câu đó.
+  - **Ngôi sao hi vọng** — dùng cho câu hỏi đội tự tin nhất. Nếu đúng sẽ được
+    nhân đôi điểm, nếu sai sẽ bị trừ gấp đôi.
+- **Cách chọn đội:** vì số lượng slot có hạn, các đội được duyệt bằng cách bốc
+  thăm ngẫu nhiên từ danh sách đăng ký thay vì theo thứ tự đăng ký trước, với
+  kết quả được công bố vào ngày 19/06/2026. Một khi đã được duyệt, đội phải cam
+  kết tham gia đầy đủ — không được tham gia nửa chừng.
 
 ---
 
 ### Điểm nổi bật chính
 
-#### Bài nói 1 — Data Analytics Engineer thực sự làm gì, và các tập đoàn đa quốc gia vận hành ra sao
+#### Vòng 1 — Khởi động Practitioner
 
-Nửa đầu bài nói đưa ra một luận điểm áp dụng được rộng hơn nhiều so với riêng
-lĩnh vực analytics: cùng một chức danh công việc lại có ý nghĩa công việc khác
-nhau tùy vào ngành, mô hình kinh doanh, và phòng ban mà vai trò đó phục vụ. Hai
-ví dụ đối lập được đưa ra. Tại một công ty cung ứng thực phẩm, công việc là báo
-cáo vận hành theo ngày cho đến theo quý, các dashboard để phát hiện xu hướng và
-bất thường, phân tích nguyên nhân gốc rễ (root-cause analysis) của các chỉ số
-kinh doanh, và phối hợp giữa các phòng ban. Tại một nhà sản xuất hàng tiêu
-dùng, đó là dữ liệu máy móc nhà máy và IoT, tối ưu chi phí sản xuất, và các
-sáng kiến chuyển đổi số.
+Bộ câu hỏi mở màn bám sát phạm vi Cloud Practitioner: một dịch vụ dùng để làm
+gì, AWS tính phí cho nó như thế nào, và phần nào của shared responsibility
+model thuộc về ai. Các câu hỏi tiêu biểu trong vòng này:
 
-Bốn kỹ năng được xác định là những thứ thực sự tạo ra khác biệt: tư duy phản
-biện (critical thinking), giao tiếp, kể chuyện bằng dữ liệu (storytelling with
-data), và giải quyết vấn đề. Điểm nhấn được đưa ra là một báo cáo chỉ trình
-bày con số thì chưa đầy đủ — giá trị đến từ việc giải thích *tại sao* một chỉ
-số thay đổi và đề xuất nên làm gì với điều đó.
+- *Dịch vụ AWS nào cho phép một tổ chức quản lý billing tập trung và áp dụng
+  policy trên nhiều account cùng lúc mà vẫn không tước đi quyền tự chủ ở cấp
+  account?*
+- *Hình thức mua nào mang lại mức giảm giá lớn nhất cho compute capacity mà
+  workload có thể chấp nhận bị thu hồi trong thời gian ngắn?*
+- *Theo shared responsibility model, ai chịu trách nhiệm vá lỗi (patch) hệ
+  điều hành khách trên một instance EC2?*
 
-Một mô hình phát triển sự nghiệp được trình bày, tránh việc bám chặt vào chức
-danh công việc:
+Vòng này diễn ra nhanh và chủ yếu kiểm tra khả năng ghi nhớ hơn là suy luận,
+khoảng cách giữa các đội khá nhỏ — ai cũng rõ ràng đã ôn bài kỹ. Đội chúng tôi
+mở màn thận trọng, dùng **Rủi ro tối thiểu** cho một câu hỏi về giới hạn free
+tier chính xác của một dịch vụ mà không ai trong đội dùng hàng ngày, và hóa ra
+đây là lựa chọn đúng đắn: câu trả lời sai, nhưng nhờ kỹ năng này chúng tôi
+không bị mất điểm.
 
-| Giai đoạn | Ý nghĩa |
-|---|---|
-| **Follower** | Mới bắt đầu. Được hướng dẫn từng bước, học môi trường làm việc và tích lũy kiến thức nền tảng |
-| **Learner** | Hiểu được các cách tiếp cận có sẵn nhưng vẫn cần định hướng từ mentor. Đặt câu hỏi sâu và học nhanh |
-| **Problem Solver** | Không còn làm việc theo checklist. Tự phân tích các bài toán kinh doanh khó, đề xuất giải pháp, và cam kết với chất lượng đầu ra |
-| **System Thinker** | Nhìn thấy toàn bộ bức tranh. Hiểu các phụ thuộc liên phòng ban, dự đoán rủi ro vận hành, cân nhắc tác động tài chính, và tối ưu cả hệ thống thay vì chỉ vá lỗi |
-| **Super Star** | Xây dựng tầm nhìn và chiến lược, và phát triển thế hệ System Thinker tiếp theo |
+#### Vòng 2 — Solutions Architect Associate
 
-Nửa sau bài nói bàn về việc tuyển dụng và văn hóa tại các tập đoàn đa quốc
-gia. Quy trình tuyển dụng tiêu chuẩn được mô tả gồm bốn giai đoạn: sàng lọc
-qua hệ thống applicant tracking system, tiếp theo là một cuộc trò chuyện ngắn
-bằng tiếng Anh với nhà tuyển dụng; một bài kiểm tra năng lực (aptitude test) —
-logic và thuật toán cho các vai trò kỹ thuật, phán đoán tình huống (situational
-judgement) cho vai trò supply chain; một buổi phỏng vấn kỹ thuật với một tech
-lead hoặc manager, giải quyết các bài toán thực tế theo cấu trúc STAR; và cuối
-cùng là một buổi phỏng vấn về sự phù hợp văn hóa (culture-fit) với ban lãnh
-đạo, đánh giá sự phù hợp với các giá trị cốt lõi.
+Độ khó tăng lên từ "dịch vụ này dùng để làm gì" thành "tổ hợp dịch vụ nào thỏa
+mãn ràng buộc này." Đây là lúc trận đấu thực sự bắt đầu phân hóa các đội:
 
-Về bản thân văn hóa, bài nói trích dẫn định nghĩa của Tiến sĩ Giản Tư Trung —
-rằng văn hóa doanh nghiệp là cách một doanh nghiệp tư duy, sống, và làm việc,
-hay cụ thể hơn là cách mỗi cá nhân bên trong nó tư duy, sống, và làm việc như
-vậy. Hai nền văn hóa đối lập được đưa ra làm ví dụ: **no-blame post-mortem**
-(hậu kiểm không đổ lỗi) tại các công ty công nghệ, nơi một sự cố nghiêm trọng
-sẽ kích hoạt việc truy tìm nguyên nhân gốc rễ và sửa hệ thống thay vì tìm một
-cá nhân để đổ lỗi; và **caring and inclusive** (quan tâm và bao dung) tại các
-công ty hàng tiêu dùng, lấy con người và sự đa dạng làm trung tâm.
+- *Một workload phải tiếp tục phục vụ traffic ngay cả khi mất toàn bộ một
+  Availability Zone, với công sức vận hành ít nhất có thể. Tổ hợp dịch vụ nào
+  đáp ứng trực tiếp nhất yêu cầu này?*
+- *Một ứng dụng đọc cùng vài bản ghi nhiều hơn hẳn số lần ghi, và độ trễ đọc
+  đang là than phiền chính. Cache nên đặt ở đâu trong thiết kế này, và nó đưa
+  vào failure mode nào?*
+- *Một công ty cần object storage tự động chuyển dữ liệu ít được truy cập sang
+  tier rẻ hơn mà không cần ai phải quyết định thời điểm chuyển.*
 
-Buổi nói chuyện khép lại với một mạch lịch sử — nguyên tắc *Wakon Yōsai* của
-Nhật Bản về giữ vững bản sắc dân tộc trong khi làm chủ kỹ thuật phương Tây, đỉnh
-cao là Toyota Production System; kỳ tích sông Hán của Hàn Quốc và các tập đoàn
-xuất khẩu buộc phải đáp ứng các tiêu chuẩn quốc tế khắt khe; và con đường riêng
-của Việt Nam từ cô lập qua Đổi Mới đến kết nối với internet toàn cầu vào ngày
-19 tháng 11 năm 1997, và từ đó đến FDI, sản xuất, và cloud.
+Đây là vòng cho thấy rõ mục đích thiết kế của thể lệ: nó thưởng cho việc hiểu
+một đánh đổi (trade-off), chứ không phải học thuộc tên dịch vụ. Chúng tôi dùng
+**Ngôi sao hi vọng** cho câu hỏi về Multi-AZ, tự tin vì nó gần như trùng khớp
+với một quyết định tôi đã đưa ra và viết trong báo cáo của chính dự án mình —
+và điều đó đã đem lại kết quả, nhân đôi điểm số cho câu đó.
 
-#### Bài nói 2 — Một dịch vụ rút gọn URL có khả năng mở rộng trên AWS
+#### Vòng 3 — Solutions Architect Professional, và câu hỏi phân định
 
-Đây là buổi kỹ thuật trực tiếp nhất, và cũng hữu ích nhất cho dự án của riêng
-tôi. Bài nói bắt đầu với thiết kế ngây thơ (naive) — user, frontend, backend,
-database — và thẳng thắn về các đánh đổi (trade-off) của nó: dễ triển khai và
-rẻ, nhưng dễ tổn thương, đọc chậm, có single point of failure, và khó mở rộng.
+Bộ câu hỏi cuối cùng bước vào phạm vi thực sự ở cấp độ chuyên nghiệp: quản trị
+multi-account, thứ tự thực hiện migration, và kết nối hybrid, nơi hiếm khi có
+một câu trả lời sạch sẽ duy nhất mà câu hỏi thực chất là tổ chức có thể chấp
+nhận sống chung với đánh đổi nào.
 
-Kiến trúc được trình bày sau đó giải quyết từng điểm yếu đó:
+- *Một tổ chức vận hành 20 account AWS dưới AWS Organizations và muốn áp đặt
+  các guardrail tập trung, không thể thương lượng, trong khi vẫn để chủ account
+  tự quản lý các tài nguyên không quan trọng của họ. Cơ chế nào phù hợp nhất?*
+- *Một công ty đang migrate một database on-premises lớn lên AWS với cửa sổ
+  cutover được tính bằng phút chứ không phải giờ. Pattern dịch vụ nào giúp
+  giảm thiểu cửa sổ đó?*
+- *Hai VPC ở hai account khác nhau cần kết nối riêng tư mà không để việc trùng
+  dải CIDR trở thành ràng buộc dài hạn cho sự phát triển sau này.*
 
-- **Edge và frontend**: Route 53 cho DNS, CloudFront để phân phối nội dung,
-  AWS WAF để lọc, và Amplify để host frontend tĩnh
-- **Compute**: các service đóng gói container trên Amazon ECS với Fargate,
-  trải rộng trên hai Availability Zone phía sau một Application Load Balancer
-- **Data**: Amazon DynamoDB làm kho lưu trữ bền vững (durable store), được
-  truy cập qua một gateway endpoint, với Amazon ElastiCache for Redis đặt phía
-  trước
-- **Bảo mật**: AWS Secrets Manager, KMS, Certificate Manager, và IAM
-
-Phần thú vị là **Key Generation Service**. Thay vì sinh một mã rút gọn tại thời
-điểm request và hy vọng nó không bị trùng, một service riêng biệt sinh trước
-(pre-generate) các mã và đẩy chúng vào một hàng đợi Redis. Việc tạo một link
-lúc này trở thành: lấy một mã ra khỏi hàng đợi, ghi ánh xạ vào DynamoDB, trả
-về. Không có việc kiểm tra trùng lặp dưới tải cao, không có vòng lặp retry,
-không có việc phải đoán mò dưới áp lực.
-
-Việc đọc dùng pattern cache-aside: tra cứu Redis trước, trả về ngay nếu trúng
-(cache hit), và chỉ truy vấn DynamoDB khi bị trượt (cache miss).
-
-Phần tổng kết đúc rút bốn nguyên tắc: **tách biệt các mối quan tâm (separation
-of concerns)** — đường đọc và đường ghi được tối ưu độc lập thay vì chia sẻ
-chung một điểm nghẽn; **phòng thủ ngay tại edge** — bảo mật và caching được
-đẩy càng gần người dùng càng tốt để tải không bao giờ chạm đến phần lõi;
-**tính toán trước thay vì tính toán theo yêu cầu (pre-computation over
-on-demand)**; và **pattern cache-aside** để giữ độ trễ đọc thấp và giảm áp lực
-lên database ở mức tối thiểu.
-
-#### Bài nói 3 — Từ First Cloud AI Journey đến AWS Partner
-
-Một bài nói về những gì đến sau khi chương trình kết thúc. Diễn giả kể lại
-hành trình của chính mình, từ chương trình First Cloud Journey qua chương
-trình AWS Student Builder Group (trước đây là AWS Cloud Clubs) và chương trình
-AWS Community Builder, đến việc làm việc tại một công ty đối tác của AWS.
-
-Câu nói đọng lại nhất là *có được công việc chỉ mới là bắt đầu* — theo sau là
-các vai trò mà cựu học viên của chương trình đã chuyển sang: Solutions
-Architect, Head of Solutions Architect, DevOps Engineer, Platform Engineer,
-Software Engineer. Ý chính không phải là có một con đường duy nhất đúng, mà là
-chương trình chỉ là một điểm khởi đầu chứ không phải đích đến, và việc tham
-gia cộng đồng thường là thứ giúp duy trì đà tiến sau đó.
-
-#### Bài nói 4 — DevOps Engineer thực sự làm gì?
-
-Buổi nói chuyện thẳng thắn nhất trong ngày, và cũng vui nhất. Khi được hỏi tại
-sao chọn DevOps, câu trả lời của diễn giả là: anh không chọn — nó tự đến.
-
-Anh đối chiếu những gì bản mô tả công việc yêu cầu với những gì mọi người thực
-sự mặc định vai trò đó là gì:
-
-| Bản mô tả công việc yêu cầu | Mọi người mặc định là |
-|---|---|
-| CI/CD pipeline | người viết CI/CD pipeline |
-| IaC và quản lý cấu hình | người chuyên về Docker và Kubernetes |
-| Container và orchestration | kỹ sư cloud hoặc platform |
-| Cloud provider | người triển khai code |
-| Logging và monitoring | người sửa production lúc nửa đêm |
-
-Lời khuyên của anh về nơi nên bắt đầu cố tình rất không hào nhoáng: Linux, kiến
-thức nền tảng về mạng, một ngôn ngữ lập trình như Python hoặc Go, Git và
-CI/CD, và container. Sau đó hiểu cách các ứng dụng thực sự chạy — build, test,
-deploy, log, cấu hình, biến môi trường. Rồi xây các dự án nhỏ: triển khai một
-ứng dụng đơn giản, tự động hóa một điều gì đó, giám sát nó, làm nó hỏng, và sửa
-nó.
-
-Phần kết, *những điều tôi học được theo cách khó khăn*, là phần giá trị nhất
-của cả sự kiện:
-
-- Copy lệnh không giống với việc hiểu nó
-- Học cách xác định ai thực sự là chủ sở hữu của vấn đề
-- Hỏi "tại sao" trước khi hỏi "như thế nào"
-- Giao tiếp là một phần của công việc
-- DevOps không phải là về việc làm anh hùng
+Không đội nào có lợi thế rõ ràng trước câu hỏi cuối của bộ đề, nghĩa là trận
+đấu được quyết định ở câu hỏi số 11 — sudden-death, ai bấm chuông đúng trước sẽ
+thắng. Câu hỏi liên quan đến Service Control Policies so với Identity and
+Access Management policy, và đánh đổi giữa blast radius và sự linh hoạt.
+Chúng tôi bấm chuông trước và trả lời đúng, qua đó định đoạt trận đấu; biên độ
+thắng thua của cả đêm hôm đó rút cuộc chỉ tính bằng giây chứ không phải bằng
+điểm số.
 
 ---
 
 ### Những điều rút ra chính
 
-**Về kiến trúc.** Mỗi điểm yếu trong một thiết kế đơn giản đều có một phương
-thuốc cụ thể, có tên gọi, và các phương thuốc đó có thể kết hợp với nhau. Một
-single point of failure được giải quyết bằng nhiều Availability Zone; độ trễ
-đọc bằng một cache; tranh chấp ghi bằng việc tính toán trước. Nhận ra mình
-thực sự đang gặp điểm yếu nào là kỹ năng khó hơn.
+**Kiến thức chứng chỉ và khả năng phán đoán thiết kế không phải là cùng một kỹ
+năng, và thể lệ cuộc thi đã cho thấy rõ điều đó.** Vòng 1 thưởng cho khả năng
+ghi nhớ; vòng 3 thưởng cho việc cân nhắc đánh đổi khi không có lựa chọn hoàn
+hảo. Những đội nhanh ở vòng 1 không đương nhiên là những đội dẫn đầu ở vòng 3.
 
-**Về vai trò.** Một chức danh công việc mô tả một danh mục, không phải một tập
-hợp các đầu việc. Cả bài nói về analytics và bài nói về DevOps đều đưa ra cùng
-một luận điểm từ hai hướng đối lập: công việc được định nghĩa bởi lĩnh vực và
-tổ chức, không phải bởi chức danh trên thư mời làm việc.
+**Một cơ chế đặt cược (wager) làm lộ ra điều một đội thực sự tin, chứ không
+chỉ điều họ biết.** Việc quyết định khi nào dùng Rủi ro tối thiểu, khi nào
+dùng Ngôi sao hi vọng buộc chúng tôi phải có một cuộc trò chuyện thành thật,
+nói to và dưới áp lực đồng hồ, về việc câu trả lời nào là đoán mò và câu nào
+chúng tôi sẵn sàng bảo vệ. Cuộc trò chuyện đó hữu ích hơn cả từng câu trả lời
+riêng lẻ.
 
-**Về việc học.** Hai diễn giả độc lập cảnh báo về kiến thức bề mặt — "copy
-lệnh không giống với việc hiểu nó" và yêu cầu của giai đoạn Learner là đặt câu
-hỏi có chiều sâu. Cả hai đều coi sự hiểu biết thực sự là thứ phân biệt giữa
-người chỉ làm theo hướng dẫn và người có thể được tin tưởng giao phó một vấn
-đề.
-
-**Về văn hóa.** No-blame post-mortem là một thực hành kỹ thuật cũng nhiều như
-nó là một thực hành văn hóa. Sửa hệ thống thay vì sửa con người cũng là cùng
-một bản năng với việc sửa kiến trúc thay vì retry lại request.
+**Dưới áp lực thời gian, đội nào thống nhất được câu trả lời nhanh nhất sẽ
+thắng, chứ không nhất thiết là đội đúng nhất khi xét riêng lẻ.** Vòng
+sudden-death thưởng cho tốc độ đồng thuận cũng nhiều như thưởng cho kiến thức,
+và đó là hai kỹ năng khác nhau.
 
 ---
 
 ### Áp dụng vào công việc
 
-Bài nói về dịch vụ rút gọn URL gần như ánh xạ trực tiếp lên dự án của chính
-tôi, và đã thay đổi cách tôi mô tả nó:
+Câu hỏi về Multi-AZ ở vòng 2 ánh xạ trực tiếp lên một quyết định đã được đưa
+ra cho Caerus: chấp nhận một instance EC2 duy nhất trong một Availability Zone
+duy nhất như một đánh đổi đã được ghi nhận rõ ràng, thay vì giả vờ rằng high
+availability nằm ngoài phạm vi. Việc nghe cùng câu hỏi thiết kế đó được hỏi
+một cách khách quan, không gắn với bối cảnh dự án của riêng tôi, là một cách
+kiểm chứng hữu ích rằng lập luận đằng sau quyết định đó vẫn đứng vững một cách
+độc lập.
 
-- **Single point of failure.** Caerus chạy trên một instance EC2 duy nhất
-  trong một Availability Zone duy nhất. Việc nghe cùng một điểm yếu đó được
-  gọi tên và giải quyết đã cho tôi vốn từ vựng để nêu rõ điều này trong báo
-  cáo của mình như một đánh đổi đã được chấp nhận, cùng với những gì một bản
-  triển khai production sẽ bổ sung thêm — một load balancer, một auto scaling
-  group, và một database multi-AZ.
-- **Tách biệt đường đọc và đường ghi.** Trong Caerus, sơ đồ ghế được đọc nhiều
-  hơn rất nhiều so với số lần đặt vé được ghi. Nhận ra đây là một sự bất đối
-  xứng đọc/ghi, thay vì coi nó là một khối tải đồng nhất, là bước đầu tiên
-  hướng tới việc cache sơ đồ ghế mà không làm yếu đi giao dịch đặt vé.
-- **Tính toán trước thay vì tính toán theo yêu cầu.** Key Generation Service
-  là cùng một bản năng với việc sinh sáu mươi ghế của một suất chiếu ngay khi
-  sự kiện được tạo thay vì tại lần request đầu tiên — làm trước những việc có
-  thể dự đoán được để đường có độ nhạy về độ trễ luôn ngắn.
+Câu hỏi về SCP so với IAM policy ở vòng sudden-death liên quan trực tiếp đến
+cách Caerus tách quyền của ứng dụng booking khỏi bất cứ điều gì một operator
+có thể chạm vào thủ công — một guardrail được áp đặt ở cấp account không nên
+phụ thuộc vào việc ứng dụng hành xử đúng đắn, đúng nguyên tắc mà câu hỏi đó
+đang kiểm tra.
 
-Từ bài nói về DevOps, "làm nó hỏng, rồi sửa nó" về cơ bản chính là điều mà bài
-test double-booking đang làm: cố tình tạo ra điều kiện gây lỗi và xác nhận hệ
-thống xử lý được nó, thay vì giả định rằng nó xử lý được.
-
-Từ bài nói về analytics, sự tiến triển từ Follower đến Problem Solver cho tôi
-một khung nhìn trung thực hơn để tự đánh giá bản thân: tôi có thể thực thi một
-kế hoạch một cách đáng tin cậy, nhưng việc đề xuất kế hoạch đó vẫn là chỗ tôi
-cần phát triển thêm.
-
----
-
-### Trải nghiệm sự kiện
-
-Điều khiến ngày hôm đó hữu ích là không bài nói nào trong bốn bài là một bài
-quảng cáo sản phẩm. Mỗi diễn giả mô tả công việc họ thực sự đã làm, bao gồm cả
-những phần đã diễn ra tồi tệ — một lead developer giải thích tại sao phiên bản
-đơn giản của hệ thống anh ấy không sống sót khi va chạm với traffic thực tế,
-một kỹ sư DevOps thừa nhận anh chưa bao giờ thực sự chọn chuyên môn này.
-
-Buổi về dịch vụ rút gọn URL là buổi tôi ghi chép nhiều nhất, vì nó được trình
-bày đúng ở mức tôi có thể theo kịp trong khi vẫn học được điều gì đó mới: mỗi
-thành phần đều là thứ tôi từng học riêng lẻ, và việc thấy chúng được ráp lại
-với nhau để giải quyết các điểm yếu cụ thể có tên gọi là lần đầu tiên các mảnh
-ghép đó kết nối thành một hệ thống thay vì chỉ là một danh sách dịch vụ.
-
-Buổi nói về văn hóa doanh nghiệp đa quốc gia là buổi tôi kỳ vọng ít nhất mà lại
-nhận được giá trị bất ngờ nhất. Quy trình tuyển dụng đặc biệt là cụ thể theo
-một cách mà lời khuyên nghề nghiệp thông thường thường không có — bốn giai
-đoạn được xác định rõ, mỗi giai đoạn kiểm tra một điều khác nhau, với giai đoạn
-cuối cùng kiểm tra giá trị chứ không phải kỹ năng.
+Thói quen phát biểu mức độ tự tin trước khi trả lời — điều mà cơ chế Rủi ro
+tối thiểu và Ngôi sao hi vọng buộc phải bộc lộ ra bên ngoài — là điều tôi giờ
+áp dụng khi xem lại các quyết định kiến trúc của chính mình: nêu rõ hai hoặc
+ba điểm tôi kém chắc chắn nhất, thay vì trình bày toàn bộ thiết kế với cùng
+một mức độ tự tin.
 
 <!-- Thêm ảnh vào static/images/4-EventParticipated/4.1-Event1/ và tham chiếu chúng ở đây, ví dụ:
 
 -->
-#### Bằng chứng tham dự
+#### Ảnh sự kiện
 
-Không có ảnh chụp nào được lấy trong buổi, nên tôi đặt bằng chứng tham dự của
-mình là bản ghi check-in trên cổng thông tin FCAJ.
-
-![Bản ghi check-in cho FCAJ Saturday Meetup trên cổng thông tin First Cloud AI Journey](/images/4-EventParticipated/4.1-Event1/checkin.png)
+![](/images/4-EventParticipated/event1.jpg)
