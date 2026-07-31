@@ -19,13 +19,5 @@ dựng phản xạ khởi tạo, kết nối và dọn dẹp.
 3. **Huỷ instance ngay trong ngày**, sau đó quay lại Console và xác nhận
    không còn gì sót lại - không instance, không Elastic IP mồ côi.
 
-{{% notice note %}}
-Một Elastic IP không được gắn và một instance đang chạy đều bị tính phí theo
-giờ bất kể có ai đang sử dụng hay không. "Huỷ tài nguyên thực hành ngay trong
-ngày" không phải là một gợi ý trong dự án này, mà là thói quen duy nhất giữ
-cho mức sử dụng Free Tier của một nhóm hai người nằm trong hạn mức 750 giờ mỗi
-tháng, vì hạn mức đó được chia sẻ chung cho mọi instance chạy đồng thời, không
-được cấp riêng cho từng instance.
-{{% /notice %}}
 
 <!-- ![Instance running, then the same instance's terminated state in the Console](/images/5-Workshop/5.7-EC2/5.7.1-launch-practice/example.png) -->

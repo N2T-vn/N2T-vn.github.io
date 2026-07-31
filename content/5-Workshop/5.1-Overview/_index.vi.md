@@ -81,7 +81,7 @@ mà sơ đồ thể hiện: database trước, rồi đến storage cùng với 
 ngay từ bản build đầu tiên được deploy, rồi đến compute và lớp networking
 riêng tư xung quanh nó, rồi đến observability.
 
-![Caerus final architecture](/images/5-Workshop/5.1-Overview/architecture.png)
+![](/images/5-Workshop/5.1-Overview/architecture.png)
 
 <!-- LƯU Ý cho tác giả báo cáo: sử dụng sơ đồ kiến trúc đã được rà soát, với
 bucket S3 phía frontend được gắn nhãn là "S3 (Frontend, private)" thay vì

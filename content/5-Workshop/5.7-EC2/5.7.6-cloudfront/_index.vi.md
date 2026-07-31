@@ -1,5 +1,5 @@
 ---
-title : "CloudFront: Adding the API to the Same Domain"
+title : "CloudFront: Thêm API vào Cùng Một Domain"
 date : 2026-06-01
 weight : 6
 chapter : false

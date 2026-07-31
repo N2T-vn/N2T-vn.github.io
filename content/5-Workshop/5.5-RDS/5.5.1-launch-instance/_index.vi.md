@@ -29,10 +29,14 @@ group lỡ bị cấu hình sai.
    `ap-southeast-1a`, `caerus-private-1b` ở `ap-southeast-1b`, mỗi subnet có
    một CIDR block không trùng với các subnet khác của VPC.
 
+![](/images/5-Workshop/5.5-RDS/2rds_private_subnet.png)
+
 2. **Tạo một route table không có route `0.0.0.0/0`** và gắn cả hai subnet mới
    vào đó - chính việc *không có* route tới internet gateway mới khiến một
    subnet trở nên private, không phải cái tên được đặt cho nó. Không cần NAT
    gateway ở đây: RDS không bao giờ tự khởi tạo traffic outbound ra internet.
+
+![](/images/5-Workshop/5.5-RDS/caerus-private-rt.png)
 
 3. **Tạo một DB subnet group**, `caerus-private-subnet-group`, từ hai private
    subnet đó.
@@ -45,29 +49,17 @@ group lỡ bị cấu hình sai.
    "Aurora PostgreSQL Compatible", vốn vẫn là Aurora. Chọn **PostgreSQL**
    thuần túy, phiên bản 16.x, để khớp với image `postgres:16` dùng ở local.
 
-   {{% notice warning %}}
-   Aurora và RDS PostgreSQL được tính phí và quản lý khác nhau. Nếu một bước
-   sau đó hoạt động không như mong đợi và có một thành phần được đặt tên
-   `Aurora` trong khi lẽ ra phải là `PostgreSQL`, đây chính là bước cần xem
-   lại.
-   {{% /notice %}}
+
 
 5. **Templates: Production.** Multi-AZ hoàn toàn không có sẵn ở template Free
    Tier - Production mới là thứ mở khóa nó, và bắt buộc phải dùng ở đây.
 
-6. **Availability and durability → Deployment options → Multi-AZ DB instance
-   deployment (2 instances)** - một primary cộng một standby không đọc được
-   ở AZ thứ hai, khớp với hai private subnet đã tạo ở bước 1.
+6. **Availability and durability.** → Deployment options → Multi-AZ DB instance
+   deployment (2 instances) - một primary cộng một standby không đọc được ở
+   một AZ thứ hai, khớp với hai private subnet đã tạo ở bước 1.
 
-   {{% notice warning %}}
-   Tùy chọn này nằm ngay cạnh **Multi-AZ DB cluster deployment (3
-   instances)**, một mô hình triển khai khác, mới hơn - một primary cộng
-   *hai* standby đọc được trải trên ba AZ, tính phí cho ba instance thay vì
-   hai. Nó giải quyết một bài toán khác (mở rộng khả năng đọc, failover
-   nhanh hơn) so với những gì dự án này cần, và tốn kém hơn tương ứng. Tùy
-   chọn **Single-AZ** đơn giản đứng thứ ba trong hàng cũng là một mặc định
-   dễ chọn nhầm nếu không đọc kỹ - nó không cung cấp standby nào cả.
-   {{% /notice %}}
+
+![](/images/5-Workshop/5.5-RDS/rds_config.png)
 
 7. **DB instance identifier**: `caerus-db`. **Credentials management: Self
    managed** - không dùng AWS Secrets Manager, để tránh dùng một dịch vụ mà
@@ -80,21 +72,4 @@ group lỡ bị cấu hình sai.
    rule inbound cho phép security group của application sẽ được thêm vào khi
    security group đó tồn tại, ở mục 5.7.3).
 
-9. **Storage: đổi giá trị mặc định trước khi tạo bất cứ thứ gì.** Template
-   Production mặc định chọn **Provisioned IOPS SSD (io2)** ở mức 100 GiB,
-   không thuộc diện Free-Tier-eligible và tính phí riêng cho cả storage lẫn
-   từng IOPS được cấp phát - có thể lên tới hàng trăm đô la Mỹ mỗi tháng ở
-   mức thiết lập đó, và dễ dàng trở thành dòng chi phí lớn nhất trên toàn bộ
-   hóa đơn nếu để nguyên. Đặt **Storage type** thành **General Purpose SSD
-   (gp3)** và **Allocated storage** thành **20 GiB**.
-
-10. **Additional configuration → Initial database name: `caerus`.** Điền sẵn
-    mục này ngay từ đầu để tránh phải chạy `CREATE DATABASE` thủ công sau khi
-    instance đã sẵn sàng.
-
-11. **Gắn tag `Owner`** với tên developer tạo ra instance, sau đó tạo database
-    và chờ trạng thái **Available** - một instance Multi-AZ mất thời gian
-    provision lâu hơn đáng kể so với Single-AZ, vì standby cũng phải được
-    khởi tạo cùng lúc.
-
-<!-- ![RDS create-database wizard: PostgreSQL engine, Production template, Multi-AZ enabled, private DB subnet group, gp3 storage](/images/5-Workshop/5.5-RDS/5.5.1-launch-instance/example.png) -->
+![](/images/5-Workshop/5.5-RDS/rds_connectivity.png)

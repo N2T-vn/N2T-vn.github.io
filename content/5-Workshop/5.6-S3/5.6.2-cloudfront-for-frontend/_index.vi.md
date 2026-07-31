@@ -62,11 +62,6 @@ không có gì trong thiết lập bên dưới thay đổi khi điều đó x�
    cd frontend && npm run build
    ```
 
-   Upload *nội dung bên trong* của `frontend/dist/` lên gốc bucket - không
-   phải bản thân thư mục `dist`. Kéo thả cả thư mục vào sẽ tạo ra
-   `caerus-frontend-web/dist/index.html` thay vì
-   `caerus-frontend-web/index.html`, và distribution sẽ chỉ phục vụ một
-   trang trắng.
 
 6. **Chờ distribution deploy xong**, sau đó mở domain của nó
    (`dxxxxxxxxxxxxx.cloudfront.net`) và xác nhận application load được. Các
@@ -74,27 +69,6 @@ không có gì trong thiết lập bên dưới thay đổi khi điều đó x�
    thời điểm này trong workshop - nhưng bản thân static application phải
    render được.
 
-{{% notice note %}}
-Mỗi lần rebuild frontend sau này đều cần một **CloudFront cache
-invalidation** (hoặc chờ bản cache hết hạn) trước khi thay đổi hiển thị được
-- việc upload một bản `dist/` mới lên bucket không tự động khiến CloudFront
-lấy lại nội dung đó. Điều này áp dụng cho mọi lần redeploy frontend còn lại
-trong workshop này (mục 5.7.4, 5.7.5, và 5.7.6).
-{{% /notice %}}
 
-#### Một điều dễ gặp lỗi ở đây, nên biết trước
 
-**Các bảo vệ WAF đi kèm của CloudFront cần những quyền IAM mà account có thể
-chưa được cấp.** Việc bật các bảo vệ bảo mật Free-tier trong lúc tạo
-distribution sẽ gọi `wafv2:CreateWebACL` thay mặt người dùng, nhắm vào một
-tài nguyên WAF cụ thể ở **`us-east-1`** - WAF cho CloudFront luôn nằm ở đó bất
-kể phần còn lại của kiến trúc dùng region nào. Nếu IAM user thiếu quyền này,
-việc tạo distribution sẽ thất bại với lỗi `AccessDenied` nêu rõ action và
-resource. Cách khắc phục là thêm một inline policy cấp `wafv2:CreateWebACL`
-cùng các quyền đi kèm thường thấy (`UpdateWebACL`, `DeleteWebACL`,
-`GetWebACL`, `TagResource`) - và, ít rõ ràng hơn, một statement *thứ hai* cho
-resource type `managedruleset`, vì các bảo vệ mặc định của CloudFront tham
-chiếu tới AWS Managed Rule Groups và WAF kiểm tra quyền trên cả Web ACL đang
-được tạo lẫn từng managed rule group mà nó tham chiếu tới.
-
-<!-- ![CloudFront distribution với S3 origin, OAC được gắn, và site load được tại domain của distribution](/images/5-Workshop/5.6-S3/5.6.2-cloudfront-for-frontend/example.png) -->
+![CloudFront distribution with the S3 origin, OAC attached, and the site loading at the distribution domain](/images/5-Workshop/5.6-S3/caerus_cloudfront.png)

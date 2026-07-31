@@ -55,11 +55,6 @@ chính mình.
 }
 ```
 
-{{% notice note %}}
-Đây chỉ minh họa hình dạng chung của policy, không phải bản export chính
-xác từng byte - hãy thay thế nó bằng đoạn JSON thực tế từ nhóm
-`caerus-developers` trong account của bạn trước khi publish.
-{{% /notice %}}
 
 **Quy ước đặt tên và gắn tag**, được thực thi bằng một permission boundary
 chứ không chỉ là một gợi ý:

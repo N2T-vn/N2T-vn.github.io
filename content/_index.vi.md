@@ -1,11 +1,13 @@
 ---
 title: "Báo cáo thực tập"
-date: 2024-01-01
+date: 2026-07-30
 weight: 1
 chapter: false
 ---
 
 # Báo cáo thực tập
+
+
 ### Thông tin sinh viên:
 &emsp; **Họ và tên:** Nguyễn Thành Tài
 
@@ -26,8 +28,6 @@ chapter: false
 &emsp; **Thời gian thực tập:** Từ ngày 15/06/2026 đến ngày 31/07/2026
 
 ![Ảnh đại diện của bạn](/images/avatar.png)
-
-
 
 ### Nội dung báo cáo
 

@@ -31,4 +31,4 @@ private - **Block all public access BẬT** cho mọi bucket, không ngoại l�
    dù cả hai về mặt kỹ thuật đều là "hình ảnh mà bất kỳ ai có link đều có
    thể xem".
 
-<!-- ![Four buckets listed in the S3 console, all with Block all public access ON](/images/5-Workshop/5.6-S3/5.6.1-create-buckets/example.png) -->
+![Four buckets listed in the S3 console, all with Block all public access ON](/images/5-Workshop/5.6-S3/bucket_list.png)
