@@ -35,4 +35,4 @@ problem than creating a new one - out of scope for this project, and worth
 saying so explicitly rather than leaving a silent gap in the screen map.
 {{% /notice %}}
 
-![Screen map: customer path and admin path](/images/5-Workshop/5.3-Design/5.3.3-screen-map/caerus_screen_map.png)
+![Screen map: customer path and admin path](/images/caerus_screen_map.png)

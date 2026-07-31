@@ -47,13 +47,13 @@ pre : " <b> 5.7.1 </b> "
 6. **Kết nối qua Session Manager**, không phải EC2 Instance Connect - instance
    không có IP công khai để Instance Connect có thể chạm tới ngay từ đầu. EC2
    Console → chọn `caerus-server-1` → **Connect → Session Manager →
-   Connect
-   
+   Connect**:
+
 ![](/images/5-Workshop/5.7-EC2/ec2_ssm.png)
 
-   quyền sở hữu file và process `pm2` khởi
-   động ở dưới khớp với đúng account mà bất kỳ tự động hoá nào sau này mong
-   đợi:
+   Phiên làm việc sẽ đăng nhập với user `ssm-user`; hãy chuyển sang `ec2-user`
+   trước để quyền sở hữu file và process `pm2` khởi động ở dưới khớp với đúng
+   account mà bất kỳ tự động hoá nào sau này mong đợi:
 
    ```bash
    sudo su - ec2-user

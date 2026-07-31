@@ -52,4 +52,4 @@ trong hàm row-mapping ở backend, chứ không rải rác khắp mọi query.
    dấu thời gian; dòng dữ liệu vẫn tồn tại, để lịch sử booking mà một báo
    cáo hoặc một cuộc trao đổi hỗ trợ khách hàng có thể cần vẫn còn đó.
 
-![Entity-relationship diagram](/images/5-Workshop/5.3-Design/5.3.2-database-schema/erd.png)
+![Entity-relationship diagram](/images/erd.png)

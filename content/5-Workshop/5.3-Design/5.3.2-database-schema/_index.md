@@ -46,4 +46,4 @@ function on the backend, not scattered across every query.
    the booking history a report or a support conversation might need still
    exists.
 
-![Entity-relationship diagram](/images/5-Workshop/5.3-Design/5.3.2-database-schema/erd.png)
+![Entity-relationship diagram](/images/erd.png)
