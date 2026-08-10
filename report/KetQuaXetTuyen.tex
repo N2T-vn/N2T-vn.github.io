@@ -1,5 +1,20 @@
-\section{Kết quả xét tuyển}
+% No printed heading on this page (the scanned form starts immediately),
+% but it still gets a numbered entry in the table of contents matching
+% what \section would have produced.
+\stepcounter{section}
+\phantomsection
+\addcontentsline{toc}{section}{\protect\numberline{\thesection}Kết quả xét tuyển}
 
-\textit{Biểu mẫu D3 (Kết quả xét tuyển) được đính kèm dưới dạng file riêng, không được nhúng trực tiếp vào báo cáo này.}
+\IfFileExists{form/formD3.pdf}{
+  \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{form/formD3.pdf}
+}{
+    \pagebreak
+    \begin{center}
+        \textit{Đính kèm biểu mẫu D3 tại đây}
+    \end{center}
+    \pagebreak
+}
+
+\thispagestyle{fancy}
 
 \endinput

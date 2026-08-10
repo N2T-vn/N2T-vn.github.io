@@ -14,14 +14,14 @@ pre: " <b> 1.4. </b> "
 
 ### Tasks to be carried out this week:
 
-| Day | Task | Time | Reference Material |
-| --- | --- | --- | --- |
-| 2 | - Created the GitHub repository and configured branch protection so all work merges through pull requests <br> - **[Backend lane]** Set up the Express project skeleton and a PostgreSQL container in Docker Compose, and ran the Week 1 schema as a migration <br> - **[Frontend lane]** Set up the Vite and React project skeleton and drew the screen map | 6/7 | |
-| 3 | - **[Backend lane]** Implemented authentication (JSON Web Tokens, bcrypt password hashing) and the event listing/detail endpoints <br> - **[Frontend lane]** Built the event list and event detail screens against mock JSON files shaped exactly like the agreed API responses | 7/7 | |
-| 4 | - **[Backend lane]** Implemented the seat map endpoint and the booking transaction: `SELECT ... FOR UPDATE` on the requested seat rows, ordered by primary key to avoid deadlocks, committing only if every requested seat is still available <br> - **[Frontend lane]** Built the seat picker screen against mock data, including the seat-taken and booking-conflict states | 8/7 | <https://www.postgresql.org/docs/16/explicit-locking.html> |
-| 5 | - **[Backend lane]** Implemented booking cancellation and the bookings-list endpoint, with a rule that a booking cannot be cancelled after its showtime <br> - **[Frontend lane]** Built the bookings screen and the cancel action <br> - Explicitly deferred the two endpoints that need AWS: admin poster upload and ticket-PDF download, since neither S3 bucket exists yet and there is nowhere for either operation to write to | 9/7 | |
-| 6 | - Integration, working together at one machine: connected the frontend to the live local API and resolved the mismatches the mocks had hidden <br> - Wrapped every API call in one client module, so switching the base URL later (local to deployed) is a single change | 10/7 | |
-| 7 | - Tested the booking flow end to end locally: confirmed a seat map refresh reflects another user's booking, and that a second attempt on an already-booked seat is rejected <br> - **Milestone reached:** the application runs end to end on localhost, with admin poster upload and ticket download the only two endpoints not yet implemented | 11/7 | |
+| Time | Task | Reference Material |
+| --- | --- | --- |
+| 6/7 | - Created the GitHub repository and configured branch protection so all work merges through pull requests <br> - **[Backend lane]** Set up the Express project skeleton and a PostgreSQL container in Docker Compose, and ran the Week 1 schema as a migration <br> - **[Frontend lane]** Set up the Vite and React project skeleton and drew the screen map |  |
+| 7/7 | - **[Backend lane]** Implemented authentication (JSON Web Tokens, bcrypt password hashing) and the event listing/detail endpoints <br> - **[Frontend lane]** Built the event list and event detail screens against mock JSON files shaped exactly like the agreed API responses |  |
+| 8/7 | - **[Backend lane]** Implemented the seat map endpoint and the booking transaction: `SELECT ... FOR UPDATE` on the requested seat rows, ordered by primary key to avoid deadlocks, committing only if every requested seat is still available <br> - **[Frontend lane]** Built the seat picker screen against mock data, including the seat-taken and booking-conflict states | <https://www.postgresql.org/docs/16/explicit-locking.html> |
+| 9/7 | - **[Backend lane]** Implemented booking cancellation and the bookings-list endpoint, with a rule that a booking cannot be cancelled after its showtime <br> - **[Frontend lane]** Built the bookings screen and the cancel action <br> - Explicitly deferred the two endpoints that need AWS: admin poster upload and ticket-PDF download, since neither S3 bucket exists yet and there is nowhere for either operation to write to |  |
+| 10/7 | - Integration, working together at one machine: connected the frontend to the live local API and resolved the mismatches the mocks had hidden <br> - Wrapped every API call in one client module, so switching the base URL later (local to deployed) is a single change |  |
+| 11/7 | - Tested the booking flow end to end locally: confirmed a seat map refresh reflects another user's booking, and that a second attempt on an already-booked seat is rejected <br> - **Milestone reached:** the application runs end to end on localhost, with admin poster upload and ticket download the only two endpoints not yet implemented |  |
 
 ### Week 4 Achievements:
 

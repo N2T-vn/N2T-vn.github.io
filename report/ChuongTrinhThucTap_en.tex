@@ -1,5 +1,21 @@
-\section{Internship Program}
+% No printed heading on this page (the scanned form starts immediately),
+% but it still gets a numbered entry in the table of contents matching
+% what \section would have produced.
+\stepcounter{section}
+\phantomsection
+\addcontentsline{toc}{section}{\protect\numberline{\thesection}Internship Program}
 
-\textit{Form D2 (Internship Program) is attached as a separate file and is not embedded directly in this report.}
+\IfFileExists{form/formD2.pdf}{
+  \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{form/formD2.pdf}
+}{
+    \pagebreak
+    \begin{center}
+        \textit{Attach form D2 here}
+    \end{center}
+    \pagebreak
+}
+
+\thispagestyle{fancy}
+\setcounter{page}{\thepage}
 
 \endinput

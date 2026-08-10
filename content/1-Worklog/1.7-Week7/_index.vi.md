@@ -14,13 +14,13 @@ pre: " <b> 1.7. </b> "
 
 ### Công việc thực hiện trong tuần:
 
-| Day | Task | Time | Reference Material |
-| --- | --- | --- | --- |
-| 2 | - Bài kiểm thử concurrency: hai phiên trình duyệt, đăng nhập với hai người dùng khác nhau, cùng chọn một ghế trên cùng một suất chiếu và gửi request gần như đồng thời <br> - Xác nhận một request nhận được `201 Created` và request còn lại nhận `409 SEAT_ALREADY_BOOKED` nêu rõ ghế đang tranh chấp, và sau đó sơ đồ ghế cho thấy ghế đó chỉ được đặt đúng một lần | 27/7 | |
-| 3 | - Kiểm thử các trường hợp biên trên hệ thống đã triển khai: hủy vé sau giờ chiếu, hủy một booking đã bị hủy trước đó, đặt hơn sáu ghế, token hết hạn hoặc sai định dạng, một người dùng không phải admin gọi route admin, và tải vé cho một booking đã bị hủy <br> - Ghi lại status code và error code thực tế quan sát được cho từng dòng, đối chiếu với bản đặc tả, thay vì để bảng chỉ dừng lại ở dạng checklist | 28/7 | |
-| 4 | - Xây dựng cấu trúc báo cáo và bắt đầu viết, dựa trên bản đặc tả đã đóng băng, nhật ký công việc, và kiến trúc thực tế đã xây dựng <br> - Rà soát lại mọi console AWS đã dùng trong suốt dự án và chụp lại các ảnh chụp màn hình mà báo cáo tham chiếu tới | 29/7 | |
-| 5 | - **Đăng Blog 1** (AWS Budgets và Cost Anomaly Detection, từ phần tự học ở Tuần 2) và **Blog 3** (AWS Config và Conformance Packs, từ phần tự học ở Tuần 3) lên cộng đồng AWS Study Group <br> - Hoàn tất nội dung báo cáo, bao gồm cả phần chi phí phản ánh đúng mức chi tiêu hàng tháng thực tế của kiến trúc thay vì một ước tính theo Free Tier không còn đúng nữa | 30/7 | <https://www.facebook.com/groups/awsstudygroupfcj/permalink/2229088634522763/> |
-| 6 | - Rà soát cuối cùng báo cáo cùng với hệ thống đã triển khai, sửa lại vài chỗ mà hai bên đã lệch nhau do các thay đổi trong tuần <br> - Ghi lại một video demo làm phương án dự phòng trong trường hợp gặp sự cố khi trình bày trực tiếp <br> - **Cột mốc đạt được:** đã nộp báo cáo | 31/7 | |
+| Time | Task | Reference Material |
+| --- | --- | --- |
+| 27/7 | - Bài kiểm thử concurrency: hai phiên trình duyệt, đăng nhập với hai người dùng khác nhau, cùng chọn một ghế trên cùng một suất chiếu và gửi request gần như đồng thời <br> - Xác nhận một request nhận được `201 Created` và request còn lại nhận `409 SEAT_ALREADY_BOOKED` nêu rõ ghế đang tranh chấp, và sau đó sơ đồ ghế cho thấy ghế đó chỉ được đặt đúng một lần |  |
+| 28/7 | - Kiểm thử các trường hợp biên trên hệ thống đã triển khai: hủy vé sau giờ chiếu, hủy một booking đã bị hủy trước đó, đặt hơn sáu ghế, token hết hạn hoặc sai định dạng, một người dùng không phải admin gọi route admin, và tải vé cho một booking đã bị hủy <br> - Ghi lại status code và error code thực tế quan sát được cho từng dòng, đối chiếu với bản đặc tả, thay vì để bảng chỉ dừng lại ở dạng checklist |  |
+| 29/7 | - Xây dựng cấu trúc báo cáo và bắt đầu viết, dựa trên bản đặc tả đã đóng băng, nhật ký công việc, và kiến trúc thực tế đã xây dựng <br> - Rà soát lại mọi console AWS đã dùng trong suốt dự án và chụp lại các ảnh chụp màn hình mà báo cáo tham chiếu tới |  |
+| 30/7 | - **Đăng Blog 1** (AWS Budgets và Cost Anomaly Detection, từ phần tự học ở Tuần 2) và **Blog 3** (AWS Config và Conformance Packs, từ phần tự học ở Tuần 3) lên cộng đồng AWS Study Group <br> - Hoàn tất nội dung báo cáo, bao gồm cả phần chi phí phản ánh đúng mức chi tiêu hàng tháng thực tế của kiến trúc thay vì một ước tính theo Free Tier không còn đúng nữa | <https://www.facebook.com/groups/awsstudygroupfcj/permalink/2229088634522763/> |
+| 31/7 | - Rà soát cuối cùng báo cáo cùng với hệ thống đã triển khai, sửa lại vài chỗ mà hai bên đã lệch nhau do các thay đổi trong tuần <br> - Ghi lại một video demo làm phương án dự phòng trong trường hợp gặp sự cố khi trình bày trực tiếp <br> - **Cột mốc đạt được:** đã nộp báo cáo |  |
 
 ### Kết quả đạt được Tuần 7:
 

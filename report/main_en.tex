@@ -1,8 +1,9 @@
 \documentclass[a4paper,12pt]{article}
+% Kept even in the English report: some quoted event/talk content includes
+% Vietnamese words (e.g. "Rủi ro tối thiểu"), which need vntex's T5 font
+% support to render at all under pdflatex - without it, pdflatex has no
+% glyph for characters like "ủ" and the build fails.
 \usepackage{vntex}
-% vntex redefines \contentsname (and other captions) to Vietnamese by
-% default; this is the English report, so switch it back.
-\renewcommand{\contentsname}{Contents}
 \usepackage{mathptmx}[ptm]
 \usepackage{a4wide,amssymb,epsfig,latexsym,array,hhline,fancyhdr}
 \usepackage[normalem]{ulem}
@@ -131,6 +132,13 @@ captionpos=b,
 \newcommand{\cover}{\fontsize{15}{18}\selectfont}
 \newcommand{\coverbig}{\fontsize{18}{22}\selectfont}
 \newcommand{\coverlistspacing}{\setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}\setlength{\parsep}{0pt}\setlength{\topsep}{0pt}}
+
+% vntex sets \contentsname to "Mục lục" via its own \AtBeginDocument hook,
+% which runs after the preamble and would silently win over a plain
+% \renewcommand placed here. Deferring this one to \AtBeginDocument too
+% means it registers after vntex's (since this line comes later in the
+% source) and runs last, so "Contents" is what actually gets typeset.
+\AtBeginDocument{\renewcommand{\contentsname}{Contents}}
 
 \begin{document}
 
