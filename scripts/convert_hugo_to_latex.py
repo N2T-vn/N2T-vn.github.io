@@ -459,12 +459,14 @@ def render_worklog_table_latex(header, rows, keep_columns):
 
     gap_count = 2 * (len(keep_names) - 1) if len(keep_names) > 1 else 0
     col_lines = [
-        r"  >{\raggedright\arraybackslash}p{(\columnwidth - "
+        r"  >{"
+        + (r"\centering" if t in ("day", "time") else r"\raggedright")
+        + r"\arraybackslash}p{(\columnwidth - "
         + str(gap_count)
         + r"\tabcolsep) * \real{"
         + f"{w:.4f}"
         + "}}"
-        for w in widths
+        for w, t in zip(widths, types)
     ]
     latex.append(r"\begin{longtable}[]{@{}")
     latex.append("\n".join(col_lines) + "@{}}")
