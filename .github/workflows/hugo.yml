@@ -51,14 +51,29 @@ jobs:
           latexmk -pdf -interaction=nonstopmode main_en.tex
           cp main_en.pdf ../report_en.pdf
 
-      - name: Upload PDF reports
-        uses: actions/upload-artifact@v4
+      - name: Package LaTeX source
+        run: |
+          zip -r latex_source.zip report \
+            -x "report/form/*" \
+            -x "*.pdf" -x "*.aux" -x "*.log" -x "*.out" -x "*.toc" -x "*.fls" -x "*.fdb_latexmk"
+
+      - name: Publish GitHub Release
+        uses: ncipollo/release-action@v1
         with:
-          name: internship-reports
-          path: |
-            report_vn.pdf
-            report_en.pdf
-          retention-days: 30
+          tag: latest
+          name: Latest Internship Reports
+          body: |
+            Internship Report PDFs
+
+            Automated PDF generation from Hugo content on push to `main`.
+
+            - Vietnamese: `report_vn.pdf`
+            - English: `report_en.pdf`
+            - LaTeX source: `latex_source.zip`
+          artifacts: "report_vn.pdf,report_en.pdf,latex_source.zip"
+          allowUpdates: true
+          replacesArtifacts: true
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   build-deploy:
     runs-on: ubuntu-latest
