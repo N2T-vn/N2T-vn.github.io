@@ -2,3 +2,15 @@ public/
 .hugo_build.lock
 .DS_Store
 resources/
+
+# PDF report build output
+report/generated/
+report/*.aux
+report/*.log
+report/*.out
+report/*.toc
+report/*.fls
+report/*.fdb_latexmk
+report/*.synctex.gz
+report/*.pdf
+scripts/__pycache__/

@@ -9,6 +9,57 @@ permissions:
   contents: write
 
 jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install TeX Live and pandoc
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq \
+            texlive-latex-recommended \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            texlive-lang-other \
+            latexmk \
+            pandoc
+
+      - name: Install Python dependencies
+        run: pip install pyyaml
+
+      - name: Convert Hugo content to LaTeX
+        run: python3 scripts/convert_hugo_to_latex.py
+
+      - name: Compile Vietnamese PDF
+        working-directory: report
+        run: |
+          latexmk -pdf -interaction=nonstopmode main.tex
+          latexmk -pdf -interaction=nonstopmode main.tex
+          cp main.pdf ../report_vn.pdf
+
+      - name: Compile English PDF
+        working-directory: report
+        run: |
+          latexmk -pdf -interaction=nonstopmode main_en.tex
+          latexmk -pdf -interaction=nonstopmode main_en.tex
+          cp main_en.pdf ../report_en.pdf
+
+      - name: Upload PDF reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: internship-reports
+          path: |
+            report_vn.pdf
+            report_en.pdf
+          retention-days: 30
+
   build-deploy:
     runs-on: ubuntu-latest
 
