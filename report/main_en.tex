@@ -1,5 +1,8 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage{vntex}
+% vntex redefines \contentsname (and other captions) to Vietnamese by
+% default; this is the English report, so switch it back.
+\renewcommand{\contentsname}{Contents}
 \usepackage{mathptmx}[ptm]
 \usepackage{a4wide,amssymb,epsfig,latexsym,array,hhline,fancyhdr}
 \usepackage[normalem]{ulem}
