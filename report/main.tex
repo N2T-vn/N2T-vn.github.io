@@ -120,6 +120,14 @@ captionpos=b,
 
 \thesislayout
 
+% Cover-page text sizes, held to the official template's required 15pt/18pt
+% exactly. The titlepage used to overflow onto a second page; fixed via
+% \coverlistspacing (tighter itemize spacing) and \enlargethispage/\vfill
+% below rather than by shrinking these sizes below what's required.
+\newcommand{\cover}{\fontsize{15}{18}\selectfont}
+\newcommand{\coverbig}{\fontsize{18}{22}\selectfont}
+\newcommand{\coverlistspacing}{\setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}\setlength{\parsep}{0pt}\setlength{\topsep}{0pt}}
+
 \begin{document}
 
 \begin{titlepage}
@@ -132,64 +140,60 @@ captionpos=b,
 \end{tikzpicture}
 
 \begin{center}
-\fontsize{15}{18}\selectfont
-\textbf{ĐẠI HỌC QUỐC GIA THÀNH PHỐ HỒ CHÍ MINH} \\
-\textbf{TRƯỜNG ĐẠI HỌC BÁCH KHOA} \\
-\textbf{KHOA KHOA HỌC VÀ KĨ THUẬT MÁY TÍNH}
+\cover \textbf{ĐẠI HỌC QUỐC GIA THÀNH PHỐ HỒ CHÍ MINH} \\
+\vspace{0.2cm}
+\cover \textbf{TRƯỜNG ĐẠI HỌC BÁCH KHOA} \\
+\vspace{0.2cm}
+\cover \textbf{KHOA KHOA HỌC VÀ KĨ THUẬT MÁY TÍNH}
 \end{center}
 
-\vspace{0.4cm}
+\vspace{0.3cm}
 
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[width=3cm]{Images/hcmut.png}
 \end{center}
-
-\vspace{0.4cm}
+\end{figure}
 
 \begin{center}
-\fontsize{18}{22}\selectfont
-\textbf{BÁO CÁO MÔN HỌC}\\
-\textbf{THỰC TẬP NGOÀI TRƯỜNG}\\
-\textbf{(Mã số môn học: ..............)}
+\begin{tabular}{c}
+\multicolumn{1}{c}{\textbf{{\coverbig BÁO CÁO MÔN HỌC}}}\\
+\\{\textbf{{\coverbig THỰC TẬP NGOÀI TRƯỜNG}}}\\
+\\{\textbf{{\coverbig (Mã số môn học: CO3335)}}}
+\\
+\\
+\textbf{\cover HỌC KỲ HÈ 253 NĂM HỌC 2025-2026} \\
+\end{tabular}
 \end{center}
-
 \vspace{0.2cm}
-
-\begin{center}
-\fontsize{15}{18}\selectfont
-\textbf{HỌC KỲ HÈ 253 NĂM HỌC 2025-2026}
-\end{center}
-
-\vspace{0.5cm}
-
-\fontsize{15}{18}\selectfont
 \begin{itemize}
 \renewcommand\labelitemi{--}
-    \item \textbf{NGÀNH: Khoa học Máy tính}
-    \item \textbf{CHƯƠNG TRÌNH ĐÀO TẠO: OISP}
+\coverlistspacing
+    \item \cover \textbf{NGÀNH: Khoa học Máy tính}
+    \item \cover \textbf{CHƯƠNG TRÌNH ĐÀO TẠO: OISP}
 \end{itemize}
-
-\vspace{0.7cm}
-
-\fontsize{15}{18}\selectfont
+\vspace{0.35cm}
 \begin{itemize}
 \renewcommand\labelitemi{--}
-    \item \textbf{ĐƠN VỊ/ DOANH NGHIỆP NHẬN THỰC TẬP:}
-    \\ \textbf{Amazon Web Services Vietnam Company Limited}
-    \item \textbf{CÁN BỘ HƯỚNG DẪN CHUYÊN MÔN TRỰC TIẾP CỦA ĐƠN VỊ/ DOANH NGHIỆP:}
-    \\ \textbf{Lữ Hoàn Thiện}
-    \item \textbf{CÁN BỘ HỖ TRỢ HƯỚNG DẪN/ GIÁM SÁT/ CHẤM ĐIỂM BÁO CÁO CỦA KHOA (CBHT HD/GS/CĐBC):}
-    \\ \textbf{Nguyễn Minh Tâm}
-    \item \textbf{SINH VIÊN THỰC HIỆN (SVTH):}
-    \\ \textbf{HỌ VÀ TÊN: Nguyễn Thành Tài} \quad \textbf{MSSV: 2353062}
+\coverlistspacing
+    \item \cover \textbf{ĐƠN VỊ/ DOANH NGHIỆP NHẬN THỰC TẬP:}
+    \\ \cover \textbf{Amazon Web Services Vietnam Company Limited}
+    \item \cover \textbf{CÁN BỘ HƯỚNG DẪN CHUYÊN MÔN TRỰC TIẾP CỦA ĐƠN VỊ/ DOANH NGHIỆP:}
+    \\ \cover \textbf{Lữ Hoàn Thiện}
+    \item \cover \textbf{CÁN BỘ HỖ TRỢ HƯỚNG DẪN/ GIÁM SÁT/ CHẤM ĐIỂM BÁO CÁO CỦA KHOA (CBHT HD/GS/CĐBC):}
+    \\ \cover \textbf{Nguyễn Minh Tâm}
+    \item \cover \textbf{SINH VIÊN THỰC HIỆN (SVTH):}
+    \\ \cover \textbf{HỌ VÀ TÊN: Nguyễn Thành Tài} \quad \textbf{MSSV: 2353062}
 \end{itemize}
-
-\vspace{0.5cm}
-
+% Push the place/date line down to the foot of the cover. \enlargethispage
+% reaches past the normal text block so the line can sit just inside the
+% border; \vfill collapses harmlessly if the cover ever grows.
+\enlargethispage{1.3cm}
+\vfill
 \begin{center}
-\fontsize{15}{18}\selectfont
-TP. Hồ Chí Minh, Tháng 08/ Năm 2026
+{\cover TP. Hồ Chí Minh, Tháng 08/ Năm 2026}
 \end{center}
+\vspace{0.5cm}
 \end{titlepage}
 
 \newpage
