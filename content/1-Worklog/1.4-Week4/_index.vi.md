@@ -4,6 +4,7 @@ date: 2026-06-01
 weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
+reportType: "worklog"
 ---
 
 ### Mục tiêu Tuần 4: Caerus - Các Endpoint Cốt lõi, Chỉ chạy Local

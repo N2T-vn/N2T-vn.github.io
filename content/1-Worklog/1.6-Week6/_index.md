@@ -4,6 +4,7 @@ date: 2026-06-01
 weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
+reportType: "worklog"
 ---
 
 ### Week 6 Objectives: Caerus - AWS-Dependent Features, CDN, Network Hardening, and Monitoring

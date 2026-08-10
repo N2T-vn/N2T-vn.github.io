@@ -4,6 +4,7 @@ date: 2026-06-01
 weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
+reportType: "worklog"
 ---
 
 ### Week 3 Objectives: Compute, Storage, and Managed Databases

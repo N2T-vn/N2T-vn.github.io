@@ -4,6 +4,7 @@ date: 2026-06-01
 weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
+reportType: "worklog"
 ---
 
 ### Mục tiêu Tuần 6: Caerus - Các Tính năng Phụ thuộc AWS, CDN, Tăng cường Bảo mật Mạng, và Giám sát

@@ -4,6 +4,7 @@ date: 2026-06-01
 weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
+reportType: "worklog"
 ---
 
 ### Mục tiêu Tuần 3: Compute, Lưu trữ, và Cơ sở dữ liệu Quản lý (Managed Database)

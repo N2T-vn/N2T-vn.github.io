@@ -24,39 +24,28 @@ function Div(el)
 end
 
 function Table(el)
-  -- Worklog "Time | Task | Reference Material" tables: narrow Time and
-  -- Reference so Task gets most of the row. Matched by header text (not
-  -- just column count) so other 3-column tables elsewhere aren't affected.
-  -- Uses pandoc.utils.stringify on the whole head rather than indexing
-  -- into row.cells/cell fields directly - those are internal, positional
-  -- structures whose Lua binding shape has been observed to vary between
-  -- Pandoc versions (same issue col.width vs col[2] had for ColSpec).
-  -- Wrapped in pcall as a last line of defense: if some other Pandoc
-  -- version quirk trips this up, fall through to the plain default-width
-  -- behavior instead of failing the whole conversion.
-  local is_time_table = false
-  local ok, result = pcall(function()
-    if el.head then
-      return pandoc.utils.stringify(el.head):lower():match("^time") ~= nil
-    end
-    return false
-  end)
-  if ok then
-    is_time_table = result
-  end
-
+  -- Worklog tables (Time | Task | Reference Material) are no longer built
+  -- through Pandoc's table parser at all - convert_hugo_to_latex.py emits
+  -- them as raw LaTeX before Pandoc ever sees them, specifically to avoid
+  -- depending on Pandoc's per-cell column-type heuristics and Lua table
+  -- AST shape (both proved version-fragile). This function now only needs
+  -- to handle whatever other ordinary tables show up elsewhere.
+  --
   -- Each colspec is a plain {Alignment, ColWidth} pair indexed by position
   -- (col[1], col[2]), not a named-field object - col.width is a no-op.
-  if #el.colspecs == 3 and is_time_table then
-    local widths = {0.10, 0.68, 0.22}
-    for i, col in ipairs(el.colspecs) do
-      col[2] = widths[i]
-    end
-    return el
-  end
-
+  --
+  -- ColWidthDefault does NOT reliably produce wrapping p{width} columns:
+  -- Pandoc only does that when a cell already has multi-block content
+  -- (e.g. our worklog cells, which have <br>-separated bullet lines).
+  -- A plain single-paragraph table with long cell text - e.g. cost/risk
+  -- tables elsewhere in the report - gets non-wrapping "l" columns
+  -- instead under ColWidthDefault, and long cells overflow the page
+  -- outright instead of wrapping. Assigning explicit equal fractional
+  -- widths forces p{width} columns (and thus wrapping) unconditionally.
+  local n = #el.colspecs
+  local equal_width = 1.0 / n
   for _, col in ipairs(el.colspecs) do
-    col[2] = pandoc.ColWidthDefault
+    col[2] = equal_width
   end
   return el
 end

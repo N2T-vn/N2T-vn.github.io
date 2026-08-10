@@ -4,6 +4,7 @@ date: 2026-06-01
 weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
+reportType: "worklog"
 ---
 
 ### Week 7 Objectives: Caerus - Testing, Report, and Submission

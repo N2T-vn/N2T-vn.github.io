@@ -288,13 +288,16 @@ def latex_escape_cell(text):
 
 
 def task_cell_to_latex(text):
-    """Convert a worklog Task cell with <br>, '-' and '+' markers to multiline LaTeX."""
+    """Convert a worklog Task cell's <br>-separated lines to LaTeX, joined
+    with \\newline. The leading "-"/"+" markers are kept as literal text
+    rather than turned into a bulleted list, matching the reference
+    template's rendering.
+    """
     if not text:
         return ""
 
     text = str(text)
 
-    # Normalize line breaks from Hugo/Markdown table cell.
     text = text.replace("<br>", "\n")
     text = text.replace("<br/>", "\n")
     text = text.replace("<br />", "\n")
@@ -303,51 +306,7 @@ def task_cell_to_latex(text):
     raw_lines = [x.strip() for x in text.splitlines()]
     raw_lines = [x for x in raw_lines if x]
 
-    if not raw_lines:
-        return ""
-
-    out = []
-    in_itemize = False
-
-    def open_itemize():
-        nonlocal in_itemize
-        if not in_itemize:
-            out.append(r"\begin{itemize}")
-            out.append(r"\setlength\itemsep{0.15em}")
-            out.append(r"\setlength\parskip{0pt}")
-            in_itemize = True
-
-    def close_itemize():
-        nonlocal in_itemize
-        if in_itemize:
-            out.append(r"\end{itemize}")
-            in_itemize = False
-
-    for line in raw_lines:
-        line = line.strip()
-
-        # "- Task"
-        if line.startswith("-"):
-            open_itemize()
-            item = line[1:].strip()
-            out.append(r"\item " + latex_escape_cell(item))
-
-        # "+ sub task"
-        elif line.startswith("+"):
-            open_itemize()
-            item = line[1:].strip()
-            out.append(r"\item[] \hspace{1em}+ " + latex_escape_cell(item))
-
-        # fallback normal line
-        else:
-            if in_itemize:
-                out.append(r"\item " + latex_escape_cell(line))
-            else:
-                out.append(latex_escape_cell(line) + r"\\")
-
-    close_itemize()
-
-    return "\n".join(out)
+    return r" \newline ".join(latex_escape_cell(line) for line in raw_lines)
 
 
 def simple_cell_to_latex(text):
@@ -362,6 +321,26 @@ def simple_cell_to_latex(text):
     text = text.replace("&emsp;", " ")
 
     return latex_escape_cell(text)
+
+
+def reference_cell_to_latex(text):
+    """Convert a Reference Material cell to LaTeX, wrapping a bare URL in
+    \\url{} (verbatim, clickable) instead of escaping it as plain text.
+    """
+    if not text:
+        return ""
+
+    text = str(text).strip()
+
+    m = re.match(r"^<(https?://[^>]+)>$", text)
+    if m:
+        return r"\url{" + m.group(1) + "}"
+
+    m = re.match(r"^(https?://\S+)$", text)
+    if m:
+        return r"\url{" + m.group(1) + "}"
+
+    return simple_cell_to_latex(text)
 
 
 def extract_first_markdown_table(content):
@@ -398,7 +377,16 @@ def extract_first_markdown_table(content):
 
 
 def render_worklog_table_latex(header, rows, keep_columns):
-    """Render worklog markdown table as custom LaTeX longtable."""
+    """Render a worklog markdown table as a hand-built LaTeX longtable.
+
+    Bypasses Pandoc's own table parsing/writing entirely, sidestepping two
+    real problems that came up going through Pandoc for this exact table
+    shape: cells without embedded line breaks get non-wrapping "l" columns
+    (long cells then overflow the page instead of wrapping), and a long
+    hyphenated URL needs the url package's `hyphens` option to break at
+    all - easy to control here directly rather than at the mercy of
+    Pandoc's per-cell column-type heuristics.
+    """
     header_norm = [normalize_col_name(h) for h in header]
     keep_norm = [normalize_col_name(c) for c in keep_columns]
 
@@ -415,56 +403,98 @@ def render_worklog_table_latex(header, rows, keep_columns):
         keep_idx = list(range(len(header)))
         keep_names = header
 
-    # Detect columns
     day_names = {"day", "thứ", "thu"}
     task_names = {"task", "công việc", "cong viec"}
-    complete_names = {"completion date", "complete date", "ngày hoàn thành", "ngay hoan thanh"}
+    time_names = {
+        "time", "thời gian", "thoi gian",
+        "completion date", "complete date", "ngày hoàn thành", "ngay hoan thanh",
+    }
+    reference_names = {
+        "reference material", "reference", "tài liệu tham khảo", "tai lieu tham khao",
+    }
 
-    latex = []
-    latex.append(r"\begingroup")
-    latex.append(r"\small")
-    latex.append(r"\setlength{\tabcolsep}{5pt}")
-    latex.append(r"\renewcommand{\arraystretch}{1.2}")
-    latex.append(r"\begin{longtable}{@{}p{0.07\linewidth}p{0.72\linewidth}p{0.17\linewidth}@{}}")
-    latex.append(r"\toprule")
+    # Base width proportions (sum to 1.0), taken from the reference
+    # template's Day/Task/Completion-Date/Reference layout and renormalized
+    # below to whichever subset of columns is actually present, so Task
+    # keeps getting the lion's share regardless of which columns are kept.
+    base_weights = {"day": 0.0417, "task": 0.5833, "time": 0.1667, "reference": 0.2083}
 
-    # Force nicer names based on selected columns count.
-    display_headers = []
-    for name in keep_names:
+    def column_type(name):
         n = normalize_col_name(name)
         if n in day_names:
+            return "day"
+        if n in task_names:
+            return "task"
+        if n in time_names:
+            return "time"
+        if n in reference_names:
+            return "reference"
+        return None
+
+    types = [column_type(name) for name in keep_names]
+
+    fallback_weight = 1.0 / len(keep_names) if keep_names else 1.0
+    raw_weights = [base_weights.get(t, fallback_weight) for t in types]
+    total_weight = sum(raw_weights) or 1.0
+    widths = [w / total_weight for w in raw_weights]
+
+    display_headers = []
+    for name, t in zip(keep_names, types):
+        if t == "day":
             display_headers.append("Day" if name.lower() == "day" else "Thứ")
-        elif n in task_names:
+        elif t == "task":
             display_headers.append("Task" if name.lower() == "task" else "Công việc")
-        elif n in complete_names:
-            display_headers.append("Completion Date" if "date" in name.lower() else "Ngày hoàn thành")
+        elif t == "time":
+            display_headers.append(name)
+        elif t == "reference":
+            display_headers.append(name)
         else:
             display_headers.append(name)
 
-    # If user selects exactly Day/Task/Completion, use 3-column layout.
-    latex.append(" & ".join(r"\textbf{" + latex_escape_cell(h) + "}" for h in display_headers) + r" \\")
-    latex.append(r"\midrule")
+    # No \begingroup/\endgroup or \tabcolsep/\arraystretch wrapper here -
+    # postprocess_latex's compact_longtables() adds that uniformly around
+    # every \begin{longtable}...\end{longtable} in the final output,
+    # including this one. Adding it here too would double-wrap it.
+    latex = []
+
+    gap_count = 2 * (len(keep_names) - 1) if len(keep_names) > 1 else 0
+    col_lines = [
+        r"  >{\raggedright\arraybackslash}p{(\columnwidth - "
+        + str(gap_count)
+        + r"\tabcolsep) * \real{"
+        + f"{w:.4f}"
+        + "}}"
+        for w in widths
+    ]
+    latex.append(r"\begin{longtable}[]{@{}")
+    latex.append("\n".join(col_lines) + "@{}}")
+    latex.append(r"\toprule\noalign{}")
+
+    header_cells = [
+        r"\begin{minipage}[b]{\linewidth}\centering" + "\n" + latex_escape_cell(h) + "\n" + r"\end{minipage}"
+        for h in display_headers
+    ]
+    latex.append(" & ".join(header_cells) + r" \\")
+    latex.append(r"\midrule\noalign{}")
     latex.append(r"\endhead")
-    latex.append(r"\bottomrule")
-    latex.append(r"\endfoot")
+    latex.append(r"\bottomrule\noalign{}")
+    latex.append(r"\endlastfoot")
 
     for row in rows:
         selected = [row[idx] if idx < len(row) else "" for idx in keep_idx]
         rendered = []
 
-        for name, cell in zip(keep_names, selected):
-            n = normalize_col_name(name)
-
-            if n in task_names:
+        for t, cell in zip(types, selected):
+            if t == "task":
                 rendered.append(task_cell_to_latex(cell))
+            elif t == "reference":
+                rendered.append(reference_cell_to_latex(cell))
             else:
                 rendered.append(simple_cell_to_latex(cell))
 
         latex.append(" & ".join(rendered) + r" \\")
-        latex.append(r"\addlinespace[0.35em]")
 
     latex.append(r"\end{longtable}")
-    latex.append(r"\endgroup")
 
     return "\n".join(latex)
 

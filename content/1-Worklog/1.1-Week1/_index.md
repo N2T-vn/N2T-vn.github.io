@@ -4,6 +4,7 @@ date: 2026-06-01
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
+reportType: "worklog"
 ---
 
 ### Week 1 Objectives: Orientation and Project Definition

@@ -4,6 +4,7 @@ date: 2026-06-01
 weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
+reportType: "worklog"
 ---
 
 ### Week 4 Objectives: Caerus - Core Endpoints, Local Only

@@ -4,6 +4,7 @@ date: 2026-06-01
 weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
+reportType: "worklog"
 ---
 
 ### Week 2 Objectives: Account Foundations and Identity and Access Management

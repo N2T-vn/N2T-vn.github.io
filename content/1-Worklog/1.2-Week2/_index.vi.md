@@ -4,6 +4,7 @@ date: 2026-06-01
 weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
+reportType: "worklog"
 ---
 
 ### Mục tiêu Tuần 2: Nền tảng Tài khoản và Quản lý Danh tính, Truy cập (IAM)

@@ -4,6 +4,7 @@ date: 2026-06-01
 weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
+reportType: "worklog"
 ---
 
 ### Mục tiêu Tuần 7: Caerus - Kiểm thử, Báo cáo, và Nộp bài

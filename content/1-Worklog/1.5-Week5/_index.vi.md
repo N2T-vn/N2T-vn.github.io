@@ -4,6 +4,7 @@ date: 2026-06-01
 weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
+reportType: "worklog"
 ---
 
 ### Mục tiêu Tuần 5: Caerus - Triển khai lên AWS

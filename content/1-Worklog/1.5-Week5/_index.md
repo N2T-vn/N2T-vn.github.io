@@ -4,6 +4,7 @@ date: 2026-06-01
 weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
+reportType: "worklog"
 ---
 
 ### Week 5 Objectives: Caerus - Deploying to AWS
