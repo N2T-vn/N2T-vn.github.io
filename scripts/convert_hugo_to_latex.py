@@ -581,12 +581,6 @@ def preprocess_markdown(content, meta=None):
     content = re.sub(r"\s*\{\{%\s*/notice\s*%\}\}", r"\n:::\n", content)
 
     content = content.replace("&emsp;", r"\qquad ")
-    content = content.replace("\u2705", r"\checkmark")
-    content = content.replace("\u2610", r"$\square$")
-    content = re.sub(r"⚠\ufe0f?", "!", content)
-    content = content.replace("\u26a0", "!")
-    content = content.replace("\u2192", r"$\rightarrow$")
-    content = content.replace("\u2248", r"$\approx$")
 
     return content
 # ---------------------------------------------------------------------------
@@ -668,11 +662,37 @@ def compact_longtables(latex):
     return latex
 
 
+def replace_unicode_symbols(latex):
+    """Replace Unicode symbols pdflatex can't render with LaTeX equivalents.
+
+    This runs on Pandoc's *output*, not the source Markdown: doing it before
+    Pandoc sees the text means any substitution that inserts a literal "$"
+    can collide with Pandoc's own math-dollar parsing when the surrounding
+    prose already contains "$" (e.g. a cost table cell like "\u2248$81"),
+    producing garbled math-mode output instead of a compile error.
+    """
+    replacements = {
+        "\u2705": r"$\checkmark$",   # ✅
+        "\u2610": r"$\square$",      # ☐
+        "\u26a0\ufe0f": "!",         # ⚠️
+        "\u26a0": "!",               # ⚠
+        "\u2192": r"$\rightarrow$",  # →
+        "\u2248": r"$\approx$",      # ≈
+        "\u2212": "-",               # − (minus sign, distinct from hyphen)
+    }
+
+    for symbol, tex in replacements.items():
+        latex = latex.replace(symbol, tex)
+
+    return latex
+
+
 def postprocess_latex(latex):
     # Do NOT replace Pandoc table column specs by regex.
     latex = re.sub(r"\\label\{[^}]+\}", "", latex)
     latex = neutralize_body_headings(latex)
     latex = compact_longtables(latex)
+    latex = replace_unicode_symbols(latex)
     return latex
 
 
@@ -692,6 +712,7 @@ def convert_to_latex(md_text, source_path=None):
                     "-f", "markdown+raw_tex+fenced_divs+bracketed_spans",
                     "-t", "latex",
                     "--top-level-division=section",
+                    "--no-highlight",
                     "--lua-filter", LUA_FILTER,
                     "-o", tmp_out,
                 ],
