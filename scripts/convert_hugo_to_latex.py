@@ -679,6 +679,8 @@ def replace_unicode_symbols(latex):
         "\u2192": r"$\rightarrow$",  # →
         "\u2248": r"$\approx$",      # ≈
         "\u2212": "-",               # − (minus sign, distinct from hyphen)
+        "≥": r"$\geq$",         # ≥
+        "≤": r"$\leq$",         # ≤
     }
 
     for symbol, tex in replacements.items():
