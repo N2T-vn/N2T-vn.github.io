@@ -586,6 +586,7 @@ def preprocess_markdown(content, meta=None):
     content = re.sub(r"⚠\ufe0f?", "!", content)
     content = content.replace("\u26a0", "!")
     content = content.replace("\u2192", r"$\rightarrow$")
+    content = content.replace("\u2248", r"$\approx$")
 
     return content
 # ---------------------------------------------------------------------------
