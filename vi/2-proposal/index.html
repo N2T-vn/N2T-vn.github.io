@@ -1,0 +1,294 @@
+<!doctype html><html lang=vi class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.134.3"><meta name=description content><meta name=author content="tai.nguyen206k23@hcmut.edu.vn"><link rel=icon href=/images/favicon.png type=image/png><title>Bản đề xuất :: Báo cáo thực tập</title>
+<link href=/css/nucleus.css?1786714200 rel=stylesheet><link href=/css/fontawesome-all.min.css?1786714200 rel=stylesheet><link href=/css/hybrid.css?1786714200 rel=stylesheet><link href=/css/featherlight.min.css?1786714200 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1786714200 rel=stylesheet><link href=/css/auto-complete.css?1786714200 rel=stylesheet><link href=/css/atom-one-dark-reasonable.css?1786714200 rel=stylesheet><link href=/css/theme.css?1786714200 rel=stylesheet><link href=/css/hugo-theme.css?1786714200 rel=stylesheet><link href=/css/theme-workshop.css?1786714200 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1786714200></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style></head><body data-url=/vi/2-proposal/><nav id=sidebar class=showVisitedLinks><div id=header-wrapper><div id=header><a id=logo href=/><svg id="Layer_1" data-name="Layer 1" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff}.cls-2{fill:#fff;fill-rule:evenodd}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09 10.85a4.7 4.7.0 00.19 1.48 7.73 7.73.0 00.54 1.19.77.77.0 01.12.38.64.64.0 01-.32.49l-1 .7a.83.83.0 01-.44.15.69.69.0 01-.49-.23 3.8 3.8.0 01-.6-.77q-.25-.42-.51-1a6.14 6.14.0 01-4.89 2.3 4.54 4.54.0 01-3.32-1.19 4.27 4.27.0 01-1.22-3.2 4.28 4.28.0 011.46-3.4A6.06 6.06.0 017.69 6.46a12.47 12.47.0 011.76.13q.92.13 1.91.36V5.73a3.65 3.65.0 00-.79-2.66A3.81 3.81.0 007.86 2.3a7.71 7.71.0 00-1.79.22 12.78 12.78.0 00-1.79.57 4.55 4.55.0 01-.58.22h-.26q-.35.0-.35-.52V2a1.09 1.09.0 01.12-.58 1.2 1.2.0 01.47-.35A10.88 10.88.0 015.77.32 10.19 10.19.0 018.36.0a6 6 0 014.35 1.35 5.49 5.49.0 011.38 4.09zM7.34 13.38a5.36 5.36.0 001.72-.31A3.63 3.63.0 0010.63 12 2.62 2.62.0 0011.19 11a5.63 5.63.0 00.16-1.44v-.7a14.35 14.35.0 00-1.53-.28 12.37 12.37.0 00-1.56-.1 3.84 3.84.0 00-2.47.67A2.34 2.34.0 005 11a2.35 2.35.0 00.61 1.76A2.4 2.4.0 007.34 13.38zm13.35 1.8a1 1 0 01-.64-.16 1.3 1.3.0 01-.35-.65L15.81 1.51a3 3 0 01-.15-.67.36.36.0 01.41-.41H17.7a1 1 0 01.65.16 1.4 1.4.0 01.33.65l2.79 11 2.59-11A1.17 1.17.0 0124.39.6a1.1 1.1.0 01.67-.16H26.4a1.1 1.1.0 01.67.16 1.17 1.17.0 01.32.65L30 12.39 32.88 1.25A1.39 1.39.0 0133.22.6a1 1 0 01.65-.16h1.54a.36.36.0 01.41.41 1.36 1.36.0 010 .26 3.64 3.64.0 01-.12.41l-4 12.86a1.3 1.3.0 01-.35.65 1 1 0 01-.64.16H29.25a1 1 0 01-.67-.17 1.26 1.26.0 01-.32-.67L25.67 3.64l-2.56 10.7a1.26 1.26.0 01-.32.67 1 1 0 01-.67.17zm21.36.44a11.28 11.28.0 01-2.56-.29 7.44 7.44.0 01-1.92-.67 1 1 0 01-.61-.93v-.84q0-.52.38-.52a.9.9.0 01.31.06l.42.17a8.77 8.77.0 001.83.58 9.78 9.78.0 002 .2 4.48 4.48.0 002.43-.55 1.76 1.76.0 00.86-1.57 1.61 1.61.0 00-.45-1.16A4.29 4.29.0 0043 9.22l-2.41-.76A5.15 5.15.0 0138 6.78a3.94 3.94.0 01-.83-2.41 3.7 3.7.0 01.45-1.85 4.47 4.47.0 011.19-1.37 5.27 5.27.0 011.7-.86A7.4 7.4.0 0142.6.0a8.87 8.87.0 011.12.07q.57.07 1.08.19t.95.26a4.27 4.27.0 01.7.29 1.59 1.59.0 01.49.41.94.94.0 01.15.55v.79q0 .52-.38.52a1.76 1.76.0 01-.64-.2 7.74 7.74.0 00-3.2-.64 4.37 4.37.0 00-2.21.47 1.6 1.6.0 00-.79 1.48 1.58 1.58.0 00.49 1.18 4.94 4.94.0 001.83.92L44.55 7a5.08 5.08.0 012.57 1.6A3.76 3.76.0 0147.9 11a4.21 4.21.0 01-.44 1.93 4.4 4.4.0 01-1.21 1.47 5.43 5.43.0 01-1.85.93A8.25 8.25.0 0142.05 15.62z"/><path class="cls-2" d="M45.19 23.81C39.72 27.85 31.78 30 25 30A36.64 36.64.0 01.22 20.57c-.51-.46-.06-1.09.56-.74A49.78 49.78.0 0025.53 26.4 49.23 49.23.0 0044.4 22.53C45.32 22.14 46.1 23.14 45.19 23.81z"/><path class="cls-2" d="M47.47 21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74 3.13-2.2 8.27-1.57 8.86-.83s-.16 5.89-3.09 8.35c-.45.38-.88.18-.68-.32C46.69 25.8 48.17 22.11 47.47 21.21z"/></svg></a></div><div class=searchbox><label for=search-by><i class="fas fa-search"></i></label>
+<input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span></div><script type=text/javascript src=/js/lunr.min.js?1786714200></script><script type=text/javascript src=/js/auto-complete.js?1786714200></script><script type=text/javascript>var baseurl="https://N2T-vn.github.io//vi"</script><script type=text/javascript src=/js/search.js?1786714200></script></div><div class=highlightable><ul class=topics><li data-nav-id=/vi/1-worklog/ title="Nhật ký công việc" class=dd-item><a href=/vi/1-worklog/><b>1. </b>Nhật ký công việc
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/1-worklog/1.1-week1/ title="Nhật ký tuần 1" class=dd-item><a href=/vi/1-worklog/1.1-week1/><b>1.1. </b>Nhật ký tuần 1
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.2-week2/ title="Nhật ký tuần 2" class=dd-item><a href=/vi/1-worklog/1.2-week2/><b>1.2. </b>Nhật ký tuần 2
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.3-week3/ title="Nhật ký tuần 3" class=dd-item><a href=/vi/1-worklog/1.3-week3/><b>1.3. </b>Nhật ký tuần 3
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.4-week4/ title="Nhật ký tuần 4" class=dd-item><a href=/vi/1-worklog/1.4-week4/><b>1.4. </b>Nhật ký tuần 4
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.5-week5/ title="Nhật ký tuần 5" class=dd-item><a href=/vi/1-worklog/1.5-week5/><b>1.5. </b>Nhật ký tuần 5
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.6-week6/ title="Nhật ký tuần 6" class=dd-item><a href=/vi/1-worklog/1.6-week6/><b>1.6. </b>Nhật ký tuần 6
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.7-week7/ title="Nhật ký tuần 7" class=dd-item><a href=/vi/1-worklog/1.7-week7/><b>1.7. </b>Nhật ký tuần 7
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/2-proposal/ title="Bản đề xuất" class="dd-item
+active"><a href=/vi/2-proposal/><b>2. </b>Bản đề xuất
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/3-blogsposted/ title="Các blog đã đăng" class=dd-item><a href=/vi/3-blogsposted/><b>3. </b>Các blog đã đăng
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/3-blogsposted/3.1-blog1/ title="Blog 1" class=dd-item><a href=/vi/3-blogsposted/3.1-blog1/><b>3.1. </b>Blog 1
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/3-blogsposted/3.2-blog2/ title="Blog 2" class=dd-item><a href=/vi/3-blogsposted/3.2-blog2/><b>3.2. </b>Blog 2
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/3-blogsposted/3.3-blog3/ title="Blog 3" class=dd-item><a href=/vi/3-blogsposted/3.3-blog3/><b>3.3. </b>Blog 3
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/4-eventparticipated/ title="Các sự kiện đã tham gia" class=dd-item><a href=/vi/4-eventparticipated/><b>4. </b>Các sự kiện đã tham gia
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/4-eventparticipated/4.1-event1/ title="Sự kiện 1" class=dd-item><a href=/vi/4-eventparticipated/4.1-event1/><b>4.1. </b>Sự kiện 1
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/4-eventparticipated/4.2-event2/ title="Sự kiện 2" class=dd-item><a href=/vi/4-eventparticipated/4.2-event2/><b>4.2. </b>Sự kiện 2
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/5-workshop/ title=Workshop class=dd-item><a href=/vi/5-workshop/><b>5. </b>Workshop
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/5-workshop/5.1-overview/ title="Giới thiệu" class=dd-item><a href=/vi/5-workshop/5.1-overview/><b>5.1. </b>Giới thiệu
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.2-prerequisites/ title="Các bước chuẩn bị" class=dd-item><a href=/vi/5-workshop/5.2-prerequisites/><b>5.2. </b>Các bước chuẩn bị
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.3-design/ title="Thiết kế hệ thống" class=dd-item><a href=/vi/5-workshop/5.3-design/><b>5.3. </b>Thiết kế hệ thống
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/5-workshop/5.3-design/5.3.1-api-spec/ title="Đặc tả API" class=dd-item><a href=/vi/5-workshop/5.3-design/5.3.1-api-spec/><b>5.3.1 </b>Đặc tả API
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.3-design/5.3.2-database-schema/ title="Thiết kế cơ sở dữ liệu" class=dd-item><a href=/vi/5-workshop/5.3-design/5.3.2-database-schema/><b>5.3.2 </b>Thiết kế cơ sở dữ liệu
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.3-design/5.3.3-screen-map/ title="Bản đồ màn hình và luồng người dùng" class=dd-item><a href=/vi/5-workshop/5.3-design/5.3.3-screen-map/><b>5.3.3 </b>Bản đồ màn hình và luồng người dùng
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/5-workshop/5.4-local-build/ title="Xây dựng cục bộ" class=dd-item><a href=/vi/5-workshop/5.4-local-build/><b>5.4. </b>Xây dựng cục bộ
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/5-workshop/5.4-local-build/5.4.1-backend/ title="Backend: Express và PostgreSQL trên Docker" class=dd-item><a href=/vi/5-workshop/5.4-local-build/5.4.1-backend/><b>5.4.1 </b>Backend: Express và PostgreSQL trên Docker
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.4-local-build/5.4.2-frontend/ title="Frontend: React với dữ liệu giả" class=dd-item><a href=/vi/5-workshop/5.4-local-build/5.4.2-frontend/><b>5.4.2 </b>Frontend: React với dữ liệu giả
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.4-local-build/5.4.3-integration/ title="Tích hợp" class=dd-item><a href=/vi/5-workshop/5.4-local-build/5.4.3-integration/><b>5.4.3 </b>Tích hợp
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/5-workshop/5.5-rds/ title="Amazon RDS cho PostgreSQL" class=dd-item><a href=/vi/5-workshop/5.5-rds/><b>5.5. </b>Amazon RDS cho PostgreSQL
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/5-workshop/5.5-rds/5.5.1-launch-instance/ title="Khởi tạo DB Instance" class=dd-item><a href=/vi/5-workshop/5.5-rds/5.5.1-launch-instance/><b>5.5.1 </b>Khởi tạo DB Instance
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/5-workshop/5.6-s3/ title="Amazon S3" class=dd-item><a href=/vi/5-workshop/5.6-s3/><b>5.6. </b>Amazon S3
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/5-workshop/5.6-s3/5.6.1-create-buckets/ title="Tạo các bucket" class=dd-item><a href=/vi/5-workshop/5.6-s3/5.6.1-create-buckets/><b>5.6.1 </b>Tạo các bucket
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.6-s3/5.6.2-cloudfront-for-frontend/ title="CloudFront cho Frontend" class=dd-item><a href=/vi/5-workshop/5.6-s3/5.6.2-cloudfront-for-frontend/><b>5.6.2 </b>CloudFront cho Frontend
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.6-s3/5.6.3-iam-role/ title="IAM Role cho việc tải ảnh lên" class=dd-item><a href=/vi/5-workshop/5.6-s3/5.6.3-iam-role/><b>5.6.3 </b>IAM Role cho việc tải ảnh lên
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/5-workshop/5.7-ec2/ title="Amazon EC2 và triển khai" class=dd-item><a href=/vi/5-workshop/5.7-ec2/><b>5.7. </b>Amazon EC2 và triển khai
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/5-workshop/5.7-ec2/5.7.1-deploy-api/ title="Hạ tầng mạng Private và Instance Đầu Tiên" class=dd-item><a href=/vi/5-workshop/5.7-ec2/5.7.1-deploy-api/><b>5.7.1 </b>Hạ tầng mạng Private và Instance Đầu Tiên
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.7-ec2/5.7.2-security-groups/ title="Siết chặt Security Group" class=dd-item><a href=/vi/5-workshop/5.7-ec2/5.7.2-security-groups/><b>5.7.2 </b>Siết chặt Security Group
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.7-ec2/5.7.3-load-balancer/ title="Load Balancer và Instance Thứ Hai" class=dd-item><a href=/vi/5-workshop/5.7-ec2/5.7.3-load-balancer/><b>5.7.3 </b>Load Balancer và Instance Thứ Hai
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.7-ec2/5.7.4-cloudfront/ title="CloudFront: Thêm API vào Cùng Một Domain" class=dd-item><a href=/vi/5-workshop/5.7-ec2/5.7.4-cloudfront/><b>5.7.4 </b>CloudFront: Thêm API vào Cùng Một Domain
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/5-workshop/5.8-cloudwatch/ title="CloudWatch và SNS" class=dd-item><a href=/vi/5-workshop/5.8-cloudwatch/><b>5.8. </b>CloudWatch và SNS
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/5-workshop/5.8-cloudwatch/5.8.1-dashboard/ title="Xây dựng dashboard" class=dd-item><a href=/vi/5-workshop/5.8-cloudwatch/5.8.1-dashboard/><b>5.8.1 </b>Xây dựng dashboard
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.8-cloudwatch/5.8.2-alarms/ title="Cảnh báo và thông báo" class=dd-item><a href=/vi/5-workshop/5.8-cloudwatch/5.8.2-alarms/><b>5.8.2 </b>Cảnh báo và thông báo
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/5-workshop/5.9-testing/ title="Kiểm thử" class=dd-item><a href=/vi/5-workshop/5.9-testing/><b>5.9. </b>Kiểm thử
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/5-workshop/5.9-testing/5.9.1-concurrency/ title="Kiểm thử đặt trùng ghế" class=dd-item><a href=/vi/5-workshop/5.9-testing/5.9.1-concurrency/><b>5.9.1 </b>Kiểm thử đặt trùng ghế
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.9-testing/5.9.2-edge-cases/ title="Các trường hợp biên" class=dd-item><a href=/vi/5-workshop/5.9-testing/5.9.2-edge-cases/><b>5.9.2 </b>Các trường hợp biên
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/5-workshop/5.10-cost/ title="Quản lý chi phí và tài nguyên" class=dd-item><a href=/vi/5-workshop/5.10-cost/><b>5.10. </b>Quản lý chi phí và tài nguyên
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.11-cleanup/ title="Dọn dẹp tài nguyên" class=dd-item><a href=/vi/5-workshop/5.11-cleanup/><b>5.11. </b>Dọn dẹp tài nguyên
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/6-self-evaluation/ title="Tự đánh giá" class=dd-item><a href=/vi/6-self-evaluation/><b>6. </b>Tự đánh giá
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/7-feedback/ title="Chia sẻ, đóng góp ý kiến" class=dd-item><a href=/vi/7-feedback/><b>7. </b>Chia sẻ, đóng góp ý kiến
+<i class="fas fa-check read-icon"></i></a></li></ul><section id=shortcuts><h3>More</h3><ul><li><a class=padding href=http://awsstudygroup.com><i class='fab fa-aws'></i> AWS Study Group - Blog</a></li><li><a class=padding href=https://www.facebook.com/groups/awsstudygroupfcj><i class='fab fa-facebook'></i> AWS Study Group - Nhóm FB</a></li></ul></section><section id=prefooter><hr><ul><li><a class=padding><i class="fas fa-language fa-fw"></i><div class=select-style><select id=select-language onchange="location=this.value"><option id=en value=https://N2T-vn.github.io/2-proposal/>English</option><option id=vi value=https://N2T-vn.github.io/vi/2-proposal/ selected>Tiếng Việt</option></select><svg id="Capa_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="255" height="255" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255"><g><g id="arrow-drop-down"><polygon points="0,63.75 127.5,191.25 255,63.75"/></g></g></svg></div></a></li><li><a class=padding href=# data-clear-history-toggle><i class="fas fa-history fa-fw"></i> Clear History</a></li></ul></section><section id=footer><left><br><br><b>Last Updated</b><br><i><font color=orange>14-08-2026</font>
+</i></left><left><br><br><b>Team</b><br><i><a href=https://www.facebook.com/groups/660548818043427 style=color:orange>First Cloud AI Journey</a>
+</i></left><script async defer src=https://buttons.github.io/buttons.js></script></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i>
+</a></span><span id=toc-menu><i class="fas fa-list-alt"></i></span>
+<span class=links><a href=/vi/>Báo cáo thực tập</a> > Bản đề xuất</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><a href=#đảm-bảo-tính-toàn-vẹn-của-ghế-ngồi-dưới-điều-kiện-concurrency-với-các-dịch-vụ-aws-managed-services>Đảm bảo tính toàn vẹn của ghế ngồi dưới điều kiện concurrency với các dịch vụ AWS Managed Services</a><ul><li><a href=#1-tóm-tắt-tổng-quan-executive-summary>1. Tóm tắt tổng quan (Executive Summary)</a></li><li><a href=#2-phát-biểu-vấn-đề-problem-statement>2. Phát biểu vấn đề (Problem Statement)</a></li><li><a href=#3-kiến-trúc-giải-pháp-solution-architecture>3. Kiến trúc giải pháp (Solution Architecture)</a></li><li><a href=#4-triển-khai-kỹ-thuật-technical-implementation>4. Triển khai kỹ thuật (Technical Implementation)</a></li><li><a href=#5-lộ-trình--các-mốc-quan-trọng-timeline--milestones>5. Lộ trình & Các mốc quan trọng (Timeline & Milestones)</a></li><li><a href=#6-dự-toán-ngân-sách-budget-estimation>6. Dự toán ngân sách (Budget Estimation)</a></li><li><a href=#7-đánh-giá-rủi-ro-risk-assessment>7. Đánh giá rủi ro (Risk Assessment)</a></li><li><a href=#8-kết-quả-kỳ-vọng-expected-outcomes>8. Kết quả kỳ vọng (Expected Outcomes)</a></li></ul></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Bản đề xuất</h1><h1 id=caerus---nền-tảng-đặt-ghế-xem-phim>Caerus - Nền tảng đặt ghế xem phim</h1><h2 id=đảm-bảo-tính-toàn-vẹn-của-ghế-ngồi-dưới-điều-kiện-concurrency-với-các-dịch-vụ-aws-managed-services>Đảm bảo tính toàn vẹn của ghế ngồi dưới điều kiện concurrency với các dịch vụ AWS Managed Services</h2><h3 id=1-tóm-tắt-tổng-quan-executive-summary>1. Tóm tắt tổng quan (Executive Summary)</h3><p>Caerus là một ứng dụng web đặt ghế xem phim được xây dựng để trình diễn một
+triển khai AWS hoàn chỉnh trải rộng trên các dịch vụ compute, storage,
+database, networking và monitoring. Khách hàng duyệt các suất chiếu, chọn
+ghế từ sơ đồ ghế trực tiếp (live seat map), đặt tối đa sáu ghế trong một
+transaction duy nhất, xem lại các lượt đặt của mình, hủy đặt trước giờ chiếu,
+và tải xuống vé PDF. Quản trị viên tạo suất chiếu và tải lên hình ảnh poster.</p><p>Yêu cầu kỹ thuật cốt lõi của dự án là <strong>một ghế không bao giờ được bán hai
+lần</strong>, ngay cả khi hai khách hàng cùng chọn một ghế tại cùng một thời điểm.
+Chính ràng buộc duy nhất này quyết định việc lựa chọn cơ sở dữ liệu quan hệ,
+chiến lược row-level locking trong transaction đặt ghế, và kế hoạch kiểm thử.
+Mọi thứ khác trong hệ thống đều tồn tại để phục vụ cho một lượt đặt ghế chính
+xác.</p><p>Nền tảng chạy tại region <code>ap-southeast-1</code> và được xây dựng bởi một đội hai
+người trong bảy tuần, với backend và frontend được phát triển song song dựa
+trên một hợp đồng API (API contract) chung đã được thống nhất trước khi viết
+bất kỳ dòng code nào. Tầng compute và tầng dữ liệu chạy phía sau hai ranh
+giới load-balancing/failover độc lập - một Application Load Balancer trải
+trên hai instance EC2, và một cơ sở dữ liệu RDS Multi-AZ - với cả hai
+instance và cơ sở dữ liệu đều nằm trong các private subnet không có tuyến
+đường trực tiếp ra internet.</p><h3 id=2-phát-biểu-vấn-đề-problem-statement>2. Phát biểu vấn đề (Problem Statement)</h3><h4 id=vấn-đề-là-gì>Vấn đề là gì?</h4><p>Việc bán ghế đã được giữ chỗ khó hơn nhiều so với vẻ ngoài của nó. Cách triển
+khai ngây thơ - đọc trạng thái sẵn có của ghế, rồi ghi một lượt đặt - chứa
+một race condition: hai request có thể cùng đọc trạng thái &ldquo;còn trống&rdquo; trước
+khi cái nào ghi dữ liệu, và rạp chiếu phim bán cùng một chiếc ghế hai lần.
+Lỗi này diễn ra âm thầm, không thường xuyên, và chỉ xuất hiện đúng vào những
+điều kiện quan trọng nhất - khi một suất chiếu ăn khách mở bán và nhiều khách
+hàng cùng đổ dồn vào một vài ghế đẹp.</p><p>Một đồ án sinh viên bỏ qua vấn đề này sẽ tạo ra một hệ thống đặt ghế trông có
+vẻ hoạt động tốt trong demo nhưng lại hỏng hoàn toàn khi đưa vào sản xuất.
+Một dự án giải quyết được vấn đề này buộc phải suy xét về transaction,
+isolation, và locking - đây chính xác là loại vấn đề mà hạ tầng cloud được
+sinh ra để hỗ trợ chứ không phải để tự giải quyết một mình.</p><p>Ngoài yếu tố chính xác, một đơn vị vận hành rạp chiếu nhỏ không có đội ngũ hạ
+tầng riêng. Bất kỳ giải pháp nào cũng phải chịu được việc một instance đơn lẻ
+gặp sự cố mà không gây gián đoạn dịch vụ, giữ cho cơ sở dữ liệu và các máy
+chủ ứng dụng tách biệt khỏi internet công cộng, và vẫn đủ khả năng quan sát
+(observable) để một sự cố được phát hiện trước khi khách hàng phải báo cáo.</p><h4 id=giải-pháp>Giải pháp</h4><p>Caerus lưu trữ ghế, lượt đặt, và người dùng trong Amazon RDS for PostgreSQL
+và thực hiện việc đặt ghế bên trong một transaction cơ sở dữ liệu duy nhất,
+khóa các dòng ghế được yêu cầu bằng <code>SELECT ... FOR UPDATE</code> trước khi kiểm
+tra tình trạng còn trống. Hai request đồng thời cho cùng một ghế không thể
+cùng thành công: một request giành được row lock, request còn lại bị chặn
+(block), và khi bên thắng commit, bên thua nhìn thấy trạng thái đã được cập
+nhật, rollback, và nhận về phản hồi <code>409 SEAT_ALREADY_BOOKED</code> nêu rõ tên các
+ghế xung đột để giao diện có thể tô sáng chúng. Hoặc là mọi ghế được yêu cầu
+đều được đặt thành công, hoặc không ghế nào được đặt cả.</p><p>Các thành phần còn lại được lựa chọn vì những đảm bảo thực sự mang tính chất
+production chứ không phải vì phương án demo rẻ nhất có thể. Frontend React là
+một static build được phục vụ qua Amazon CloudFront từ một private S3
+bucket. API Express chạy trên hai instance Amazon EC2, trong các private
+subnet phía sau một Application Load Balancer, để mất một instance bất kỳ
+cũng không gây gián đoạn dịch vụ; việc cài đặt package và vá lỗi hệ điều hành
+ra ngoài internet đi qua một NAT gateway, và các instance được quản trị qua
+AWS Systems Manager Session Manager thay vì SSH, nên không có cổng inbound
+nào mở ra internet cả. RDS chạy Multi-AZ, cũng nằm trong một private subnet
+không có tuyến đường ra internet. Hình ảnh poster và vé PDF được sinh ra sống
+trong S3, được render bởi chính API và phục vụ qua các presigned URL có thời
+hạn ngắn. CloudFront cũng đứng trước API thông qua load balancer, nên toàn bộ
+ứng dụng - cả site lẫn API - đều có thể truy cập qua HTTPS trên một domain
+duy nhất, với AWS WAF kiểm tra traffic tại edge trước khi nó chạm tới load
+balancer. Amazon CloudWatch thu thập metrics và application logs, và các
+alarm gửi thông báo tới Amazon SNS khi một target trở nên unhealthy hoặc cơ
+sở dữ liệu tiến gần đến giới hạn tài nguyên.</p><h4 id=lợi-ích-và-tỷ-suất-đầu-tư-return-on-investment>Lợi ích và tỷ suất đầu tư (Return on Investment)</h4><p>Hệ thống thay thế việc phân bổ ghế thủ công hoặc dựa trên spreadsheet bằng
+một giao diện mà khách hàng tự thao tác, và làm được điều đó với một đảm bảo
+về tính chính xác có thể được chứng minh chứ không chỉ khẳng định suông. Đối
+với đơn vị vận hành, kiến trúc được xây dựng có chủ đích theo đúng hình mẫu
+mà một triển khai production sẽ dùng chứ không phải hình mẫu rẻ nhất chỉ đủ
+để vượt qua một buổi demo: không có sự cố instance đơn lẻ nào làm sập trang
+web, cơ sở dữ liệu tự động failover, và cả tầng compute lẫn tầng dữ liệu đều
+không thể truy cập trực tiếp từ internet. Mọi tài nguyên đều được gắn tag
+theo chủ sở hữu và theo dõi qua một billing alarm, nên chi phí vận hành thực
+tế là một con số đã biết, được giám sát chứ không phải một bất ngờ.</p><p>Đối với đội dự án, dự án tạo ra bằng chứng năng lực có thể chuyển giao trên
+tám dịch vụ AWS, một minh chứng cụ thể cho kiến trúc mạng phòng thủ theo
+chiều sâu (defense-in-depth) (private subnet ở cả tầng compute và tầng dữ
+liệu, một NAT gateway chỉ cho truy cập outbound, một load balancer và một CDN
+với WAF là các điểm vào công cộng duy nhất), và một lập luận cụ thể cho việc
+chọn lưu trữ quan hệ thay vì NoSQL, dựa trên một bất biến (invariant) thực sự
+chứ không phải một ví dụ trong sách giáo khoa.</p><h3 id=3-kiến-trúc-giải-pháp-solution-architecture>3. Kiến trúc giải pháp (Solution Architecture)</h3><p>Kiến trúc tách biệt hai mối quan tâm: phân phối nội dung tĩnh và compute
+mang tính giao dịch (transactional), cả hai đều có thể truy cập qua cùng một
+CDN edge. Trình duyệt tải ứng dụng React và gọi API Express qua cùng một
+Amazon CloudFront distribution, distribution này định tuyến theo path -
+<code>/api/*</code> tới Application Load Balancer, mọi thứ khác tới private S3 site
+bucket. API tự xử lý mọi thao tác, bao gồm cả việc render vé PDF, và ghi vào
+S3 và RDS từ bên trong VPC.</p><p><img alt="Caerus architecture" src=/images/2-Proposal/architecture.png></p><h4 id=các-dịch-vụ-aws-được-sử-dụng>Các dịch vụ AWS được sử dụng</h4><ul><li><strong>Amazon EC2</strong>: Lưu trữ máy chủ API Express dưới <code>pm2</code>, hai instance trải
+trên hai Availability Zone trong các private subnet, xử lý authentication,
+liệt kê sự kiện, sơ đồ ghế, đặt ghế, hủy đặt, và sinh vé PDF.</li><li><strong>Application Load Balancer</strong>: Đường vào duy nhất tới các instance EC2,
+phân phối traffic đều trên cả hai và liên tục health-check từng instance.</li><li><strong>NAT Gateway</strong>: Cho phép các instance EC2 trong private subnet truy cập
+internet chỉ theo hướng outbound để cài đặt package và vá lỗi hệ điều hành,
+mà không bao giờ chấp nhận kết nối inbound từ internet.</li><li><strong>Amazon RDS for PostgreSQL</strong>: Lưu trữ năm bảng cốt lõi - <code>users</code>,
+<code>events</code>, <code>seats</code>, <code>bookings</code>, và <code>booking_seats</code>. Được chọn vì các
+transaction ACID và row-level locking; triển khai Multi-AZ trong một
+private subnet với failover tự động sang standby.</li><li><strong>Amazon S3</strong>: Bốn bucket private - trang React đã build (chỉ được đọc bởi
+CloudFront, không bao giờ được phục vụ trực tiếp), lưu trữ poster sự kiện,
+lưu trữ vé PDF được sinh ra, và một staging bucket cho gói triển khai
+backend.</li><li><strong>Amazon CloudFront</strong>: Một distribution, một domain HTTPS, định tuyến theo
+path giữa S3 site bucket và load balancer, với Origin Access Control giữ
+cho site bucket ở chế độ riêng tư.</li><li><strong>AWS WAF</strong>: Gắn với CloudFront distribution, kiểm tra mọi request tại edge
+theo các managed rule group trước khi nó chạm tới load balancer hoặc S3
+origin.</li><li><strong>Amazon CloudWatch</strong>: Dashboard cho EC2 CPU, RDS connections/storage/CPU,
+và số lượng request cùng tình trạng target của load balancer; log group
+cho application log của Express; alarm về tình trạng target và áp lực tài
+nguyên cơ sở dữ liệu.</li><li><strong>Amazon SNS</strong>: Gửi thông báo alarm qua email.</li><li><strong>AWS IAM</strong>: Hai người dùng developer trong một group chung, một EC2
+instance role cấp quyền truy cập S3 có phạm vi giới hạn và quản lý Systems
+Manager, không có credential nào được nhúng ở bất kỳ đâu.</li><li><strong>AWS Systems Manager</strong>: Session Manager cấp quyền truy cập shell tới cả
+hai instance EC2 để triển khai và debug, hoàn toàn qua cùng đường outbound
+mà NAT gateway đã cung cấp sẵn - không có cổng SSH nào được mở.</li><li><strong>Amazon VPC</strong>: Một cặp public subnet cho load balancer và NAT gateway,
+một cặp private subnet cho hai instance EC2, một cặp private subnet riêng
+cho RDS, và một gateway endpoint để traffic EC2-đến-S3 không bao giờ rời
+khỏi mạng AWS.</li></ul><h4 id=thiết-kế-thành-phần-component-design>Thiết kế thành phần (Component Design)</h4><ul><li><strong>Frontend</strong>: Một single-page application dùng Vite và React, được build
+thành các tài nguyên tĩnh và đồng bộ vào site bucket. Mọi lời gọi API đều
+đi qua một module client duy nhất, nên việc chuyển hướng ứng dụng từ dữ
+liệu giả (mock data) sang API local rồi sang API đã triển khai chỉ là một
+thay đổi duy nhất.</li><li><strong>Tầng API</strong>: Express với các route, controller mỏng, và service chứa
+logic thực sự. Authentication là JSON Web Token không trạng thái
+(stateless); mật khẩu được hash bằng bcrypt. Transaction đặt ghế nằm trong
+một hàm service duy nhất.</li><li><strong>Tầng dữ liệu</strong>: Ghế thuộc về một suất chiếu chứ không phải một phòng vật
+lý, nên tình trạng còn trống là rõ ràng, không mơ hồ cho từng suất chiếu.
+Mỗi suất chiếu sinh ra một sơ đồ cố định gồm sáu hàng mười ghế. Tình trạng
+còn trống của ghế được lưu dưới dạng một cột để có một dòng cụ thể để khóa;
+tổng số ghế và số ghế còn trống được tính toán tại thời điểm truy vấn để
+không bao giờ bị lệch (drift).</li><li><strong>Sinh vé</strong>: API render PDF ngay trong tiến trình (in-process), ghi nó vào
+bucket vé, và trả về một pre-signed URL có thời hạn ngắn thay vì công khai
+đối tượng đó.</li><li><strong>Tiền tệ và thời gian</strong>: Giá được lưu dưới dạng số nguyên bằng đồng Việt
+Nam, không bao giờ dùng số thực (float). Tổng tiền của lượt đặt được chụp
+ảnh nhanh (snapshot) tại thời điểm mua để một thay đổi giá sau đó không thể
+viết lại lịch sử. Các timestamp được lưu trữ và truyền tải theo giờ UTC
+nhưng biểu diễn giờ chiếu theo múi giờ <code>Asia/Ho_Chi_Minh</code>, và việc lọc theo
+ngày được thực hiện dựa trên ngày theo lịch Việt Nam.</li></ul><h3 id=4-triển-khai-kỹ-thuật-technical-implementation>4. Triển khai kỹ thuật (Technical Implementation)</h3><h4 id=các-giai-đoạn-triển-khai>Các giai đoạn triển khai</h4><p><strong>Giai đoạn 1 - Thiết kế hợp đồng (contract) (2 ngày).</strong> Thống nhất đặc tả
+API và schema cơ sở dữ liệu trong một phiên làm việc duy nhất trước khi viết
+bất kỳ dòng code nào, và đóng băng cả hai như các tài liệu mà không bên phát
+triển nào tự ý thay đổi. Đây chính là điều cho phép backend và frontend được
+xây dựng đồng thời thay vì tuần tự.</p><p><strong>Giai đoạn 2 - Phát triển song song ở local (5 ngày).</strong> Backend triển khai
+API Express dựa trên một container PostgreSQL đóng gói bằng Docker, bao gồm
+cả transaction đặt ghế và render vé PDF. Frontend xây dựng màn hình danh
+sách sự kiện, chọn ghế, và các lượt đặt dựa trên các file JSON giả (mock)
+được định dạng giống hệt các response đã thống nhất. Sau đó là tích hợp, kết
+nối giao diện với API thực và giải quyết các điểm không khớp.</p><p><strong>Giai đoạn 3 - Di chuyển sang các dịch vụ AWS managed (7 ngày).</strong> Cùng các
+file SQL migration và seed được chạy trên một instance RDS Multi-AZ trong
+một private subnet. Cả bốn S3 bucket được tạo. API được triển khai lên hai
+instance EC2 trong các private subnet phía sau một Application Load
+Balancer, chỉ có thể truy cập outbound qua một NAT gateway và được quản trị
+qua Systems Manager Session Manager thay vì SSH; các security group được thu
+hẹp lại sao cho cơ sở dữ liệu chỉ chấp nhận traffic từ tầng ứng dụng và tầng
+ứng dụng chỉ chấp nhận traffic từ load balancer.</p><p><strong>Giai đoạn 4 - CDN, giám sát, và kiểm chứng (7 ngày).</strong> Amazon CloudFront
+được đặt phía trước cả load balancer và S3 site bucket để có một domain
+HTTPS duy nhất, với AWS WAF được bật tại edge. Các dashboard CloudWatch, việc
+chuyển tiếp log, và các alarm về sức khỏe/tài nguyên được cấu hình. Bài kiểm
+thử concurrency được thực hiện trên hệ thống đã triển khai, tiếp theo là
+kiểm thử các trường hợp biên (edge-case) và hoàn thiện.</p><h4 id=yêu-cầu-kỹ-thuật>Yêu cầu kỹ thuật</h4><ul><li><strong>Phát triển local</strong>: Node.js 20 trở lên, Docker Desktop chạy PostgreSQL
+16, và AWS CLI. Các cổng local được cố định ở 5173 cho development server,
+3000 cho API, và 5433 cho container cơ sở dữ liệu.</li><li><strong>Runtime</strong>: Amazon Linux trên EC2, Node.js được quản lý bởi <code>pm2</code> để tự
+khởi động lại khi restart-on-boot, được quản trị hoàn toàn qua Systems
+Manager Session Manager (không SSH), và một instance RDS Multi-AZ chạy
+PostgreSQL trong một private subnet.</li><li><strong>Kiểm soát truy cập</strong>: Mọi IAM role được tạo cho dự án đều mang tiền tố
+tên <code>caerus-</code>, được thực thi bởi permission boundary của account. Mọi tài
+nguyên đều được gắn tag với giá trị <code>Owner</code> xác định developer nào đã tạo
+ra nó, để chi phí có thể được quy về đúng người trong Cost Explorer.</li><li><strong>Truy cập cross-origin</strong>: Trong môi trường production, frontend và API
+được phục vụ từ cùng một domain CloudFront, nên không có request
+cross-origin nào rời khỏi trình duyệt. CORS chỉ cần cho phép local Vite dev
+server giao tiếp với một API local hoặc đã triển khai trong quá trình phát
+triển.</li></ul><h3 id=5-lộ-trình--các-mốc-quan-trọng-timeline--milestones>5. Lộ trình & Các mốc quan trọng (Timeline & Milestones)</h3><p>Dự án chạy trong bảy tuần, từ 15/06/2026 đến 31/07/2026, nằm trong khoảng
+thời gian thực tập rộng hơn.</p><ul><li><strong>Tuần 1 - Ý tưởng, API spec, và database schema.</strong> Chọn dự án và định
+nghĩa rõ bài toán cốt lõi; danh sách API endpoint và database schema được
+thống nhất và chốt cùng nhau, trước khi tìm hiểu sâu bất kỳ dịch vụ AWS nào
+hay viết bất kỳ dòng code nào.
+<em>Mốc quan trọng: hợp đồng (contract) đã được chốt.</em></li><li><strong>Tuần 2 - Nền tảng account và Identity and Access Management.</strong> Thiết lập
+account AWS, MFA, billing alarm, và các khái niệm nền tảng của IAM.</li><li><strong>Tuần 3 - Compute, storage, và managed database.</strong> Nền tảng EC2, S3, và
+RDS, cùng các khái niệm transaction và locking mà hệ thống đặt ghế cần đến.</li><li><strong>Tuần 4 - Các endpoint cơ bản, chỉ chạy local.</strong> Backend và frontend được
+xây dựng song song dựa trên hợp đồng đã chốt, trên một database Docker
+cục bộ. Hai endpoint cần hạ tầng AWS thật (upload poster, generate ticket)
+được cố tình hoãn lại.
+<em>Mốc quan trọng: ứng dụng hoàn chỉnh chạy trên localhost.</em></li><li><strong>Tuần 5 - Triển khai lên AWS.</strong> RDS, S3, và EC2 được triển khai; điểm lỗi
+đơn (single point of failure) ở cả tầng compute lẫn tầng dữ liệu sau đó
+được cố tình loại bỏ bằng một EC2 instance thứ hai phía sau load balancer
+và một database Multi-AZ.
+<em>Mốc quan trọng: chạy trực tiếp trên AWS.</em></li><li><strong>Tuần 6 - Các tính năng cần AWS, CDN, network hardening, và monitoring.</strong>
+Các endpoint đã hoãn được triển khai; CloudFront và WAF đưa toàn bộ ứng
+dụng về một domain HTTPS duy nhất; tầng compute chuyển ra sau một NAT
+gateway, không còn public IP hay SSH inbound; dashboard và alarm CloudWatch
+được cấu hình.
+<em>Mốc quan trọng: hoàn thiện tính năng và được kiểm chứng.</em></li><li><strong>Tuần 7 - Kiểm thử, viết báo cáo, và nộp bài.</strong> Bài kiểm thử concurrency
+và các trường hợp biên được chứng minh trên hệ thống đã triển khai; báo cáo
+được viết và nộp.
+<em>Mốc quan trọng: đã nộp.</em></li></ul><p>Thời gian đệm được dồn vào tuần 5 và tuần 6 - hai tuần có khối lượng công
+việc hạ tầng nặng nhất và khó đoán định nhất (load balancing, Multi-AZ
+failover, CDN, private networking) - thay vì trải đều trên cả bảy tuần.</p><h3 id=6-dự-toán-ngân-sách-budget-estimation>6. Dự toán ngân sách (Budget Estimation)</h3><p>Kiến trúc này chủ đích không được tối ưu để nằm trong Free Tier - một load
+balancer, một NAT gateway, và một cơ sở dữ liệu Multi-AZ đều là các chi phí
+thực, tính theo giờ bất kể lượng traffic, được chấp nhận có chủ đích để đổi
+lấy các đảm bảo mang tính chất production được mô tả ở Mục 3.</p><h4 id=chi-phí-hạ-tầng>Chi phí hạ tầng</h4><table><thead><tr><th style=text-align:left>Thành phần</th><th style=text-align:left>Vì sao tốn chi phí</th><th style=text-align:left>Chi phí ước tính</th></tr></thead><tbody><tr><td style=text-align:left>Application Load Balancer</td><td style=text-align:left>Tính phí theo giờ bất kể traffic, cộng thêm LCU-hours khi có tải</td><td style=text-align:left>~US$16/tháng cơ bản</td></tr><tr><td style=text-align:left>NAT Gateway</td><td style=text-align:left>Tính phí theo giờ cộng với xử lý dữ liệu theo GB</td><td style=text-align:left>~US$32-35/tháng cơ bản</td></tr><tr><td style=text-align:left>RDS Multi-AZ</td><td style=text-align:left>Instance standby được tính phí giống hệt instance primary</td><td style=text-align:left>gấp khoảng đôi so với một instance single-AZ cùng loại</td></tr><tr><td style=text-align:left>Amazon EC2 (×2)</td><td style=text-align:left>Hai instance chạy liên tục; tổng số giờ vượt quá hạn mức 750 giờ của Free Tier khi cả hai chạy đủ một tháng</td><td style=text-align:left>mức vừa phải, tùy thuộc loại instance</td></tr><tr><td style=text-align:left>Amazon CloudFront + WAF</td><td style=text-align:left>Tính theo mức sử dụng (theo GB, theo mỗi 10.000 HTTPS request, theo mỗi rule WAF được đánh giá)</td><td style=text-align:left>vài đô la ở mức traffic demo</td></tr><tr><td style=text-align:left>Amazon S3</td><td style=text-align:left>Thấp hơn nhiều so với hạn mức Free Tier ở mức dữ liệu này</td><td style=text-align:left>không đáng kể</td></tr><tr><td style=text-align:left>Truyền dữ liệu</td><td style=text-align:left>Không đáng kể ở mức traffic demo</td><td style=text-align:left>không đáng kể</td></tr></tbody></table><p><strong>Tổng ước tính: khoảng US$90-110 mỗi tháng</strong> ở mức traffic demo, chủ yếu do
+chi phí theo giờ của NAT gateway và load balancer chứ không phải do mức sử
+dụng thực tế - cả hai đều tiếp tục tính phí ở cùng mức bất kể ứng dụng phục
+vụ một request mỗi ngày hay một nghìn request. Thay con số này bằng link
+AWS Pricing Calculator đã nêu ở trên một khi được tạo dựa trên đúng loại
+instance đã chọn.</p><p>Billing alarm được đặt cao hơn hẳn mức chi phí vận hành dự kiến này (khoảng
+US$150) thay vì đặt ở một giá trị canh gác mang tính tượng trưng - với hồ sơ
+chi phí của kiến trúc này, một ngưỡng thấp sẽ kích hoạt ngay cả khi vận hành
+bình thường thay vì chỉ khi có sai sót thực sự. Mọi tài nguyên vẫn mang tag
+<code>Owner</code>, nên Cost Explorer khi nhóm theo chủ sở hữu sẽ quy bất kỳ đợt tăng
+vọt nào về đúng developer trong vài giây, bất kể ngưỡng alarm được đặt là
+bao nhiêu.</p><h3 id=7-đánh-giá-rủi-ro-risk-assessment>7. Đánh giá rủi ro (Risk Assessment)</h3><h4 id=ma-trận-rủi-ro>Ma trận rủi ro</h4><table><thead><tr><th style=text-align:left>Rủi ro</th><th style=text-align:left>Tác động</th><th style=text-align:left>Xác suất</th></tr></thead><tbody><tr><td style=text-align:left>Ghế bị đặt trùng dưới các request đồng thời</td><td style=text-align:left>Cao</td><td style=text-align:left>Trung bình</td></tr><tr><td style=text-align:left>Lỗi request cross-origin trong quá trình phát triển local</td><td style=text-align:left>Thấp</td><td style=text-align:left>Trung bình</td></tr><tr><td style=text-align:left>Chi phí hàng tháng vượt quá ước tính (giờ NAT/ALB không hoạt động vẫn cộng dồn kể cả khi không có traffic)</td><td style=text-align:left>Trung bình</td><td style=text-align:left>Trung bình</td></tr><tr><td style=text-align:left>Một rule edge cấu hình sai (cache policy của CDN, managed rule của WAF) âm thầm làm hỏng một request hợp lệ</td><td style=text-align:left>Trung bình</td><td style=text-align:left>Trung bình</td></tr><tr><td style=text-align:left>Mất quyền quản trị tới một instance EC2 trong private subnet</td><td style=text-align:left>Trung bình</td><td style=text-align:left>Thấp</td></tr><tr><td style=text-align:left>Việc triển khai tiêu tốn thời gian dành cho các giai đoạn sau</td><td style=text-align:left>Trung bình</td><td style=text-align:left>Trung bình</td></tr></tbody></table><h4 id=chiến-lược-giảm-thiểu>Chiến lược giảm thiểu</h4><ul><li><strong>Concurrency</strong>: Khóa các dòng ghế bằng <code>SELECT ... FOR UPDATE</code> theo thứ
+tự khóa chính (primary key), để mọi transaction đồng thời giành khóa theo
+cùng một trình tự và không thể deadlock. Xác minh bằng conditional update
+và kiểm tra số dòng bị ảnh hưởng (affected row count), để một luồng code
+bỏ qua khóa sẽ bị phát hiện thay vì âm thầm được bỏ qua.</li><li><strong>Request cross-origin</strong>: Coi CORS là mối quan tâm chỉ dành cho môi trường
+phát triển local, vì traffic production là same-origin qua CloudFront;
+cấu hình rõ ràng các origin local được phép trên API thay vì tìm cách né
+tránh trình duyệt.</li><li><strong>Chi phí</strong>: Một billing alarm được đặt dựa trên mức chi phí vận hành thực
+tế (không phải một giá trị mang tính tượng trưng), một tag chủ sở hữu trên
+mọi tài nguyên, và quyền truy cập billing chỉ đọc cho các người dùng
+developer để cấu hình alarm không thể bị vô tình tắt đi.</li><li><strong>Cấu hình sai ở edge</strong>: Coi cache policy của CDN và WAF là những thứ có
+thể âm thầm làm hỏng một request hợp lệ chứ không chỉ luôn luôn chặn kẻ tấn
+công - xác minh một vòng request/response thực sự qua edge cho mọi loại
+nội dung (response API JSON, tải tệp lên) trước khi coi tầng đó là hoàn
+thành, chứ không chỉ với các tài nguyên tĩnh.</li><li><strong>Truy cập quản trị</strong>: Systems Manager Session Manager phụ thuộc vào việc
+instance kết nối outbound tới các endpoint SSM của AWS, điều này lại phụ
+thuộc vào NAT gateway; nếu đường kết nối đó bị gián đoạn, phương án dự
+phòng là một bastion host tạm thời trong một public subnet thay vì mở lại
+SSH trên các instance private.</li><li><strong>Lịch trình</strong>: Các ngày đệm ở cuối hai tuần bận rộn nhất, và một frontend
+hoạt động dựa trên dữ liệu giả (mock data) để không bao giờ bị chặn chờ
+backend.</li></ul><h4 id=kế-hoạch-dự-phòng>Kế hoạch dự phòng</h4><ul><li>Nếu môi trường đã triển khai gặp sự cố trong buổi trình diễn, trình bày
+dựa trên môi trường Docker local, môi trường này chạy cùng schema và code
+giống hệt.</li><li>Nếu việc cấu hình CloudFront/WAF chưa hoàn thành kịp thời, endpoint HTTP
+riêng của Application Load Balancer vẫn có thể truy cập trực tiếp như một
+phương án dự phòng, vì hành vi của API không phụ thuộc vào tầng nào đứng
+phía trước nó.</li><li>Ghi hình trước một video trình diễn để một sự cố trực tiếp không ngăn cản
+việc trình bày công sức đã bỏ ra.</li></ul><h3 id=8-kết-quả-kỳ-vọng-expected-outcomes>8. Kết quả kỳ vọng (Expected Outcomes)</h3><h4 id=cải-tiến-kỹ-thuật>Cải tiến kỹ thuật</h4><p>Một ứng dụng đặt ghế có thể truy cập công khai, trong đó tình trạng còn
+trống của ghế chính xác dưới tải đồng thời, được xác minh bằng một cuộc đua
+(race) có chủ đích giữa hai client cho cùng một ghế, tạo ra đúng một lượt đặt
+thành công và một phản hồi xung đột. Khả năng quan sát vận hành thông qua các
+dashboard bao phủ mọi hạng mục dịch vụ, với một alarm được chứng minh là kích
+hoạt và gửi thông báo thực sự chứ không chỉ được cấu hình suông, và một tầng
+compute cùng tầng dữ liệu đều không thể truy cập từ internet nhờ thiết kế
+mạng chứ không chỉ nhờ kỷ luật security-group.</p><h4 id=giá-trị-lâu-dài>Giá trị lâu dài</h4><p>Dự án tạo ra một minh chứng hoạt động cho thiết kế hạ tầng phòng thủ theo
+chiều sâu (defense-in-depth): một edge công khai (CDN cộng WAF) là điểm vào
+duy nhất, một tầng compute private được cân bằng tải mà không gì có thể tiếp
+cận ngoài edge đó, và một tầng dữ liệu private, Multi-AZ mà không gì có thể
+tiếp cận ngoài tầng compute - mỗi tầng đều fail closed (đóng lại an toàn khi
+lỗi) thay vì fail open nếu một tầng phía trên bị cấu hình sai. Nó cũng tạo ra
+một lập luận dựa trên bằng chứng cho việc lưu trữ quan hệ: bất biến của việc
+đặt ghế không thể được biểu diễn với chi phí thấp nếu thiếu transaction,
+trong khi một tính năng phụ trợ như các sự kiện đã xem gần đây lại phù hợp
+một cách tự nhiên với một kho lưu trữ key-value. Cả hai lập luận đều bắt
+nguồn từ chính hệ thống này chứ không phải từ một so sánh chung chung, và cả
+hai đều có thể tái sử dụng cho công việc thiết kế trong tương lai.</p><footer class=footline></footer></div></div><div id=navigation><a class="nav nav-prev" href=/vi/1-worklog/1.7-week7/ title="Nhật ký tuần 7"><i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/vi/3-blogsposted/ title="Các blog đã đăng" style=margin-right:0><i class="fa fa-chevron-right"></i></a></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1786714200></script><script src=/js/perfect-scrollbar.min.js?1786714200></script><script src=/js/perfect-scrollbar.jquery.min.js?1786714200></script><script src=/js/jquery.sticky.js?1786714200></script><script src=/js/featherlight.min.js?1786714200></script><script src=/js/highlight.pack.js?1786714200></script><script>hljs.initHighlightingOnLoad()</script><script src=/js/modernizr.custom-3.6.0.js?1786714200></script><script src=/js/learn.js?1786714200></script><script src=/js/hugo-learn.js?1786714200></script><link href=/mermaid/mermaid.css?1786714200 rel=stylesheet><script src=/mermaid/mermaid.js?1786714200></script><script>mermaid.initialize({startOnLoad:!0})</script><script>(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,(e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date),(i=t.createElement(n),a=t.getElementsByTagName(n)[0]),i.async=1,i.src=s,a.parentNode.insertBefore(i,a)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-158079754-2","auto"),ga("send","pageview")</script></body></html>
