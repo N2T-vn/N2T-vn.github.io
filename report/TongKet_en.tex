@@ -1,7 +1,17 @@
-% Signed signature page. Falls back to a hand-drawn placeholder (matching
-% the D2/D3 form pattern) if the scanned/rendered PDF isn't present.
-\IfFileExists{form/TongKet.pdf}{
-  \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{form/TongKet.pdf}
+% Signed signature page. form/TongKet.pdf's ink signatures are stored as
+% PDF annotations (added by a mobile signing app), which \includepdf does
+% not render - it only embeds a page's content stream, not its /Annots.
+% form/TongKet_signed.png is that page pre-flattened to a raster image
+% (via pdftoppm, which renders annotations) so the signatures actually
+% show up in the compiled report. Falls back to a hand-drawn placeholder
+% (matching the D2/D3 form pattern) if neither file is present.
+\IfFileExists{form/TongKet_signed.png}{
+  \newpage
+  \thispagestyle{empty}
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=center, inner sep=0pt] at (current page.center)
+      {\includegraphics[width=\paperwidth, height=\paperheight]{form/TongKet_signed.png}};
+  \end{tikzpicture}
 }{
 \newpage
 \vspace{1cm}

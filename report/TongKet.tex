@@ -1,7 +1,18 @@
-% Trang chữ ký đã ký. Nếu không tìm thấy file PDF đã ký/scan thì dùng lại
-% khung ký tay dựng bằng LaTeX (theo đúng cách làm với form D2/D3).
-\IfFileExists{form/TongKet.pdf}{
-  \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{form/TongKet.pdf}
+% Trang chữ ký đã ký. Chữ ký tay trong form/TongKet.pdf được lưu dưới dạng
+% annotation của PDF (do ứng dụng ký trên điện thoại/iPad tạo ra), mà
+% \includepdf chỉ nhúng content stream của trang, không nhúng /Annots, nên
+% chữ ký sẽ không hiện ra khi biên dịch. form/TongKet_signed.png là trang
+% đó đã được "làm phẳng" (flatten) thành ảnh raster từ trước (bằng
+% pdftoppm, công cụ có render annotation) để chữ ký chắc chắn xuất hiện.
+% Nếu không tìm thấy file nào thì dùng lại khung ký tay dựng bằng LaTeX
+% (theo đúng cách làm với form D2/D3).
+\IfFileExists{form/TongKet_signed.png}{
+  \newpage
+  \thispagestyle{empty}
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=center, inner sep=0pt] at (current page.center)
+      {\includegraphics[width=\paperwidth, height=\paperheight]{form/TongKet_signed.png}};
+  \end{tikzpicture}
 }{
 \newpage
 \vspace{1cm}
