@@ -1,3 +1,8 @@
+% Trang chữ ký đã ký. Nếu không tìm thấy file PDF đã ký/scan thì dùng lại
+% khung ký tay dựng bằng LaTeX (theo đúng cách làm với form D2/D3).
+\IfFileExists{form/TongKet.pdf}{
+  \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{form/TongKet.pdf}
+}{
 \newpage
 \vspace{1cm}
 
@@ -22,3 +27,4 @@
     \rule{0.8\linewidth}{0.4pt}
 \end{minipage}
 \end{center}
+}

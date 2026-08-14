@@ -1,3 +1,8 @@
+% Signed signature page. Falls back to a hand-drawn placeholder (matching
+% the D2/D3 form pattern) if the scanned/rendered PDF isn't present.
+\IfFileExists{form/TongKet.pdf}{
+  \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{form/TongKet.pdf}
+}{
 \newpage
 \vspace{1cm}
 
@@ -22,3 +27,4 @@
     \rule{0.8\linewidth}{0.4pt}
 \end{minipage}
 \end{center}
+}
